@@ -139,6 +139,7 @@
 		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system features in order to make future system extensions as easy as possible. 
 	
 		\subsection{System Feature 1 - Adding items to shopping cart}
+		\label{featureadd}
 		
 			\subsubsection{Description}
 			
@@ -163,9 +164,82 @@
 				\end{itemize}
 			
 		
-		\subsection{System Feature 2 - }
+		\subsection{System Feature 2 - Upload Existing List}
+			
+			\subsubsection{Description}
+			
+				The developers acknowledge the fact that not all users will have continuous access to internet and thus the ability to access the above mentioned shopping list. The proposed solution was to allow the user to add items to a .csv file and upload this only when they actual want to go shopping. 
+				
+			\subsubsection{Stimulus/Response Sequences}
+			
+				On the home page there is a "Upload Shopping List" button. Once the user clicks on this button the user will be required to provide the path to the .csv document. Once the path has been provided the user will be required to click on the upload button and the .csv file will be imported. Upon completion the user will be able to access, and interact with, the shopping list as mentioned in Section~\ref{featureadd}.
 		
-		\subsection{System Feature 3 - }
+		\subsection{System Feature 3 - Add Location}
+				
+			\subsubsection{Description}
+			
+				In order for the route to be provided it is required that the application know the user's location. 
+				
+			\subsubsection{Stimulus/Response Sequences}
+			
+				The user is presented with a "Add Location" option on the home screen. Upon selecting this option the user has the ability to make their location known in two different ways:
+				
+				\begin{itemize}
+					\item Entering their location manually.
+					\item Finding their location through the use of the Google Maps API.
+				\end{itemize}
+				
+				The primary motivation behind allowing the user to manually enter their location is that not all users will have access to GPS and thus will be able to find their location.\\
+				
+				The location entered at this point is the same location that will be used as the starting position for the route that is planned when the "Generate Route" option is selected.
+				
+			\subsubsection{Functional Requirements}
+			
+				\begin{itemize}
+					\item In order to use the "find my location" option the user is required to have GPS access.
+				\end{itemize}
+				
+		\subsection{System Feature 4 - Preferred Optimisation}
+		
+			\subsubsection{Description}
+			
+				A decision was made in order to allow the user to have control of the nature of the route that they will follow. This was due to the fact that multiple customers will view different aspects as their primary concern. In other words, some users might value the cost of things over the distance required to travel, while for other the cost of things may not be of concern.
+			
+			\subsubsection{Stimulus/Response Sequences}
+			
+				On the home page there is a "Preffered Optimisation" drop down menu. Once the user selects the "Preffered Optimisation" drop-down menu they will be provided with the following options:
+				
+				\begin{itemize}
+					\item Fastest Route - The user will be allowed to select that they would like to take the fastest possible route in order to obtain all the items on their shopping list. The primary contributor to delays will be traffic.
+					\item Shortest Route - The user will be allowed to select that they would like to travel the shortest possible distance in order to obtain all the items on their shopping list. This selection will not incorporate traffic information.
+					\item Cheapest Total Cost - The optimisation will primarily consider the cost of items at the expense of the distance required to be travelled in order to obtain these items. 
+				\end{itemize}
+				
+				The user will also be provided with all alternative routes and they time expense that would be incurred if they select to take the alternate routes. The route distance optimisation will primarily be achieved through the use of the Google Maps API.
+			
+			\subsubsection{Functional Requirements}
+			
+				\begin{itemize}
+					\item The application is required to link to the Google Maps API.
+					\item The user is required to have GPS activated on their mobile device if they wish to use navigation.
+				\end{itemize}
+		
+		\subsection{System Feature 5 - Generate Route}
+		
+			\subsubsection{Description}
+			
+				The generate route option incorporates all the above mentioned features and provides the user the with the preferred route. 
+				
+			\subsubsection{Stimulus/Response Sequences}
+			
+				Upon selection of the "Generate Route" option the user will be directed to a page that contains the Google Map with the route drawn onto it as well as a set of directions in order to allow for off-line use. If the user would prefer to navigate using a mobile device they will be able to do so through the use of Google Maps.
+				
+			\subsubsection{Functional Requirements}
+			
+				\begin{itemize}
+					\item Access to Google Maps API is required.
+				\end{itemize}
+				
 	
 	\section{External Interface Requirements}
 	
