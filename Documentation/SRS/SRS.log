@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.26)  6 MAR 2016 14:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.26)  6 MAR 2016 14:26
 entering extended mode
 **./SRS.tex
 (SRS.tex
@@ -802,6 +802,12 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 52.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 71.
+("C:\Users\lukac\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
 [1
 
 
@@ -813,32 +819,33 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              from within a non compatible caller, that does not
 (scrartcl)              \scr@s@ct@@nn@m@ locally.
 (scrartcl)              This could result in several error messages on input li
-ne 112.
+ne 166.
 
-
-Underfull \hbox (badness 2409) in paragraph at lines 113--114
+[2]
+Underfull \hbox (badness 2409) in paragraph at lines 167--168
 []\OT1/ptm/m/n/10 Fluid Switch. \OT1/ptm/m/it/10 Air-plane Fule Gauges: How the
 y Work, Chal-lenges, & So-lu-tions\OT1/ptm/m/n/10 . Fluid Switch. URL:
  []
 
-[2] (SRS.aux) ) 
+[3] (SRS.aux) ) 
 Here is how much of TeX's memory you used:
- 17286 strings out of 493634
- 336772 string characters out of 3135239
- 443496 words of memory out of 3000000
- 20370 multiletter control sequences out of 15000+200000
+ 17313 strings out of 493634
+ 337240 string characters out of 3135239
+ 445496 words of memory out of 3000000
+ 20394 multiletter control sequences out of 15000+200000
  21035 words of font info for 46 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 64i,12n,60p,511b,300s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,12n,60p,511b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/lukac/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
 s/fontname/8r.enc}<C:/Users/lukac/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/urw/helvetic/uhvb8a.pfb><C:/Users/lukac/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/urw/times/utmb8a.pfb><C:/Users/lukac/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/urw/times/utmr8a.pfb><C:/Users/lukac/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on SRS.pdf (2 pages, 59193 bytes).
+/public/amsfonts/cm/cmsy10.pfb><C:/Users/lukac/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/lukac/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/lukac/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/lukac/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on SRS.pdf (3 pages, 69325 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
+ 36 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
