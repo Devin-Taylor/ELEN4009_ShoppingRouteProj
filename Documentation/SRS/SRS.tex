@@ -23,8 +23,9 @@
 \usetikzlibrary{shapes.geometric,arrows}
 
 \usepackage{sectsty} % Allows customizing section commands
-\sectionfont{\centering\normalsize\textbf}
-\subsectionfont{\flushleft\normalsize\normalfont\textit}
+\sectionfont{\centering\large\textbf}
+\subsectionfont{\flushleft\normalsize\normalfont\textbf}
+\subsubsectionfont{\flushleft\normalsize\normalfont\textit}
 %\allsectionsfont{\centering} % Make all sections centered
 
 \setlength\parindent{0pt} % remove all indentations in document
@@ -135,10 +136,31 @@
 	
 	\section{System Features}
 	
+		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system features in order to make future system extensions as easy as possible. 
+	
 		\subsection{System Feature 1 - Adding items to shopping cart}
 		
+			\subsubsection{Description}
 			
+				The Shopping Route Recommender's primary feature is for the user to be able to continuously add shopping items to their cart. The user will be able to continuously log into the application and add items to the shopping cart on an add-hock basis. These items will remain in the basket until such time that the user wants to go shopping. 
 			
+			\subsubsection{Stimulus/Response Sequences}
+			
+				The user will click in the "Add Items" field at which point a list will be displayed that will contain all previously added items listed one after the other (in the order in which they were added). Within this list the user will be able to complete one of the following actions:
+				
+				\begin{itemize}
+					\item Add new item - The user will be able to select the "Add new item" button in order to be allowed to enter a new item. 
+					\item Remove existing item - The user will be able to select the cross new to a specific item at which point the item will be removed from the shopping list.
+					\item Edit existing item - The user will be able to make modifications to the description of an existing item.
+				\end{itemize}
+			
+			\subsubsection{Functional Requirements}
+			
+				\begin{itemize}
+					\item The user can only add a single item at a time.
+					\item The user can only remove a single item at a time.
+					\item The user can only edit a single item at a time.
+				\end{itemize}
 			
 		
 		\subsection{System Feature 2 - }
