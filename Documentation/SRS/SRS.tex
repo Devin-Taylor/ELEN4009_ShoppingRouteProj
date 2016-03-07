@@ -250,7 +250,7 @@
 		\subsection{User Interfaces - GUI}
 		
 		
-				The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route.\\
+				The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route. . Furthermore the application is easily portable between devices of different screen sizes, in that the content on the pages automatically adjust to fit the appropriate screen.\\
 				
 				The most common features of SSRec's GUI are:
 				
@@ -295,9 +295,17 @@
 		
 		\subsection{Hardware Interfaces}
 		
+		The SSRec application does not require nor support any hardware interfaces.
+		
 		\subsection{Software Interfaces}
 		
+		SSRec is a web application. Therefore it will be compatible with all operating systems including smartphone and tablet OS. It only needs to be compatible on a web browser which support html, css, javascript and php. It has been tested on Motzilla Firefox, Google Chrome and Microsoft Edge.\\
+		
+		Furthermore the application makes use of the Google Maps API in order to generate the optimised route displayed on a map.
+		
 		\subsection{Communications Interfaces}
+		
+		Since SSRec is a web application, network communication are necessary. It runs off a cloud hosted server such that it is readily available with an internet connection so to communicate with the both the user and the Google Maps API. Another communication interface is through the users GPS (if available), where the application is able to locate the nearest shops.
 	
 	\section{Other Non-functional Requirements}
 	
@@ -311,9 +319,7 @@
 		
 		\subsection{Other Requirements}
 	
-	\begin{thebibliography}{99}
-		\bibitem{probs}Fluid Switch. \textit{Airplane Fule Gauges: How they Work, Challenges, \& Solutions}. Fluid Switch. URL: http://www.fluidswitch.com/blog/airplane-fuel-gauges/. [Accessed: February 15, 2016]
-	\end{thebibliography}
+
 	
 	
 	%----------------------------------------------------------------------------------------
