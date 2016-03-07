@@ -64,9 +64,11 @@
 	
 		\subsection{Product Perspective}
 		
-			The Shopping Route Recommender is an application used by consumers to maximise their shopping experience in terms of three preferred optimisations: minimum cost, travel distance and travel time. The consumer is able to log onto a Website or Smartphone application and create a shopping list with a route being generated.  Enabling a user to optimise their shopping experience is a potential success from the start, as their daily routines can become more efficiently and effectively undertaken. 
+			The Shopping Route Recommender is an application used by consumers to maximise their shopping experience in terms of three preferred optimisations: minimum cost, travel distance and travel time. The consumer is able to log onto a Website or Smartphone application and create a shopping list with a desired route being generated.  Enabling a user to optimise their shopping experience is a potential success from the start, as their daily routines can become more efficiently and effectively undertaken. The application's use is not only restricted to the general public, but can also be used by businesses and companies involved in the stock collection courier service industries. The application is aimed at being user friendly, simple, and interactive with maximum customisation being a priority aspect in order to maximise an individuals needs. 
 		
 		\subsection{Product Features}
+		
+			The list of product features below aim to provide an easy-to-use, customizable application interface for all users. 
 		
 			\begin{itemize}
 				\item Interactive shopping list menu.
@@ -91,8 +93,6 @@
 					\item satellite view
 				\end{itemize}
 			\end{itemize}
-			
-			The aim of the application is to be as user friendly and interactive as possible, while maintaining an easy-to-use interface. 
 		
 		\subsection{User Classes and Characteristics}
 		
@@ -130,7 +130,11 @@
 		
 		\subsection{Design and Implementation Constraints} 
 		
+			Shopping Route Recommender is platform independent and is written in \textcolor{red}{language}. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps detailing. 
+		
 		\subsection{User Documentation}
+		
+		   	A general help and FAQ menu will be provided within the application. This will function as the "user manual" of the application. 
 		
 		\subsection{Assumptions and Dependencies}
 	
@@ -244,6 +248,50 @@
 	\section{External Interface Requirements}
 	
 		\subsection{User Interfaces - GUI}
+		
+		
+				The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route.\\
+				
+				The most common features of SSRec's GUI are:
+				
+				\begin{itemize}
+					\item The sidebar menu accessible from all the subsequent pages:
+					\begin{figure}[h!]
+						\centering
+						\includegraphics[scale = 0.495]{Images/menu.png}
+						\label{menu}
+					\end{figure}
+					
+					\item The landing page and main application window where a user inputs their shopping list, location and preffered optimisation from which the application generates an optimised route:
+					\begin{figure}[h!]
+						\centering
+						\includegraphics[scale = 0.5]{Images/index.png}
+						\label{menu}
+					\end{figure}
+					
+					\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation:
+					\begin{figure}[h!]
+						\centering
+						\includegraphics[scale = 0.5]{Images/routeGen.png}
+						\label{menu}
+					\end{figure}
+					
+					\item The page where a user can either login or create a new account:
+					\begin{figure}[h!]
+						\centering
+						\includegraphics[scale = 0.5]{Images/login.png}
+						\label{menu}
+					\end{figure}
+					
+					\vspace{-12mm}
+					\item The page where a new user can create an account:
+					\begin{figure}[h!]
+						\centering
+						\includegraphics[scale = 0.5]{Images/createAccount.png}
+						\label{menu}
+					\end{figure}
+													
+				\end{itemize}
 		
 		\subsection{Hardware Interfaces}
 		
