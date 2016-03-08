@@ -52,14 +52,51 @@
 	
 		\subsection{Purpose}
 		
+		This document details the Software Requirements Specification (SRS) for the Shopping Route Recommender (SRRec) web application. The document also follows the IEEE standard for SRS documents.\\
+		
+		Shopping can often prove to be tedious and frustrating when you find out that the shop you are at does not stock or is out of stock of certain products that are on your shopping list. One then needs to go to other shops in the hopes that those shops will have the items not yet ticked off ones shopping list. Even then, the next shop may not have the items and you have to keep going from shop to shop until you finally get all the items needed. There is clearly a need for a more efficient way of finding all the items on your shopping list in the shortest travel time, shortest route or most cost effective route.\\
+		
+		The purpose of this project is to provide a web application that allows a user to enter their shopping list and in turn provides the user with the ideal route to the nearest stores that will fulfil their needs.
+		
 		\subsection{Document Conventions}
+		
+		This document is intended to accompany the SRRec software and should be updated with each update to the software. This will ensure that the document remains relevant and useful.
 		
 		\subsection{Intended Audience and Reading Suggestions}
 		
+		This SRS document is intended for:
+		\begin{itemize}
+			\item Programmers that want to understand the outlines of how the SRRec web application works and the way in which the software has been implemented.
+			\item Project testers to use in order to better their testing strategies since some bugs are easier to find by using an SRS document.
+			\item End users of this web application who would like to read about how the SRRec can help them or what it is capable of doing.
+		\end{itemize}
+		
 		\subsection{Project Scope}
 		
+		SRRec is a web application that is capable of providing a route to all the nearest shops so as to fulfil a users entire shopping list while either following the shortest route, the route with the shortest travel time or the route that will result in minimal total expenses. The shopper can continuously add items to their list and these items are logged to their respective list. When the shopper finally runs the SRRec he/she will obtain their user-determined recommended route of shops to visit is a particular order according to items on their list. It provides a Graphical User Interface (GUI) with embedded Google Maps.
+		
+		We assume the following:
+		\begin{itemize}
+			\item There is already a map of all shopping malls and shops that sell various items that a shopper could add to their list.
+			\item Each shop has a database of the items that they stock and their respective prices.
+			\item The price of each item is a simple Rand value or indicated by Rand/kilogram, etc.
+			\item The SRRec runs on a website with access to the databases of all the shops.
+			\item Google maps is available on the website and shows the route from one shopping mall or shop to the next.
+		\end{itemize}
+		
+		The shopper is able to select one of three types of recommendation:
+		\begin{itemize}
+			\item shortest route.
+			\item Shortest route for minimal total expenses.
+			\item Route with shortest travel time.
+		\end{itemize}
+		
+		The shopper will also be able to change their selected recommendation after visiting some shops and eliminating some items from their list. The SRRec can also incorporate stop-overs for coffe, drinks, lunch, etc. The Shopper can also give a price range that they are willing to pay for each item.
+		
 		\subsection{References}
-	
+		
+		\textbf{NONE YET}
+		
 	\section{Overall Description}
 	
 		\subsection{Product Perspective}
