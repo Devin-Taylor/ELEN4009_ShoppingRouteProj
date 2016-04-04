@@ -8,9 +8,9 @@
 
 	<title>SSRec - Shopping Route Recommender</title>
 
-	<link href="css/1140.css" rel="stylesheet" type="text/css">
-	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="css/sidenav.css" rel="stylesheet" type="text/css">
+	<link href="../css/1140.css" rel="stylesheet" type="text/css">
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<link href="../css/sidenav.css" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
 	
 
@@ -39,7 +39,7 @@
 
 				<div class="column7" id="header-nav">
 
-					<a href="http://localhost:3000"><img src="images/logo.png" ></a>
+					<a href="http://localhost:3000"><img src="../images/logo.png" ></a>
 
 				</div>
 
@@ -78,7 +78,7 @@
 
 				<div class="column6">
 
-					<img src="images/captcha.png" align="middle" style="width:520px;height:200px;"><br><br style="line-height:30px;" />
+					<img src="../images/captcha.png" align="middle" style="width:520px;height:200px;"><br><br style="line-height:30px;" />
 
 					<h2>Enter the text in the image above</h2>
 					
