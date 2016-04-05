@@ -12,3 +12,15 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 	- Shortest possible route to obtaining all the products
 	- Cheapest possible route to obtaining all the products
 
+**Prerequisits**
+
+- Install [apache2 and PHP5](http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/) server
+- Install and setup postgresql
+	- `sudo apt-get install postgresql-9.3`
+
+**Setup**
+
+- Create a postgresql database called `srrec`
+	- `sudo -i -u postgres`
+	- `createdb srrec`
+
