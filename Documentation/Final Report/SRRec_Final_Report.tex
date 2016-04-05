@@ -1,4 +1,4 @@
-\documentclass[10pt, a4paper, onecolumn]{scrartcl}
+\documentclass[10pt, a4paper, twocolumn]{scrartcl}
 \usepackage{cite}  
 \usepackage{times}
 \usepackage{amsmath}
@@ -8,10 +8,11 @@
 \usepackage{listings}
 \usepackage{enumitem} % used for list - no spaces between items
 \usepackage[english]{babel} % English language/hyphenation
-\usepackage[top=2cm, bottom= 3.2cm, left=2cm, right=2cm, columnsep=0.6cm]{geometry}
+\usepackage[top=2.5cm, bottom=3.2cm, left=2cm, right=2cm, columnsep=0.6cm]{geometry}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
+
 \usepackage{fancyhdr}
 \pagestyle{fancyplain}
 \fancyhead{}
@@ -19,6 +20,7 @@
 \fancyfoot[L]{} % Empty left footer
 \fancyfoot[C]{} % Empty center footer
 \fancyfoot[R]{\thepage} 
+
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,arrows}
 
@@ -28,25 +30,110 @@
 \subsubsectionfont{\flushleft\normalsize\normalfont\textit}
 %\allsectionsfont{\centering} % Make all sections centered
 
+\usepackage[toc,page]{appendix}
+
+
 \setlength\parindent{0pt} % remove all indentations in document
 
-%----------------------------------------------------------------------------------------
-%	BEGIN DOCUMENT
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+%	                                                                           BEGIN DOCUMENT
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+
+%-------------------------------------------------------------------------- COVER PAGE -------------------------------------------------------------------------------------%
+\begin{document} 
+
+\onecolumn
+\thispagestyle{empty}
+
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
-\begin{document}
-	
 	\title{\normalfont \normalsize
 		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
 		\horrule{0.5pt} \\ [10pt]
-		\huge Software Requirement Specification for Shopping Route Recommender \\
-		\horrule{2pt} \\ [10pt]}
-	\author{\textbf{\normalsize{Luka Cakic (671913), Ronen Freeman (386910), Devin Taylor (603956) and Matthew Marsden (609293)}} \\ [10pt]}
+		\huge ELEN4009 Software Engineering \\ Shopping Route Recommender Final Project Report \\
+		\horrule{2pt} \\ }
 	\date {\normalsize \today}
 	
 	\maketitle
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width = 0.55\textwidth]{Images/witsLogo.jpg}
+	\end{figure}
+
+
+\textbf{Front-End Pair:} Ronen Freeman (386910) and Luka Cakic (671913) \\
+
+\textbf{Back-End Pair:} Devin Taylor (603956) and Matthew Marsden (609293)
+
+
+%-------------------------------------------------------------------------- HEADING AND ABSTRACT -------------------------------------------------------------------------------------%
+%\makeatletter
+%\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+%	\begin{flushleft}
+%		\textbf{\@title}
+%		
+%		\@author\vspace{4mm}
+%		
+%		\textit{\small{School of Electrical \& Information Engineering, University of the Witwatersrand, Private Bag 3, 2050, Johannesburg, South Africa}} \vspace{10mm} 
+%	\end{flushleft}\egroup
+%}
+%\makeatother
+%
+%	\twocolumn[
+%	\begin{@twocolumnfalse}
+%		\title{\normalsize\textbf{ELEN4009 SHOPPING ROUTE RECOMMENDER FINAL PROJECT REPORT} \\[10pt]}
+%		\author{\textbf{\normalsize{Luka Cakic (671913), Matthew Marsden (609293), Devin Taylor (903956) , Ronen Freeman (386910)}}}
+%		\maketitle
+%		
+%		\begin{small}
+%			\textbf{Abstract: } \vspace{4mm}
+%		\end{small}	
+%		
+%		\normalsize\textbf{Key Words: } Shopping Route Recommender. \vspace{8mm}		
+%		
+%	\end{@twocolumnfalse} ]
+
+%-------------------------------------------------------------------------- INTRODUCTION -------------------------------------------------------------------------------------%	
+\twocolumn
+\section{Introduction}
+
+	\subsection{Problem Statement:} 
 	
+		Shopping can often prove to be tedious and frustrating when a customer arrives at a shopping destination to find that the store is out of stock or does not stock the particular items of interest. The result? The customer is now forced to seek out alternative stores, which adds complication and frustration to an already stressful lifestyle. Even then, the alternative stores may pose the same problem. These issues are further enhanced when the customer has made a shopping list with multiple products. There is clearly a need for a more efficient way of purchasing a list of shopping desirables. \\
+		
+		The solution is to provide a user with a web application that structures a customers shopping experience based on user desired optimisations. The application maps out an optimised route based on reducing the travel time between stores, creating a shortest route between destinations and suggesting the stores with the cheapest product prices. Either optimisation will greatly assist a shopper with planning their weekly activities. \\
+		
+		The purpose of this project is to therefore provide a web application that allows a user to enter their shopping list and returns to the user a map with the ideal route to the nearest stores that will fulfil their needs. 
+	
+	\subsection{Project Objectives:}
+	
+		The project objectives are listed in detail below:
+		
+			\begin{itemize}[noitemsep]
+				\item Design a web application that allows a user to base their daily shopping on a optimised route, the optimisations being:
+					\begin{itemize}
+						\item shortest travel time to meet all purchases of shopping list items 
+						\item shortest route for minimum total expenses
+						\item shortest route to satisfy all purchases on the shopping list 
+					\end{itemize}
+				\item Generate a Google maps route that reveals the user's optimised shopping route
+				\item Implement a structurally well designed back-end data base that contains data related to various shops/stores, their locations, various products and their prices. 
+			\end{itemize}
+	
+	\subsection{Stakeholders:}
+	
+	
+%-------------------------------------------------------------------------- SRS -------------------------------------------------------------------------------------%	
+\onecolumn 
+
+\title{\normalfont \normalsize
+	\horrule{0.5pt} \\ [10pt]
+	\huge Software Requirement Specification for Shopping Route Recommender \\
+	\horrule{2pt} \\ [10pt]}
+\date {}
+
+\maketitle
 	
 	\section{Introduction}
 	
@@ -83,30 +170,30 @@
 				\item The SRRec runs on a website with access to the databases of all the shops.
 				\item Google maps is available on the website and shows the route from one shopping mall or shop to the next.
 			\end{itemize}
-			
+		
 			The shopper is able to select one of three types of recommendation:
 			\begin{itemize}
 				\item shortest route.
 				\item Shortest route for minimal total expenses.
 				\item Route with shortest travel time.
 			\end{itemize}
-			
+		
 			The shopper will also be able to change their selected recommendation after visiting some shops and eliminating some items from their list. The SRRec can also incorporate stop-overs for coffe, drinks, lunch, etc. The Shopper can also give a price range that they are willing to pay for each item.
 		
 		\subsection{References}
 		
 			\textbf{NONE YET}
-		
+	
 	\section{Overall Description}
 	
 		\subsection{Product Perspective}
-		
+	
 			The Shopping Route Recommender is an application used by consumers to maximise their shopping experience in terms of three preferred optimisations: minimum cost, travel distance and travel time. The consumer is able to log onto a Website or Smartphone application and create a shopping list with a desired route being generated.  Enabling a user to optimise their shopping experience is a potential success from the start, as their daily routines can become more efficiently and effectively undertaken. The application's use is not only restricted to the general public, but can also be used by businesses and companies involved in the stock collection courier service industries. The application is aimed at being user friendly, simple, and interactive with maximum customisation being a priority aspect in order to maximise an individuals needs. 
-		
+	
 		\subsection{Product Features}
-		
+	
 			The list of product features below aim to provide an easy-to-use, customizable application interface for all users. 
-		
+	
 			\begin{itemize}
 				\item Interactive shopping list menu.
 				\begin{itemize}
@@ -130,11 +217,11 @@
 					\item satellite view
 				\end{itemize}
 			\end{itemize}
-		
+	
 		\subsection{User Classes and Characteristics}
-		
+	
 			The application is aimed for the general public's use as well as certain business industries. 
-			
+	
 			\begin{itemize}
 				\item General Public
 				\begin{itemize}
@@ -147,11 +234,11 @@
 					\item Courier companies collecting stock or products from various distributors/stores
 				\end{itemize}
 			\end{itemize}
-		
+	
 		\subsection{Operating Environment}
 		
 			Shopping Route Recommender is an application designed to run on the most Web Browsers as well on Google Android and Mac OS X Smartphones. 
-			
+	
 			\begin{itemize}
 				\item Software Requirements
 				\begin{itemize}
@@ -164,15 +251,15 @@
 					\item Entry level Smartphone with interactive touch screen
 				\end{itemize}
 			\end{itemize}
-		
+	
 		\subsection{Design and Implementation Constraints} 
-		
+	
 			Shopping Route Recommender is platform independent and is written in \textcolor{red}{language}. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps detailing. 
-		
+	
 		\subsection{User Documentation}
-		
-		   	A general help and FAQ menu will be provided within the application. This will function as the "user manual" of the application. 
-		
+	
+			A general help and FAQ menu will be provided within the application. This will function as the "user manual" of the application. 
+	
 		\subsection{Assumptions and Dependencies}
 	
 	\section{System Features}
@@ -181,7 +268,7 @@
 	
 		\subsection{System Feature 1 - Adding items to shopping cart}
 		\label{featureadd}
-		
+	
 			\subsubsection{Description}
 			
 				The Shopping Route Recommender's primary feature is for the user to be able to continuously add shopping items to their cart. The user will be able to continuously log into the application and add items to the shopping cart on an add-hock basis. These items will remain in the basket until such time that the user wants to go shopping. 
@@ -189,7 +276,7 @@
 			\subsubsection{Stimulus/Response Sequences}
 			
 				The user will click in the "Add Items" field at which point a list will be displayed that will contain all previously added items listed one after the other (in the order in which they were added). Within this list the user will be able to complete one of the following actions:
-				
+			
 				\begin{itemize}
 					\item Add new item - The user will be able to select the "Add new item" button in order to be allowed to enter a new item. 
 					\item Remove existing item - The user will be able to select the cross new to a specific item at which point the item will be removed from the shopping list.
@@ -197,54 +284,54 @@
 				\end{itemize}
 			
 			\subsubsection{Functional Requirements}
-			
+	
 				\begin{itemize}
 					\item The user can only add a single item at a time.
 					\item The user can only remove a single item at a time.
 					\item The user can only edit a single item at a time.
 				\end{itemize}
-			
+	
 		\subsection{System Feature 2 - Upload Existing List}
-			
+	
 			\subsubsection{Description}
 			
 				The developers acknowledge the fact that not all users will have continuous access to internet and thus the ability to access the above mentioned shopping list. The proposed solution was to allow the user to add items to a .csv file and upload this only when they actual want to go shopping. 
-				
+	
 			\subsubsection{Stimulus/Response Sequences}
-			
+	
 				On the home page there is a "Upload Shopping List" button. Once the user clicks on this button the user will be required to provide the path to the .csv document. Once the path has been provided the user will be required to click on the upload button and the .csv file will be imported. Upon completion the user will be able to access, and interact with, the shopping list as mentioned in Section~\ref{featureadd}.
-		
+	
 		\subsection{System Feature 3 - Add Location}
-				
+	
 			\subsubsection{Description}
-			
+	
 				In order for the route to be provided it is required that the application know the user's location. 
-				
+	
 			\subsubsection{Stimulus/Response Sequences}
-			
+	
 				The user is presented with a "Add Location" option on the home screen. Upon selecting this option the user has the ability to make their location known in two different ways:
-				
+	
 				\begin{itemize}
 					\item Entering their location manually.
 					\item Finding their location through the use of the Google Maps API.
 				\end{itemize}
-				
+	
 				The primary motivation behind allowing the user to manually enter their location is that not all users will have access to GPS and thus will be able to find their location.\\
 				
 				The location entered at this point is the same location that will be used as the starting position for the route that is planned when the "Generate Route" option is selected.
-				
+	
 			\subsubsection{Functional Requirements}
-			
+	
 				\begin{itemize}
 					\item In order to use the "find my location" option the user is required to have GPS access.
 				\end{itemize}
-				
+	
 		\subsection{System Feature 4 - Preferred Optimisation}
-		
+	
 			\subsubsection{Description}
 			
 				A decision was made in order to allow the user to have control of the nature of the route that they will follow. This was due to the fact that multiple customers will view different aspects as their primary concern. In other words, some users might value the cost of things over the distance required to travel, while for other the cost of things may not be of concern.
-			
+	
 			\subsubsection{Stimulus/Response Sequences}
 			
 				On the home page there is a "Preffered Optimisation" drop down menu. Once the user selects the "Preffered Optimisation" drop-down menu they will be provided with the following options:
@@ -263,115 +350,113 @@
 					\item The application is required to link to the Google Maps API.
 					\item The user is required to have GPS activated on their mobile device if they wish to use navigation.
 				\end{itemize}
-		
+	
 		\subsection{System Feature 5 - Generate Route}
-		
+	
 			\subsubsection{Description}
 			
 				The generate route option incorporates all the above mentioned features and provides the user the with the preferred route. 
-				
+	
 			\subsubsection{Stimulus/Response Sequences}
 			
 				Upon selection of the "Generate Route" option the user will be directed to a page that contains the Google Map with the route drawn onto it as well as a set of directions in order to allow for off-line use. If the user would prefer to navigate using a mobile device they will be able to do so through the use of Google Maps.
-				
+	
 			\subsubsection{Functional Requirements}
-			
+	
 				\begin{itemize}
 					\item Access to Google Maps API is required.
 				\end{itemize}
-				
+	
 	
 	\section{External Interface Requirements}
 	
 		\subsection{User Interfaces - GUI}
-		
-				The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route. . Furthermore the application is easily portable between devices of different screen sizes, in that the content on the pages automatically adjust to fit the appropriate screen.\\
+	
+			The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route. . Furthermore the application is easily portable between devices of different screen sizes, in that the content on the pages automatically adjust to fit the appropriate screen.\\
+	
+			The most common features of SSRec's GUI are:
+	
+			\begin{itemize}
+				\item The sidebar menu accessible from all the subsequent pages:
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[scale = 0.495]{Images/menu.PNG}
+					\label{menu}
+				\end{figure}
 				
-				The most common features of SSRec's GUI are:
+				\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route:
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[scale = 0.5]{Images/index.PNG}
+					\label{menu}
+				\end{figure}
 				
-				\begin{itemize}
-					\item The sidebar menu accessible from all the subsequent pages:
-					\begin{figure}[h!]
-						\centering
-						\includegraphics[scale = 0.495]{Images/menu.PNG}
-						\label{menu}
-					\end{figure}
-					
-					\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route:
-					\begin{figure}[h!]
-						\centering
-						\includegraphics[scale = 0.5]{Images/index.PNG}
-						\label{menu}
-					\end{figure}
-					
-					\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation:
-					\begin{figure}[h!]
-						\centering
-						\includegraphics[scale = 0.5]{Images/routeGen.PNG}
-						\label{menu}
-					\end{figure}
-					
-					\item The page where a user can either login or create a new account:
-					\begin{figure}[h!]
-						\centering
-						\includegraphics[scale = 0.5]{Images/login.PNG}
-						\label{menu}
-					\end{figure}
-					
-					\vspace{-12mm}
-					\item The page where a new user can create an account:
-					\begin{figure}[h!]
-						\centering
-						\includegraphics[scale = 0.5]{Images/createAccount.PNG}
-						\label{menu}
-					\end{figure}
-													
-				\end{itemize}
-		
+				\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation:
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[scale = 0.5]{Images/routeGen.PNG}
+					\label{menu}
+				\end{figure}
+				
+				\item The page where a user can either login or create a new account:
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[scale = 0.5]{Images/login.PNG}
+					\label{menu}
+				\end{figure}
+				
+				\vspace{-12mm}
+				\item The page where a new user can create an account:
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[scale = 0.5]{Images/createAccount.PNG}
+					\label{menu}
+				\end{figure}
+			\end{itemize}
+	
 		\subsection{Hardware Interfaces}
-		
+	
 			The SSRec application does not require nor support any hardware interfaces.
-		
+	
 		\subsection{Software Interfaces}
-		
+	
 			SSRec is a web application. Therefore it will be compatible with all operating systems including smartphone and tablet OS. It only needs to be compatible on a web browser which support html, css, javascript and php. It has been tested on Motzilla Firefox, Google Chrome and Microsoft Edge.\\
-			
+	
 			Furthermore the application makes use of the Google Maps API in order to generate the optimised route displayed on a map.
-		
+	
 		\subsection{Communications Interfaces}
-		
+	
 			Since SSRec is a web application, network communication are necessary. It runs off a cloud hosted server such that it is readily available with an internet connection so to communicate with the both the user and the Google Maps API. Another communication interface is through the users GPS (if available), where the application is able to locate the nearest shops.
 	
 	\section{Other Non-functional Requirements}
 	
 		\subsection{Performance Requirements}
-		
+	
 			The SRRec is dependent on retrieving only relevant information from multiple large databases. This is to be done in an optimised fashion in order to allow fast data retrieval without unnecessary delays. The application should respond in real-time as the user inputs information.\\
-		
+	
 			Since the SRRec is a website application, any changes or updates made will be automatically available to the user the next time the website is loaded. Thus SRRec will always be up-to-date.\\
-		
+	
 			The application should have a maximum range for the shops selected so as not to recommend an infeasible route. It should also be able to still provide a route even if certain items are not available nearby.
-		
+	
 		\subsection{Safety Requirements}
-		
+	
 			The application should avoid taking users to the wrong locations, especially if those locations are in dangerous areas. The SRRec should only provide routes along known roads.
-		
+	
 		\subsection{Security Requirements}
-		
+	
 			The databases used by SRRec should be protected from random access. User credentials are to be taken in by the application for users to sign into their profiles. Thus there needs to be a secure authentication system. The credentials also need to be safely stored on a secure server to protect them.
-		
+	
 		\subsection{Software Quality Attributes}
-			
+	
 			This application incorporates the use of user credentials to allow users to store and access their lists on a 	server without losing their list or having to keep the website active. The application has a simplistic graphical interface that is easy-to-use. The website is easily interpreted and a new user should be able to use the website without requiring any sort of tutorial or explanations.
-		
+	
 		\subsection{Other Requirements}
-		
+	
 			\textbf{NOT APPLICABLE TO US YET}
-		
+	
 	%----------------------------------------------------------------------------------------
 	%	REFERENCES
 	%----------------------------------------------------------------------------------------
-	
-	
-	
+
+
 \end{document}
