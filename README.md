@@ -20,7 +20,19 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 
 **Setup**
 
+
+**NOTE:** If the user has already installed postgresql they will need to edit the .php files and change the password
+
 - Create a postgresql database called `srrec`
 	- `sudo -i -u postgres`
+	- `psql postgres`
+	- `\password srrec`
+	- `ctrl + d`
 	- `createdb srrec`
+	- `psql srrec`
+	- `\password srrec`
+		- password: `srrec`
 
+**Running the code**
+
+Copy the .txt files located in `Code/back_end/` into the root folder of postgresql, the default for this on Linux is `/var/lib/postgresql/9.3/main`
