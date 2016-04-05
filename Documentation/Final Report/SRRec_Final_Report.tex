@@ -1,0 +1,117 @@
+\documentclass[10pt, a4paper, twocolumn]{scrartcl}
+\usepackage{cite}  
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumitem} % used for list - no spaces between items
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[top=2.5cm, bottom=3.2cm, left=2cm, right=2cm, columnsep=0.6cm]{geometry}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
+
+\usepackage{sectsty} % Allows customizing section commands
+\sectionfont{\centering\normalsize\textbf}
+\subsectionfont{\flushleft\normalsize\normalfont\textit}
+%\allsectionsfont{\centering} % Make all sections centered
+
+\usepackage[toc,page]{appendix}
+
+
+\setlength\parindent{0pt} % remove all indentations in document
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+%	                                                                           BEGIN DOCUMENT
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+
+%-------------------------------------------------------------------------- COVER PAGE -------------------------------------------------------------------------------------%
+\begin{document} 
+
+\onecolumn
+\thispagestyle{empty}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+	\title{\normalfont \normalsize
+		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
+		\horrule{0.5pt} \\ [10pt]
+		\huge ELEN4009 Software Engineering \\ Shopping Route Recommender Final Project Report \\
+		\horrule{2pt} \\ }
+	\date {\normalsize \today}
+	
+	\maketitle
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width = 0.5\textwidth]{Images/witsLogo.jpg}
+	\end{figure}
+
+
+\section*{Front-End Pair:} \centering{Ronen Freeman (386910) and Luka Cakic (671913)}
+
+\section*{Back-End Pair:} \centering{Devin Taylor (603956) and Matthew Marsden (609293)}
+
+
+%-------------------------------------------------------------------------- HEADING AND ABSTRACT -------------------------------------------------------------------------------------%
+%\makeatletter
+%\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+%	\begin{flushleft}
+%		\textbf{\@title}
+%		
+%		\@author\vspace{4mm}
+%		
+%		\textit{\small{School of Electrical \& Information Engineering, University of the Witwatersrand, Private Bag 3, 2050, Johannesburg, South Africa}} \vspace{10mm} 
+%	\end{flushleft}\egroup
+%}
+%\makeatother
+%
+%	\twocolumn[
+%	\begin{@twocolumnfalse}
+%		\title{\normalsize\textbf{ELEN4009 SHOPPING ROUTE RECOMMENDER FINAL PROJECT REPORT} \\[10pt]}
+%		\author{\textbf{\normalsize{Luka Cakic (671913), Matthew Marsden (609293), Devin Taylor (903956) , Ronen Freeman (386910)}}}
+%		\maketitle
+%		
+%		\begin{small}
+%			\textbf{Abstract: } \vspace{4mm}
+%		\end{small}	
+%		
+%		\normalsize\textbf{Key Words: } Shopping Route Recommender. \vspace{8mm}		
+%		
+%	\end{@twocolumnfalse} ]
+
+%-------------------------------------------------------------------------- INTRODUCTION -------------------------------------------------------------------------------------%	
+\twocolumn
+\section{INTRODUCTION}
+
+	\subsection{Problem Statement:} 
+	
+		Shopping can often prove to be tedious and frustrating when a customer arrives at a shopping destination to find that the store is out of stock or does not stock the particular items of interest. The result? The customer is now forced to seek out alternative stores, which adds complication and frustration to an already stressful lifestyle. Even then, the alternative stores may pose the same problem. These issues are further enhanced when the customer has made a shopping list with mutlple products. There is clearly a need for a more effecient way of purchasin a list of shopping desireables. \\
+		
+		The solution is to provide a user with a web application that structures a customers shopping experience based on user desired optimisations. The application can oprtimise the shopping experience based on reducing the travel time between stores, creating a shortest route between destinations and suggesting the stores with the cheapeast product prices. Either optimisation will greatly assist any user with planning their daily weekly activities. \\
+		
+		The purpose of this project is to provide a web application that allows a user to enter their shopping list and returns to the user a map with the ideal route to the nearest stores that will fulfil their needs. 
+	
+	\subsection{Project Objectives:}
+	
+	\subsection{Stakeholders:}
+	
+	
+%-------------------------------------------------------------------------- BACKGROUND -------------------------------------------------------------------------------------%	
+
+
+	
+\end{document}
