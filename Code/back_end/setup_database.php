@@ -51,7 +51,8 @@ EOF;
 
   	$sql =<<<EOF
 	  CREATE TABLE $table
-	  (ITEM CHAR(50) NOT NULL,
+	  (SHOP CHAR(50) NOT NULL,
+	  ITEM CHAR(50) NOT NULL,
 	  PRICE FLOAT NOT NULL);
 EOF;
 
@@ -62,8 +63,19 @@ EOF;
 
 	$sql =<<<EOF
 		CREATE TABLE $table
-		(ITEM CHAR(50) NOT NULL,
+		(SHOP CHAR(50) NOT NULL,
+		ITEM CHAR(50) NOT NULL,
 		PRICE FLOAT NOT NULL);
+EOF;
+	
+	$ret = pg_query($db, $sql);
+	checkError($db, $ret, "$table created successfully\n");
+
+	$table = "LIST";
+
+	$sql =<<<EOF
+		CREATE TABLE $table
+		(ITEM CHAR(50) NOT NULL);
 EOF;
 	
 	$ret = pg_query($db, $sql);
@@ -87,6 +99,11 @@ EOF;
    checkError($db, $ret, "Data added\n");
 
    $data = "COPY WOOLWORTHS FROM 'woolworths.txt' (DELIMITER('\t'))";
+
+   $ret = pg_query($db, $data);
+   checkError($db, $ret, "Data added\n");
+
+   $data = "COPY LIST FROM 'list.txt' (DELIMITER('\t'))";
 
    $ret = pg_query($db, $data);
    checkError($db, $ret, "Data added\n");
