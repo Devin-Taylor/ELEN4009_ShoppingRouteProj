@@ -42,3 +42,4 @@ Copy the .txt files located in `Code/back_end/` into the root folder of postgres
 Create the database tables - from within the /Code/back_end/ folder run:
 > `php setup_database.php`
 
+	
