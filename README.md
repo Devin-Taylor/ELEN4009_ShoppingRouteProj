@@ -17,6 +17,7 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 - Install [apache2 and PHP5](http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/) server
 - Install and setup postgresql
 	- `sudo apt-get install postgresql-9.3`
+	- `sudo apt-get install php5-pgsql`
 
 **Setup**
 
@@ -36,3 +37,8 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 **Running the code**
 
 Copy the .txt files located in `Code/back_end/` into the root folder of postgresql, the default for this on Linux is `/var/lib/postgresql/9.3/main`
+> `sudo cp -f *.txt /var/lib/postgresql/9.3/main`
+
+Create the database tables - from within the /Code/back_end/ folder run:
+> `php setup_database.php`
+
