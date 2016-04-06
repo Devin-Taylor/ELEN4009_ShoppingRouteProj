@@ -71,6 +71,18 @@ EOF;
 	$ret = pg_query($db, $sql);
 	checkError($db, $ret, "$table created successfully\n");
 
+	$table = "MAKRO";
+
+	$sql =<<<EOF
+		CREATE TABLE $table
+		(SHOP CHAR(50) NOT NULL,
+		ITEM CHAR(50) NOT NULL,
+		PRICE FLOAT NOT NULL);
+EOF;
+	
+	$ret = pg_query($db, $sql);
+	checkError($db, $ret, "$table created successfully\n");
+
 	$table = "LIST";
 
 	$sql =<<<EOF
@@ -99,6 +111,11 @@ EOF;
    checkError($db, $ret, "Data added\n");
 
    $data = "COPY WOOLWORTHS FROM 'woolworths.txt' (DELIMITER('\t'))";
+
+   $ret = pg_query($db, $data);
+   checkError($db, $ret, "Data added\n");
+
+   $data = "COPY MAKRO FROM 'makro.txt' (DELIMITER('\t'))";
 
    $ret = pg_query($db, $data);
    checkError($db, $ret, "Data added\n");
