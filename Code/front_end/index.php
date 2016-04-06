@@ -147,38 +147,15 @@
 	$credentials 	= "user=postgres password=srrec";
 	
 	$conn = pg_connect("$host $port $dbname $credentials") or die ("Error : Unable to open database\n");
-	// if($conn){
-	// 	echo "Opened database successfully\n";
-	// }
 
 	$array = explode(',', $_POST['additems']);
 	pg_copy_from($conn, "LIST", $array);
 
-	// $array = pg_copy_to( $conn, "LIST");
-	// echo "\nList read from DB: ", implode(", ", $array);
-
-	// $item = readline("Delete item: ");
 	$array = explode(',', $_POST['removeitems']);
-	// echo "\nItems to be removed: ", implode(",", $array);
+	
 	for($i=0;$i < sizeof($array); $i++) {
 		$ret = pg_query($conn, "DELETE FROM LIST WHERE ITEM = '$array[$i]'");
-		// if(!$ret) {
-		// 	echo "Error: Action not implemented!";
-		// }
+
 	}
-
-	// $array = pg_copy_to( $conn, "LIST");
-	// echo "\nNew list of items: ", implode(", ", $array);
-
-	// $item = readline("Add item: ");
-	// $ret = pg_query($conn, "INSERT INTO LIST VALUES ('$item')");
-
-	// $array = array("milk", "pocket_pussy", "soap", "bleach", "hack_saw", "plastic_tarp", "shovel", "cable_ties", "rope");
-	// echo "\nNew list of items: ", implode(", ", $array);
-
-	// array_splice($array, 1, 1);
-	// echo "\nNew list afetr splice: ", implode(", ", $array);
-
-	// pg_copy_from($conn, "LIST", $array);
 
 ?>
