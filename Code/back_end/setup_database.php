@@ -69,6 +69,18 @@ EOF;
 	$ret = pg_query($db, $sql);
 	checkError($db, $ret, "$table created successfully\n");
 
+	$table = "LIST";
+
+	$sql =<<<EOF
+		CREATE TABLE $table
+		(ITEM CHAR(50) NOT NULL);
+EOF;
+	
+	$ret = pg_query($db, $sql);
+	checkError($db, $ret, "$table created successfully\n");
+
+
+
    // LOAD ALL DATA
 
    $data = "COPY ACCOUNTS FROM 'accounts.txt' (DELIMITER('\t'))";
