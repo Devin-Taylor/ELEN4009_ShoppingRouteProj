@@ -14,7 +14,7 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 
 **Prerequisits**
 
-- Install [apache2 and PHP5](http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/) server
+- Install [apache2 server and PHP5](http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/)
 - Install and setup postgresql
 	- `sudo apt-get install postgresql-9.3`
 	- `sudo apt-get install php5-pgsql`
@@ -22,12 +22,13 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 **Setup**
 
 
-**NOTE:** If the user has already installed postgresql they will need to edit the .php files and change the password
+**NOTE:** If the user has already installed postgresql they may need to edit the .php files and change the password
 
 - Create a postgresql database called `srrec`
 	- `sudo -i -u postgres`
 	- `psql postgres`
 	- `\password srrec`
+		- password: `srrec`
 	- `ctrl + d`
 	- `createdb srrec`
 	- `psql srrec`
@@ -39,7 +40,13 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 Copy the .txt files located in `Code/back_end/` into the root folder of postgresql, the default for this on Linux is `/var/lib/postgresql/9.3/main`
 > `sudo cp -f *.txt /var/lib/postgresql/9.3/main`
 
+**NOTE:** The following steps are temporary implementations until properly integrated with the front-end
+
 Create the database tables - from within the /Code/back_end/ folder run:
 > `php setup_database.php`
 
-	
+Create the possible permutations for the shopping list saved on the database, run:
+> `php database_permutations.php`
+
+Create 2D array containing all locations for different routes (each route is a row and each column in a row is a waypoint), run:
+> `php get_route_information.php`

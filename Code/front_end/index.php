@@ -65,11 +65,10 @@
 
 				<div class="column6">
 					<h1> Add Items</h1>
-					<input type="text" class="large-fld" name="additems" value="" placeholder="item 1, item 2, item 3..."><br><br>
+					<input type="text" class="large-fld" name="additems" value="" placeholder="item 1,item 2,item 3..."><br><br>
 
 					<h1> Remove Items </h1>
-					<input type="text" class="large-fld" name="removeitems"
-					value="" placeholder="item 1, item 2, item 3..."><br><br>
+					<input type="text" class="large-fld" name="removeitems" value="" placeholder="item 1,item 2,item 3..."><br><br>
 
 					<h1> Load List</h1>
 					<!-- Will pull data from database of the user to update this list -->
@@ -82,6 +81,16 @@
 					</select>
 
 				</div>
+
+				<div class="row">
+
+					<div class="column12">
+							<br><br>
+							<input type="submit" class="large-fld large-btn" name="genlist" value="Update List">
+					</div>
+				</div>
+
+				
 
 				<div class="column6">
 
@@ -143,9 +152,9 @@
 	$credentials 	= "user=postgres password=srrec";
 	
 	$conn = pg_connect("$host $port $dbname $credentials") or die ("Error : Unable to open database\n");
-	if($conn){
-		echo "Opened database successfully\n";
-	}
+	// if($conn){
+	// 	echo "Opened database successfully\n";
+	// }
 
 	$array = explode(',', $_POST['additems']);
 	pg_copy_from($conn, "LIST", $array);
@@ -155,9 +164,12 @@
 
 	// $item = readline("Delete item: ");
 	$array = explode(',', $_POST['removeitems']);
-	$ret = pg_query($conn, "DELETE FROM LIST WHERE ITEM = '$array'");
-	if(!$ret) {
-		echo "Error: Action not implemented!";
+	// echo "\nItems to be removed: ", implode(",", $array);
+	for($i=0;$i < sizeof($array); $i++) {
+		$ret = pg_query($conn, "DELETE FROM LIST WHERE ITEM = '$array[$i]'");
+		// if(!$ret) {
+		// 	echo "Error: Action not implemented!";
+		// }
 	}
 
 	// $array = pg_copy_to( $conn, "LIST");
