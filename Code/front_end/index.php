@@ -65,10 +65,12 @@
 
 				<div class="column6">
 					<h1> Add Items</h1>
-					<input type="text" class="large-fld" name="additems" value="" placeholder="item 1,item 2,item 3..."><br><br>
+					<input type="text" class="large-fld" name="additems" 
+					value="" placeholder="item 1,item 2,item 3..."><br><br>
 
 					<h1> Remove Items </h1>
-					<input type="text" class="large-fld" name="removeitems" value="" placeholder="item 1,item 2,item 3..."><br><br>
+					<input type="text" class="large-fld" name="removeitems" 
+					value="" placeholder="item 1,item 2,item 3..."><br><br>
 
 					<h1> Load List</h1>
 					<!-- Will pull data from database of the user to update this list -->
@@ -80,23 +82,16 @@
 					  <option value="list4">Hanuka List</option>
 					</select>
 
-				</div>
+					<br><br>
+					<input type="submit" class="large-fld large-btn" name="genlist" value="Update List">
 
-				<div class="row">
-
-					<div class="column12">
-							<br><br>
-							<input type="submit" class="large-fld large-btn" name="genlist" value="Update List">
-					</div>
-				</div>
-
-				
+				</div>			
 
 				<div class="column6">
 
 					<h1> Add Location</h1>
-					<input type="text" class="large-fld" name="addlocation" value="" placeholder="location..."><br><br>
-
+					<input type="text" class="large-fld" name="addlocation" 
+					value="" placeholder="location..."><br><br>
 
 					<h1> Preferred Optimisation</h1>
 					<select name="optimisation" class="large-fld" required>
@@ -105,7 +100,14 @@
 					  <option value="opt2">Least Total Costs</option>
 					  <option value="opt3">Shortest Total Time</option>
 					</select>
+					<br><br>
 
+					<h1> Space</h1>
+					<input name="space" class="large-fld">
+					<!-- <br><br><br><br><br><br> -->
+
+					<br><br>
+					<input type="submit" class="large-fld large-btn" name="genroute" value="Generate Route">
 
 					<!-- <input type="checkbox" name="distance" value=""> Least Total Distance<br>
 					<input type="checkbox" name="cost" value=""> Least Total Cost<br>
@@ -114,13 +116,6 @@
 
 				</div>
 
-			</div>
-			<div class="row">
-
-				<div class="column12">
-						<br><br>
-						<input type="submit" class="large-fld large-btn" name="genroute" value="Generate Route">
-				</div>
 			</div>
 
 	</div>
