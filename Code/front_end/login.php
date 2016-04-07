@@ -86,11 +86,31 @@
 
 					<h2>Password</h2>
 					
-					<input type="text" class="large-fld" name="password" value="">
+					<input type="password" class="large-fld" name="password" value="">
 					<h4><a href="/forgot_password">(forgot your password?)</a><h4><br><br>
 
 					<!-- <a href="index.php"><input type="submit" class="large-fld large-btn" name="login" value="Login"></a> -->
-					<a href="index.php" class="large-fld large-btn">Login</a>
+					<!-- <a href="index.php" class="large-fld large-btn">Login</a> -->
+					<input type="submit" class="large-fld large-btn" name="login" value="Login">
+					<?php
+						if(isset($_POST['login'])){
+							$db = pg_connect("host=localhost port=5432 dbname=srrec user=postgres password=srrec"); 
+							$sql = "SELECT password FROM accounts WHERE email = '$_POST[email]'";
+							$result = pg_query($db, $sql);
+							$count = pg_num_rows($result);
+
+							if($count == 1){
+								$row = pg_fetch_row($result);
+								if( str_replace(" ", "", $row[0]) == $_POST['password']) {
+									header('Location: index.php');
+								} else {
+									echo  "Incorrect username or password";
+								}
+							} else {
+								echo "Incorrect username or password";
+							}
+						}
+					?>
 
 				</div>
 
