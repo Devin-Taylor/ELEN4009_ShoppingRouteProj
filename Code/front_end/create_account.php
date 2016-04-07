@@ -22,7 +22,8 @@
             <a href="#" class="nav-toggle-btn"> Menu</a>
             
             <ul>
-                <li><a href="#index.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="create_account.php">Create Account</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">History</a></li>
@@ -45,7 +46,7 @@
 
 				<div class="column5">
 					<ul>
-						<li><a href="/login">Login</a></li>
+						<li><a href="/login.htm">Login</a></li>
 					</ul>
 				</div>
 
