@@ -38,6 +38,5 @@
 	}
 	// close the database connection
    	pg_close($db);
-
-   	echo $allCoords[0][0] . "\t" . $allCoords[0][1] . "\t" $allCoords[0][2]; 
+   	echo $allCoords[0][0] . "\t" . $allCoords[0][1] . "\t" . $allCoords[0][2]; 
 ?>

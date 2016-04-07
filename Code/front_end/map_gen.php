@@ -54,19 +54,14 @@
     <h1 id="home"> Shopping Route Recommender</h1> <br><br>
   </div>
 
-
-
-       <div id="right-panel"></div>
+      <div id="right-panel"></div>
       <div id="map"></div>
       <script type = "text/javascript">
-       
         var x = -26.138975;
         // document.getElementById('optimisation')
         var y = 28.082176;
         var location = [];
-               
-
-          <?php
+        <?php
           //////////////////////////////////////////GETTING FROM DATABASE
 
           // create database connection
@@ -77,15 +72,14 @@
             // echo "Hello";
             
             // $db = pg_connect("$host $port $dbname $credentials");
-            $db = pg_connect("host=localhost port=5432 dbname=srrec user=postgres password=srrec") or die("didnt connect");  
-            echo "Hello";
-             if(!$db){
+            $db = pg_connect("host=localhost port=5432 dbname=srrec user=postgres password=srrec") or die("didnt connect");
+             /*if(!$db){
                 echo "Error : Unable to open database\n";
              } else {
                 echo "Opened database successfully\n";
-             }
+             }*/
             // get only the stores variables from the table created in database_permutations.php
-              $ret = pg_query($db, "SELECT m_shop, s_shop, t_shop FROM MATCHES");
+            $ret = pg_query($db, "SELECT m_shop, s_shop, t_shop FROM MATCHES");
             $num_rows = pg_num_rows($ret);
             $num_cols = pg_num_fields($ret);
             // create empty array to populate
@@ -112,19 +106,15 @@
             // close the database connection
               pg_close($db);
 
-          $allCoords = [[]];
-          $allCoords[0][0] = '(-26.147240,28.0882437)';
-          $allCoords[0][1] = '(-26.1389,28.082176)';
-          $allCoords[0][2] =  '(-26.131746,28.089679)';
-          $allCoords[0][3] = '(-26.133446,28.0896589)';
-
-
-          ?>
-
+          // $allCoords = [[]];
+          // $allCoords[0][0] = '(-26.147240,28.0882437)';
+          // $allCoords[0][1] = '(-26.1389,28.082176)';
+          // $allCoords[0][2] =  '(-26.131746,28.089679)';
+          // $allCoords[0][3] = '(-26.133446,28.0896589)';
+      ?>;
           location[0] = <?php echo $allCoords[0][0]; ?>; //origin
           location[1] = <?php echo $allCoords[0][1]; ?>; //point1...
           location[2] = <?php echo $allCoords[0][2]; ?>;
-          location[3] = <?php echo $allCoords[0][3]; ?>;
 
           var origin = location[0].replace('(','');
           origin = origin.replace(')','');
@@ -134,7 +124,7 @@
           point1 = point1.replace(')','');
           point1 = point1.split(',');
 
-          var point2 = location[1].replace('(','');
+          var point2 = location[2].replace('(','');
           point2 = point2.replace(')','');
           point2 = point2.split(',');
 
@@ -192,12 +182,13 @@
           }
         });
       }
+
       </script>
 
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
     
     (function() {
@@ -217,6 +208,6 @@
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt7OeQ0Z5MYP6ym6ZzkGLt-pgQmInsgo0&callback=initMap">
-    </script>
+    </script> 
   </body>
 </html>
