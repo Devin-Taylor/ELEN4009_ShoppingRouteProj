@@ -65,10 +65,12 @@
 
 				<div class="column6">
 					<h1> Add Items</h1>
-					<input type="text" class="large-fld" name="additems" value="" placeholder="item 1,item 2,item 3..."><br><br>
+					<input type="text" class="large-fld" name="additems" 
+					value="" placeholder="item 1,item 2,item 3..."><br><br>
 
 					<h1> Remove Items </h1>
-					<input type="text" class="large-fld" name="removeitems" value="" placeholder="item 1,item 2,item 3..."><br><br>
+					<input type="text" class="large-fld" name="removeitems" 
+					value="" placeholder="item 1,item 2,item 3..."><br><br>
 
 					<h1> Load List</h1>
 					<!-- Will pull data from database of the user to update this list -->
@@ -80,23 +82,16 @@
 					  <option value="list4">Hanuka List</option>
 					</select>
 
-				</div>
+					<br><br>
+					<input type="submit" class="large-fld large-btn" name="genlist" value="Update List">
 
-				<div class="row">
-
-					<div class="column12">
-							<br><br>
-							<input type="submit" class="large-fld large-btn" name="genlist" value="Update List">
-					</div>
-				</div>
-
-				
+				</div>			
 
 				<div class="column6">
 
 					<h1> Add Location</h1>
-					<input type="text" class="large-fld" name="addlocation" value="" placeholder="location..."><br><br>
-
+					<input type="text" class="large-fld" name="addlocation" 
+					value="" placeholder="location..."><br><br>
 
 					<h1> Preferred Optimisation</h1>
 					<select name="optimisation" class="large-fld" required>
@@ -105,7 +100,14 @@
 					  <option value="opt2">Least Total Costs</option>
 					  <option value="opt3">Shortest Total Time</option>
 					</select>
+					<br><br>
 
+					<h1> Space</h1>
+					<input name="space" class="large-fld">
+					<!-- <br><br><br><br><br><br> -->
+
+					<br><br>
+					<input type="submit" class="large-fld large-btn" name="genroute" value="Generate Route">
 
 					<!-- <input type="checkbox" name="distance" value=""> Least Total Distance<br>
 					<input type="checkbox" name="cost" value=""> Least Total Cost<br>
@@ -114,13 +116,6 @@
 
 				</div>
 
-			</div>
-			<div class="row">
-
-				<div class="column12">
-						<br><br>
-						<input type="submit" class="large-fld large-btn" name="genroute" value="Generate Route">
-				</div>
 			</div>
 
 	</div>
@@ -152,38 +147,15 @@
 	$credentials 	= "user=postgres password=srrec";
 	
 	$conn = pg_connect("$host $port $dbname $credentials") or die ("Error : Unable to open database\n");
-	// if($conn){
-	// 	echo "Opened database successfully\n";
-	// }
 
 	$array = explode(',', $_POST['additems']);
 	pg_copy_from($conn, "LIST", $array);
 
-	// $array = pg_copy_to( $conn, "LIST");
-	// echo "\nList read from DB: ", implode(", ", $array);
-
-	// $item = readline("Delete item: ");
 	$array = explode(',', $_POST['removeitems']);
-	// echo "\nItems to be removed: ", implode(",", $array);
+	
 	for($i=0;$i < sizeof($array); $i++) {
 		$ret = pg_query($conn, "DELETE FROM LIST WHERE ITEM = '$array[$i]'");
-		// if(!$ret) {
-		// 	echo "Error: Action not implemented!";
-		// }
+
 	}
-
-	// $array = pg_copy_to( $conn, "LIST");
-	// echo "\nNew list of items: ", implode(", ", $array);
-
-	// $item = readline("Add item: ");
-	// $ret = pg_query($conn, "INSERT INTO LIST VALUES ('$item')");
-
-	// $array = array("milk", "pocket_pussy", "soap", "bleach", "hack_saw", "plastic_tarp", "shovel", "cable_ties", "rope");
-	// echo "\nNew list of items: ", implode(", ", $array);
-
-	// array_splice($array, 1, 1);
-	// echo "\nNew list afetr splice: ", implode(", ", $array);
-
-	// pg_copy_from($conn, "LIST", $array);
 
 ?>

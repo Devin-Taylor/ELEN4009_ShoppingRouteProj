@@ -67,10 +67,6 @@
 					<h1> Add Items</h1>
 					<input type="text" class="large-fld" name="additems" value="" placeholder="item 1, item 2, item 3..."><br><br>
 
-					<h1> Remove Items </h1>
-					<input type="text" class="large-fld" name="removeitems"
-					value="" placeholder="item 1, item 2, item 3..."><br><br>
-
 					<h1> Load List</h1>
 					<!-- Will pull data from database of the user to update this list -->
 					<select name="shoppinglist" class="large-fld">
@@ -134,44 +130,3 @@
 
 </body>
 </html>
-
-<?php
-
-	$host 			= "host = localhost";
-	$port 			= "port = 5432";
-	$dbname 		= "dbname = srrec";
-	$credentials 	= "user=postgres password=srrec";
-	
-	$conn = pg_connect("$host $port $dbname $credentials") or die ("Error : Unable to open database\n");
-	if($conn){
-		echo "Opened database successfully\n";
-	}
-
-	$array = explode(',', $_POST['additems']);
-	pg_copy_from($conn, "LIST", $array);
-
-	// $array = pg_copy_to( $conn, "LIST");
-	// echo "\nList read from DB: ", implode(", ", $array);
-
-	// $item = readline("Delete item: ");
-	$array = explode(',', $_POST['removeitems']);
-	$ret = pg_query($conn, "DELETE FROM LIST WHERE ITEM = '$array'");
-	if(!$ret) {
-		echo "Error: Action not implemented!";
-	}
-
-	// $array = pg_copy_to( $conn, "LIST");
-	// echo "\nNew list of items: ", implode(", ", $array);
-
-	// $item = readline("Add item: ");
-	// $ret = pg_query($conn, "INSERT INTO LIST VALUES ('$item')");
-
-	// $array = array("milk", "pocket_pussy", "soap", "bleach", "hack_saw", "plastic_tarp", "shovel", "cable_ties", "rope");
-	// echo "\nNew list of items: ", implode(", ", $array);
-
-	// array_splice($array, 1, 1);
-	// echo "\nNew list afetr splice: ", implode(", ", $array);
-
-	// pg_copy_from($conn, "LIST", $array);
-
-?>
