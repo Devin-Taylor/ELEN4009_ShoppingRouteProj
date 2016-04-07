@@ -56,11 +56,11 @@
 			
 			Shopping can often prove to be tedious and frustrating when you find out that the shop you are at does not stock or is out of stock of certain products that are on your shopping list. One then needs to go to other shops in the hopes that those shops will have the items not yet ticked off ones shopping list. Even then, the next shop may not have the items and you have to keep going from shop to shop until you finally get all the items needed. There is clearly a need for a more efficient way of finding all the items on your shopping list in the shortest travel time, shortest route or most cost effective route.\\
 			
-			The purpose of this project is to provide a web application that allows a user to enter their shopping list and in turn provides the user with the ideal route to the nearest stores that will fulfil their needs.
+			The purpose of this project is to provide a web application that allows a user to enter their shopping items into a shopping list and in turn provides the user with the ideal route to the nearest stores that will fulfil their needs.
 		
 		\subsection{Document Conventions}
 		
-			This document is intended to accompany the SRRec software and should be updated with each update to the software. This will ensure that the document remains relevant and useful.
+			This document is intended to accompany the SRRec software and should be updated with each update to the web application. This will ensure that the document remains relevant and useful.
 		
 		\subsection{Intended Audience and Reading Suggestions}
 		
@@ -73,7 +73,7 @@
 		
 		\subsection{Project Scope}
 		
-			SRRec is a web application that is capable of providing a route to all the nearest shops so as to fulfil a users entire shopping list while either following the shortest route, the route with the shortest travel time or the route that will result in minimal total expenses. The shopper can continuously add items to their list and these items are logged to their respective list. When the shopper finally runs the SRRec he/she will obtain their user-determined recommended route of shops to visit is a particular order according to items on their list. It provides a Graphical User Interface (GUI) with embedded Google Maps.
+			SRRec is a web application that is capable of providing a route to all the nearest shops so as to fulfil a users entire shopping list while either following the shortest route, the route with the shortest travel time or the route that will result in minimal total shopping expenses. The shopper can continuously add items to their list and these items are logged to their respective list. When the shopper finally runs the SRRec he/she will obtain their user-determined recommended route of shops to visit in a particular order according to items on their list. The application provides a Graphical User Interface (GUI) with embedded Google Mapsto illustrate this generated route. \\
 		
 			We assume the following:
 			\begin{itemize}
@@ -87,15 +87,11 @@
 			The shopper is able to select one of three types of recommendation:
 			\begin{itemize}
 				\item shortest route.
-				\item Shortest route for minimal total expenses.
-				\item Route with shortest travel time.
+				\item shortest route for minimal total shopping expenses.
+				\item route with shortest travel time.
 			\end{itemize}
 			
-			The shopper will also be able to change their selected recommendation after visiting some shops and eliminating some items from their list. The SRRec can also incorporate stop-overs for coffe, drinks, lunch, etc. The Shopper can also give a price range that they are willing to pay for each item.
-		
-		\subsection{References}
-		
-			\textbf{NONE YET}
+			The shopper will also be able to change their selected recommendation after visiting some shops and eliminating some items from their list. The SRRec can also incorporate stop-overs for coffe, drinks, lunch, etc. At a later stage, the shopper may even be able to provide a price range that they are willing to pay for each item.
 		
 	\section{Overall Description}
 	
@@ -167,32 +163,34 @@
 		
 		\subsection{Design and Implementation Constraints} 
 		
-			Shopping Route Recommender is platform independent and is written in \textcolor{red}{language}. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps detailing. 
+			Shopping Route Recommender is platform independent and is written using PostgreSQL, PHP, Javascript, HTML and CSS. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps API utilised. 
 		
 		\subsection{User Documentation}
 		
-		   	A general help and FAQ menu will be provided within the application. This will function as the "user manual" of the application. 
+		   	An application menu will be provided within the application. The menu will house information about the application, the application settings, history tab that is used to store user recent shopping route and a help function that will function as the "user manual" of the application. 
 		
 		\subsection{Assumptions and Dependencies}
+		
+			The application is functionally depenedndant on Google Maps API. This API is integral to displaying the shopping route and directions to the user. One assumption is therefore that Google Maps is available on the website and shows the route from one shopping mall or shop to the next. Another functional dependency is that the application depends on the product database of each shop stored in the application's database. It is therefore assumed that each shop has a database of items that they stock as well as their respective prices. These product databases are continuously updated by each of the stores. The application must therefore contain the latest product database updates from each of the stores. The SRR database must therefore be automatically updated once a store has registered an update in its product database. This is an important functional dependency if the application is to be as accurate as possible in terms of product pricing. 
 	
 	\section{System Features}
 	
-		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system features in order to make future system extensions as easy as possible. 
+		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system feature in order to make future system extensions as simple as possible. 
 	
 		\subsection{System Feature 1 - Adding items to shopping cart}
 		\label{featureadd}
 		
 			\subsubsection{Description}
 			
-				The Shopping Route Recommender's primary feature is for the user to be able to continuously add shopping items to their cart. The user will be able to continuously log into the application and add items to the shopping cart on an add-hock basis. These items will remain in the basket until such time that the user wants to go shopping. 
+				The Shopping Route Recommender's primary feature is the user's ability to add shopping items to their cart. The user will be able to log into the application and add items to the shopping cart on an add-hock basis. These items will remain in the basket until such time that the user wants to go shopping. 
 			
 			\subsubsection{Stimulus/Response Sequences}
 			
 				The user will click in the "Add Items" field at which point a list will be displayed that will contain all previously added items listed one after the other (in the order in which they were added). Within this list the user will be able to complete one of the following actions:
 				
 				\begin{itemize}
-					\item Add new item - The user will be able to select the "Add new item" button in order to be allowed to enter a new item. 
-					\item Remove existing item - The user will be able to select the cross new to a specific item at which point the item will be removed from the shopping list.
+					\item Add a new item - The user will be able to select the "Add new item" button in order to be allowed to enter a new item. 
+					\item Remove existing item - The user will be able to select the cross next to a specific item which will result in the product being removed from the shopping list.
 					\item Edit existing item - The user will be able to make modifications to the description of an existing item.
 				\end{itemize}
 			

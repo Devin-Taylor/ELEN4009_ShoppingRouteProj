@@ -1,0 +1,189 @@
+\documentclass[10pt, a4paper, onecolumn]{scrartcl}
+\usepackage{cite}  
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumitem} % used for list - no spaces between items
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[top=2.5cm, bottom=3.2cm, left=2cm, right=2cm, columnsep=0.6cm]{geometry}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
+
+\usepackage{sectsty} % Allows customizing section commands
+\sectionfont{\centering\normalsize\textbf}
+\subsectionfont{\flushleft\normalsize\normalfont\textit}
+\subsubsectionfont{\flushleft\normalsize\normalfont\textit}
+%\allsectionsfont{\centering} % Make all sections centered
+
+\usepackage[toc,page]{appendix}
+
+\usepackage{pgfgantt}
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{width=9cm,compat=1.9}
+
+
+\setlength\parindent{0pt} % remove all indentations in document
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+%	                                                                           BEGIN DOCUMENT
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+\begin{document}
+	
+	\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+	
+	\title{\normalfont \normalsize
+		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
+		\horrule{0.5pt} \\ [10pt]
+		\huge Shopping Route Recommender Installations and Setups \\
+		\horrule{2pt} \\ [10pt]}
+	\author{\textbf{\normalsize{Luka Cakic (671913), Ronen Freeman (386910), Devin Taylor (603956) and Matthew Marsden (609293)}} \\ [10pt]}
+	\date {\normalsize \today}
+	
+	\maketitle
+	
+%	\section{Shopping Route Recommender}\label{shopping-route-recommender}
+	
+%		\subsection{ELEN 4009 Software Engineering Project
+%			2016}\label{elen-4009-software-engineering-project-2016}
+%		
+%		\subsubsection{The projects primary focus is on documenting the process
+%			of designing a software
+%			product}\label{the-projects-primary-focus-is-on-documenting-the-process-of-designing-a-software-product}
+	
+	\textbf{Product Summary} \\
+	
+	The Shopping Route Recommender is a web application that aims to improve
+	the general publics day-to-day life. The product proposes to do this by
+	reducing the associated stresses of shopping. In specific that
+	application aims to:
+	
+	\begin{itemize}
+		\item
+		Allow users to add items to a shopping list on an adhoc basis
+		\item
+		Generate a route that optimises based on either of the following user
+		inputs:
+		
+		\begin{itemize}
+			\item
+			Fastest possible route to obtaining all the products
+			\item
+			Shortest possible route to obtaining all the products
+			\item
+			Cheapest possible route to obtaining all the products
+		\end{itemize}
+	\end{itemize}
+	
+	\textbf{Prerequisits}
+	
+	\begin{itemize}[noitemsep]
+		\item
+		Install
+		http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/
+		\item
+		Install and setup PostgreSQL
+		
+		\begin{itemize}[noitemsep]
+			\item
+			\texttt{sudo\ apt-get\ install\ postgresql-9.3}
+			\item
+			\texttt{sudo\ apt-get\ install\ php5-pgsql}
+		\end{itemize}
+	\end{itemize}
+	
+	\textbf{Setup} \\
+	
+	\textbf{NOTE:} If the user has already installed PostgreSQL they may
+	need to edit the .php files and change the password
+	
+	\begin{itemize}[noitemsep]
+		\item
+		Create a postgresql database called \texttt{srrec}
+		
+		\begin{itemize}[noitemsep]
+			\item
+			\texttt{sudo\ -i\ -u\ postgres}
+			\item
+			\texttt{createuser\ -\/-interactive}
+			
+			\begin{itemize}[noitemsep]
+				\item
+				username: \texttt{srrec}
+			\end{itemize}
+			\item
+			\texttt{psql\ postgres}
+			\item
+			\texttt{\textbackslash{}password\ postgres}
+			
+			\begin{itemize}[noitemsep]
+				\item
+				password: \texttt{srrec}
+			\end{itemize}
+			\item
+			\texttt{ctrl\ +\ d}
+			\item
+			\texttt{createdb\ srrec}
+			\item
+			\texttt{psql\ srrec}
+			\item
+			\texttt{\textbackslash{}password\ srrec}
+			
+			\begin{itemize}[noitemsep]
+				\item
+				password: \texttt{srrec}
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	
+	\textbf{Running the Back-End code} 
+	
+		\begin{itemize}[noitemsep]
+			\item 	Copy the .txt files located in \texttt{Code/back\_end/} into the root
+			folder of postgresql, the default for this on Linux is
+			\texttt{/var/lib/postgresql/9.3/main} \textgreater{}
+			\texttt{sudo\ cp\ -f\ *.txt\ /var/lib/postgresql/9.3/main}
+		\end{itemize}
+	
+	\textbf{NOTE:} The following steps are temporary implementations until
+	properly integrated with the Front-End 
+	
+		\begin{itemize}[noitemsep]
+			\item 	Create the database tables - from within the /Code/back\_end/ folder
+			run: \textgreater{} \texttt{php\ setup\_database.php}
+			\item 	Create the possible permutations for the shopping list saved on the
+			database, run: \textgreater{} \texttt{php\ database\_permutations.php}
+			\item 	Create 2D array containing all locations for different routes (each
+			route is a row and each column in a row is a waypoint), run:
+			\textgreater{} \texttt{php\ get\_route\_information.php} 
+		\end{itemize}
+	
+	\textbf{Running the Front-End code} 
+	
+	
+		\begin{itemize}[noitemsep]
+			\item 	Copy the contents of the /Code/front\_end/ into the root folder of the
+			apache2 server, the default location for this in Ubuntu is: \texttt{/var/www/html/}
+			\item 	Open your web-browser and access \texttt{localhost/login.htm} - All
+			other web pages will be accessible from this page (\textbf{NOTE: By clicking login it will redirect you to the index.php page})
+		\end{itemize}
+		
+
+	
+
+	
+\end{document}

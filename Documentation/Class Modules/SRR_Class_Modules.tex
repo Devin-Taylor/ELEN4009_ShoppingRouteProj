@@ -1,0 +1,69 @@
+\documentclass[10pt, a4paper, onecolumn]{scrartcl}
+\usepackage{cite}  
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumitem} % used for list - no spaces between items
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[top=2cm, bottom= 3.2cm, left=2cm, right=2cm, columnsep=0.6cm]{geometry}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} 
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
+
+\usepackage{sectsty} % Allows customizing section commands
+\sectionfont{\centering\large\textbf}
+\subsectionfont{\flushleft\normalsize\normalfont\textbf}
+\subsubsectionfont{\flushleft\normalsize\normalfont\textit}
+%\allsectionsfont{\centering} % Make all sections centered
+
+\setlength\parindent{0pt} % remove all indentations in document
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\begin{document}
+	
+	\title{\normalfont \normalsize
+		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
+		\horrule{0.5pt} \\ [10pt]
+		\huge Shopping Route Recommender Class Modules \\
+		\horrule{2pt} \\ [10pt]}
+	\author{\textbf{\normalsize{Luka Cakic (671913), Ronen Freeman (386910), Devin Taylor (603956) and Matthew Marsden (609293)}} \\ [10pt]}
+	\date {\normalsize \today}
+	
+	\maketitle
+	
+
+	\section{Introduction}
+	
+		 The purpose of the document is to present key modules implemented in the Shopping Route Recommender web application. The document details some of the implemented methods and details their functionality in order to provide a more useful understanding to the those interested in the functionality of the web application. \\
+		 
+			\subsection{Module 1 - \texttt{database\_permutations.php}}
+			
+				The database permutations file is responsible for generating all the possible routes for the user. The file accesses the database to determine which shops sell the products on the users shopping list. The code then dynamically creates tables for each item on the list which contains a column corresponding to all the shops which sell the product as well as another column for all the prices of that item at the corresponding shops. \\
+				
+				Once all the tables have been created the code then performs a \texttt{CROSS JOIN} on all the tables which provides all the possible permutations of shops that contain the items on the shopping list. In the same line of code a sum of all the prices is taken. The resulting table consists of a new route on each row with each column corresponding to a waypoint on the route. The final column of the table contains the total cost of the items for that route. The above table is then ordered in descending order according to price. This is to make determining the cheapest route easier in further calculations. 
+			
+			\subsection{Module 2 - \texttt{get\_route\_information.php}}
+			
+				The file is responsible for combining the route information into the correct format for the 'presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. \\
+				
+				While iterating the file dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is in a format that allows the front-end programs to interact with the data from the database. 
+	
+
+\end{document}
+		
