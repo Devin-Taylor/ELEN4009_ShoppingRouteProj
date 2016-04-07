@@ -26,6 +26,8 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 
 - Create a postgresql database called `srrec`
 	- `sudo -i -u postgres`
+	- `createuser --interactive`
+		- username: `srrec`
 	- `psql postgres`
 	- `\password srrec`
 		- password: `srrec`
