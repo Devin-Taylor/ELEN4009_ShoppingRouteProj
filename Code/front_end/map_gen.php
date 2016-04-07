@@ -141,7 +141,7 @@
           var point3 = location[1].replace('(','');
           point3 = point3.replace(')','');
           point3 = point3.split(',');
-
+          
 
 
 
