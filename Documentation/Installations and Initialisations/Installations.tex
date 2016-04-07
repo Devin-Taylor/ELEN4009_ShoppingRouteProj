@@ -42,10 +42,21 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 %	                                                                           BEGIN DOCUMENT
 %-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-
 \begin{document}
 	
-	\section{Shopping Route Recommender}\label{shopping-route-recommender}
+	\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+	
+	\title{\normalfont \normalsize
+		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
+		\horrule{0.5pt} \\ [10pt]
+		\huge Shopping Route Recommender Installations and Setups \\
+		\horrule{2pt} \\ [10pt]}
+	\author{\textbf{\normalsize{Luka Cakic (671913), Ronen Freeman (386910), Devin Taylor (603956) and Matthew Marsden (609293)}} \\ [10pt]}
+	\date {\normalsize \today}
+	
+	\maketitle
+	
+%	\section{Shopping Route Recommender}\label{shopping-route-recommender}
 	
 %		\subsection{ELEN 4009 Software Engineering Project
 %			2016}\label{elen-4009-software-engineering-project-2016}
@@ -54,7 +65,7 @@
 %			of designing a software
 %			product}\label{the-projects-primary-focus-is-on-documenting-the-process-of-designing-a-software-product}
 	
-	\textbf{Product Summary}
+	\textbf{Product Summary} \\
 	
 	The Shopping Route Recommender is a web application that aims to improve
 	the general publics day-to-day life. The product proposes to do this by
@@ -85,7 +96,7 @@
 		Install
 		http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/
 		\item
-		Install and setup postgresql
+		Install and setup PostgreSQL
 		
 		\begin{itemize}[noitemsep]
 			\item
@@ -95,9 +106,9 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\textbf{Setup}
+	\textbf{Setup} \\
 	
-	\textbf{NOTE:} If the user has already installed postgresql they may
+	\textbf{NOTE:} If the user has already installed PostgreSQL they may
 	need to edit the .php files and change the password
 	
 	\begin{itemize}[noitemsep]
@@ -139,33 +150,40 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\textbf{Running the back-end code}
+	\textbf{Running the Back-End code} 
 	
-	Copy the .txt files located in \texttt{Code/back\_end/} into the root
-	folder of postgresql, the default for this on Linux is
-	\texttt{/var/lib/postgresql/9.3/main} \textgreater{}
-	\texttt{sudo\ cp\ -f\ *.txt\ /var/lib/postgresql/9.3/main}
+		\begin{itemize}[noitemsep]
+			\item 	Copy the .txt files located in \texttt{Code/back\_end/} into the root
+			folder of postgresql, the default for this on Linux is
+			\texttt{/var/lib/postgresql/9.3/main} \textgreater{}
+			\texttt{sudo\ cp\ -f\ *.txt\ /var/lib/postgresql/9.3/main}
+		\end{itemize}
 	
 	\textbf{NOTE:} The following steps are temporary implementations until
-	properly integrated with the front-end
+	properly integrated with the Front-End 
 	
-	Create the database tables - from within the /Code/back\_end/ folder
-	run: \textgreater{} \texttt{php\ setup\_database.php}
+		\begin{itemize}[noitemsep]
+			\item 	Create the database tables - from within the /Code/back\_end/ folder
+			run: \textgreater{} \texttt{php\ setup\_database.php}
+			\item 	Create the possible permutations for the shopping list saved on the
+			database, run: \textgreater{} \texttt{php\ database\_permutations.php}
+			\item 	Create 2D array containing all locations for different routes (each
+			route is a row and each column in a row is a waypoint), run:
+			\textgreater{} \texttt{php\ get\_route\_information.php} 
+		\end{itemize}
 	
-	Create the possible permutations for the shopping list saved on the
-	database, run: \textgreater{} \texttt{php\ database\_permutations.php}
+	\textbf{Running the Front-End code} 
 	
-	Create 2D array containing all locations for different routes (each
-	route is a row and each column in a row is a waypoint), run:
-	\textgreater{} \texttt{php\ get\_route\_information.php}
 	
-	\textbf{Running the front-end code}
+		\begin{itemize}[noitemsep]
+			\item 	Copy the contents of the /Code/front\_end/ into the root folder of the
+			apache2 server, the default location for this in Ubuntu is: \texttt{/var/www/html/}
+			\item 	Open your web-browser and access \texttt{localhost/index.php} - All
+			other web pages will be accessible from this page
+		\end{itemize}
+		
+
 	
-	Copy the contents of the /Code/front\_end/ into the root folder of the
-	apache2 server, the default location for this in Ubuntu is:
-	\texttt{/var/www/html/}
-	
-	Open your web-browser and access \texttt{localhost/index.php} - All
-	other web pages will be accessible from this page
+
 	
 \end{document}
