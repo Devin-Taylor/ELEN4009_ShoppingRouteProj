@@ -43,8 +43,11 @@ EOF;
 	}
 
 	// creates a tables which contains all possible permutations of the items in the shopping list
-	$sql = "CREATE TABLE MATCHES AS SELECT milk.shop AS m_shop, shirt.shop AS s_shop, tv.shop AS t_shop, coalesce(milk.price::float) + coalesce(shirt.price::float) + coalesce(tv.price::float) AS total_price FROM milk CROSS JOIN shirt CROSS JOIN tv";
+	$sql = "CREATE TABLE TEMP AS SELECT milk.shop AS m_shop, shirt.shop AS s_shop, tv.shop AS t_shop, coalesce(milk.price::float) + coalesce(shirt.price::float) + coalesce(tv.price::float) AS total_price FROM milk CROSS JOIN shirt CROSS JOIN tv";
 	// queries database to add table to database
+	$ret = pg_query($db, $sql);
+	// order all columns by cheapest price
+	$sql = "CREATE TABLE MATCHES AS SELECT * FROM temp ORDER BY total_price";
 	$ret = pg_query($db, $sql);
 	// close the database connection
    	pg_close($db);
