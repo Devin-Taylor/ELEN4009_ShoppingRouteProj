@@ -22,7 +22,8 @@
             <a href="#" class="nav-toggle-btn"> Menu</a>
             
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="create_account.php">Create Account</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">History</a></li>
@@ -45,7 +46,7 @@
 
 				<div class="column5">
 					<ul>
-						<li><a href="/login">Login</a></li>
+						<li><a href="/login.htm">Login</a></li>
 					</ul>
 				</div>
 
@@ -86,10 +87,17 @@
 
 					<input type="submit" class="large-fld large-btn" name="createaccount" value="Create Account">
 
+					<?php
+						if(isset($_POST['createaccount'])) {
+							$db = pg_connect("host=localhost port=5432 dbname=srrec user=postgres password=srrec");  
+							$query = "INSERT INTO accounts VALUES ('$_POST[fullname]','$_POST[password]', '$_POST[email]')";  
+							$result = pg_query($query);
+						}  
+					?> 
+
 				</div>
-
 			</div>
-
+		</form>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -110,9 +118,3 @@
 
 </body>
 </html> 
-<?php
-$db = pg_connect("host=localhost port=5432 dbname=srrec user=postgres password=srrec");  
-$query = "INSERT INTO accounts VALUES ('$_POST[fullname]','$_POST[password]',  
-'$_POST[email]')";  
-$result = pg_query($query);   
-?> 
