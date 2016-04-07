@@ -1,0 +1,86 @@
+\documentclass[10pt, a4paper, onecolumn]{scrartcl}
+\usepackage{cite}  
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumitem} % used for list - no spaces between items
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[top=2.5cm, bottom=3.2cm, left=2cm, right=2cm, columnsep=0.6cm]{geometry}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
+
+\usepackage{sectsty} % Allows customizing section commands
+\sectionfont{\centering\normalsize\textbf}
+\subsectionfont{\flushleft\normalsize\normalfont\textit}
+\subsubsectionfont{\flushleft\normalsize\normalfont\textit}
+%\allsectionsfont{\centering} % Make all sections centered
+
+\usepackage[toc,page]{appendix}
+
+\usepackage{pgfgantt}
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{width=9cm,compat=1.9}
+
+
+\setlength\parindent{0pt} % remove all indentations in document
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+%	                                                                           BEGIN DOCUMENT
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+\begin{document}
+	
+	\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+	
+	\title{\normalfont \normalsize
+		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
+		\horrule{0.5pt} \\ [10pt]
+		\huge Google API Implementation \\
+		\horrule{2pt} \\ [10pt]}
+	\author{\textbf{\normalsize{Luka Cakic (671913), Ronen Freeman (386910), Devin Taylor (603956) and Matthew Marsden (609293)}} \\ [10pt]}
+	\date {\normalsize \today}
+	
+	\maketitle
+	
+	\section*{Implementation of the Google Maps API}
+	
+		\begin{itemize}
+			\item The Back-End of the program returns a 2D matrix, with each matrix slot containing X and Y co-ordinates, to the Front-End. The co-ordinates correspond to the location of each shopping route waypoint. 
+			\item The Front-End uses the co-ordinates of all the waypoints to insert them into a Google Maps API request message
+			\item The request message serves to connect to Google directions or directions matrix endpoints through 'https://maps.googleapis.com/maps/api'
+			\item Upon each request, the Google API and user require an API key for each project as well as specific endpoint activations
+			\item The JavaScript function \textit{initMap()} creates the \textit{DirectionsRenderer} and \textit{DirectionsServices} objects. It also maps the \textit{directionsDisplay} map and panel objects to the windows in the HTML doc.
+			\item The \textit{DirectionsServices} object initialises a call to the API containing the routes information.
+			\item The response and status are returned and displayed on the directions panel and map panel using the \textit{directionsDisplay} object.
+			\item The directions matrix endpoint is used to return distance and time information about the trips in order to select the optimal waypoints to send to the directions api
+		\end{itemize}
+	
+%	API info: - connects to Google directions or directions matrix endpoints through 'https://maps.googleapis.com/maps/api'
+%	
+%	-API key required by user for each project as well as specific endpoint activation
+%	
+%	-The javascript function initMap() creates the DirectionsRenderer and DirectionsServices objects. It also maps the directionsDisplay map and panel objects to the windows in the html doc.
+%	
+%	-The DirectionsServices object initialises a call to the API containing the routes information.
+%	
+%	-The response and status are returned and displayed on the directions panel and map panel using the directionsDisplay object.
+%	
+%	-The directionsmatrix endpoint is used to to return distance and time information about the trips in order to select the optimal waypoints to send to the directions api
+	
+
+	
+\end{document}
