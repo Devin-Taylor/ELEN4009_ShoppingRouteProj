@@ -29,7 +29,7 @@
 			$it = trim($item);
 			$params = array($it);
 			// get geolocation
-			$test = pg_query_params($db, "SELECT location FROM SHOPS WHERE name = $1", $params);
+			$test = pg_query_params($db, "SELECT location[0] FROM SHOPS WHERE name = $1", $params);
 			// get corresponding geolocation from database
 			$temp = pg_fetch_result($test, 0, 0);
 			// add location to array
