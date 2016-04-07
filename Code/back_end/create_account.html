@@ -12,14 +12,12 @@
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
 	<link href="../css/sidenav.css" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
-	<!-- /*<style>
-		select:invalid { color: gray; }
-	</style>*/ -->
+	
 
 </head>
 <body>
 
-        <nav>
+	<nav>
             
             <a href="#" class="nav-toggle-btn"> Menu</a>
             
@@ -32,7 +30,6 @@
             </ul>
             
         </nav>
-
 
 	<div class="container12">
 
@@ -48,7 +45,7 @@
 
 				<div class="column5">
 					<ul>
-						<li><a href="./login.htm">Login</a></li>
+						<li><a href="/login">Login</a></li>
 					</ul>
 				</div>
 
@@ -56,6 +53,7 @@
 
 		</header>
 		<h1 id="home"> Shopping Route Recommender</h1> <br><br>
+		<h1>Create Account</h1> <br><br>
 
 		<form action="" method="POST">
 
@@ -64,55 +62,36 @@
 			<div class="row">
 
 				<div class="column6">
-					<h1> Add Items</h1>
-					<input type="text" class="large-fld" name="additems" value="" placeholder="item 1, item 2, item 3..."><br><br>
+					<h2> Full Name</h2>
+					<input type="text" class="large-fld" name="fullname" value=""><br><br>
 
-					<h1> Load List</h1>
-					<!-- Will pull data from database of the user to update this list -->
-					<select name="shoppinglist" class="large-fld">
-					  <option value="" disabled selected >Select</option>
-					  <option value="list1">Weekly List</option>
-					  <option value="list2">Standard Items</option>
-					  <option value="list3">Christmas List</option>
-					  <option value="list4">Hanuka List</option>
-					</select>
+					<h2>Email</h2>
+					<input type="text" class="large-fld" name="email" value=""><br><br>
+
+					<h2>Password</h2>
+					<input type="text" class="large-fld" name="password" value=""><br><br>
+
+					<h2>Confirm password</h2>
+					<input type="text" class="large-fld" name="password" value=""><br><br>
 
 				</div>
-
 				<div class="column6">
 
-					<h1> Add Location</h1>
-					<input type="text" class="large-fld" name="addlocation" value="" placeholder="location..."><br><br>
+					<img src="../images/captcha.png" align="middle" style="width:520px;height:200px;"><br><br style="line-height:30px;" />
 
+					<h2>Enter the text in the image above</h2>
+					
+					<input type="text" class="large-fld" name="text" value=""><br><br><br style="line-height:30px;" />
 
-					<h1> Preferred Optimisation</h1>
-					<select name="optimisation" class="large-fld" required>
-					  <option value="" disabled selected>Select</option>
-					  <option value="opt1">Shortest Total Distance</option>
-					  <option value="opt2">Least Total Costs</option>
-					  <option value="opt3">Shortest Total Time</option>
-					</select>
-
-
-					<!-- <input type="checkbox" name="distance" value=""> Least Total Distance<br>
-					<input type="checkbox" name="cost" value=""> Least Total Cost<br>
-					<input type="checkbox" name="time" value=""> Least Total Time<br> -->
-
+					<input type="submit" class="large-fld large-btn" name="createaccount" value="Create Account">
 
 				</div>
 
-			</div>
-			<div class="row">
-
-				<div class="column12">
-						<br><br>
-						<input type="submit" class="large-fld large-btn" name="genroute" value="Generate Route">
-				</div>
 			</div>
 
 	</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
     
     (function() {
@@ -129,4 +108,5 @@
 </script>
 
 </body>
-</html>
+</html> 
+<?php include 'write_account_to_db.php'?>
