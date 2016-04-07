@@ -146,7 +146,10 @@
 					</select>
 					<br><br>
 
-					<input type="submit" class="large-fld large-btn" name="genroute" value="Generate Route">
+					<!-- <input type="submit" class="large-fld large-btn" 
+					name="genroute" value="Generate Route"> -->
+					<a href="map_gen.php" class="large-fld large-btn" 
+					name="genroute" value="Generate Route">Generate Route</a>
 
 					<!-- <input type="checkbox" name="distance" value=""> Least Total Distance<br>
 					<input type="checkbox" name="cost" value=""> Least Total Cost<br>
