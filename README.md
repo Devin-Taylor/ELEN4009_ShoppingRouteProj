@@ -37,7 +37,7 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 	- `\password srrec`
 		- password: `srrec`
 
-**Running the code**
+**Running the back-end code**
 
 Copy the .txt files located in `Code/back_end/` into the root folder of postgresql, the default for this on Linux is `/var/lib/postgresql/9.3/main`
 > `sudo cp -f *.txt /var/lib/postgresql/9.3/main`
@@ -52,3 +52,10 @@ Create the possible permutations for the shopping list saved on the database, ru
 
 Create 2D array containing all locations for different routes (each route is a row and each column in a row is a waypoint), run:
 > `php get_route_information.php`
+
+**Running the front-end code**
+
+Copy the contents of the /Code/front_end/ into the root folder of the apache2 server, the default location for this in Ubuntu is: `/var/www/html/`
+
+Open your web-browser and access `localhost/index.php`
+- All other web pages will be accessible from this page
