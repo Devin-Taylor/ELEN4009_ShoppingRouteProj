@@ -75,7 +75,6 @@
 					<input type="text" class="large-fld" name="password" value=""><br><br>
 
 				</div>
-
 				<div class="column6">
 
 					<img src="../images/captcha.png" align="middle" style="width:520px;height:200px;"><br><br style="line-height:30px;" />
@@ -110,9 +109,4 @@
 
 </body>
 </html> 
-<?php
-$db = pg_connect("host=localhost port=5432 dbname=srrec user=postgres password=srrec");  
-$query = "INSERT INTO accounts VALUES ('$_POST[fullname]','$_POST[password]',  
-'$_POST[email]')";  
-$result = pg_query($query);   
-?> 
+<?php include 'write_account_to_db.php'?>
