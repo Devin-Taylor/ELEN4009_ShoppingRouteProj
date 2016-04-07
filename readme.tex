@@ -1,0 +1,188 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+\begin{document}
+
+\section{Shopping Route Recommender}\label{shopping-route-recommender}
+
+\subsection{ELEN 4009 Software Engineering Project
+2016}\label{elen-4009-software-engineering-project-2016}
+
+\subsubsection{The projects primary focus is on documenting the process
+of designing a software
+product}\label{the-projects-primary-focus-is-on-documenting-the-process-of-designing-a-software-product}
+
+\section{}\label{section}
+
+\textbf{Product Summary}
+
+The Shopping Route Recommender is a web application that aims to improve
+the general publics day-to-day life. The product proposes to do this by
+reducing the associated stresses of shopping. In specific that
+application aims to:
+
+\begin{itemize}
+\tightlist
+\item
+  Allow users to add items to a shopping list on an adhoc basis
+\item
+  Generate a route that optimises based on either of the following user
+  inputs:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Fastest possible route to obtaining all the products
+  \item
+    Shortest possible route to obtaining all the products
+  \item
+    Cheapest possible route to obtaining all the products
+  \end{itemize}
+\end{itemize}
+
+\textbf{Prerequisits}
+
+\begin{itemize}
+\tightlist
+\item
+  Install
+  \href{http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/}{apache2
+  server and PHP5}
+\item
+  Install and setup postgresql
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{sudo\ apt-get\ install\ postgresql-9.3}
+  \item
+    \texttt{sudo\ apt-get\ install\ php5-pgsql}
+  \end{itemize}
+\end{itemize}
+
+\textbf{Setup}
+
+\textbf{NOTE:} If the user has already installed postgresql they may
+need to edit the .php files and change the password
+
+\begin{itemize}
+\tightlist
+\item
+  Create a postgresql database called \texttt{srrec}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{sudo\ -i\ -u\ postgres}
+  \item
+    \texttt{createuser\ -\/-interactive}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      username: \texttt{srrec}
+    \end{itemize}
+  \item
+    \texttt{psql\ postgres}
+  \item
+    \texttt{\textbackslash{}password\ postgres}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      password: \texttt{srrec}
+    \end{itemize}
+  \item
+    \texttt{ctrl\ +\ d}
+  \item
+    \texttt{createdb\ srrec}
+  \item
+    \texttt{psql\ srrec}
+  \item
+    \texttt{\textbackslash{}password\ srrec}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      password: \texttt{srrec}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\textbf{Running the back-end code}
+
+Copy the .txt files located in \texttt{Code/back\_end/} into the root
+folder of postgresql, the default for this on Linux is
+\texttt{/var/lib/postgresql/9.3/main} \textgreater{}
+\texttt{sudo\ cp\ -f\ *.txt\ /var/lib/postgresql/9.3/main}
+
+\textbf{NOTE:} The following steps are temporary implementations until
+properly integrated with the front-end
+
+Create the database tables - from within the /Code/back\_end/ folder
+run: \textgreater{} \texttt{php\ setup\_database.php}
+
+Create the possible permutations for the shopping list saved on the
+database, run: \textgreater{} \texttt{php\ database\_permutations.php}
+
+Create 2D array containing all locations for different routes (each
+route is a row and each column in a row is a waypoint), run:
+\textgreater{} \texttt{php\ get\_route\_information.php}
+
+\textbf{Running the front-end code}
+
+Copy the contents of the /Code/front\_end/ into the root folder of the
+apache2 server, the default location for this in Ubuntu is:
+\texttt{/var/www/html/}
+
+Open your web-browser and access \texttt{localhost/index.php} - All
+other web pages will be accessible from this page
+
+\end{document}
