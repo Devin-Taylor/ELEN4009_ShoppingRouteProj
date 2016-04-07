@@ -57,5 +57,5 @@ Create 2D array containing all locations for different routes (each route is a r
 
 Copy the contents of the /Code/front_end/ into the root folder of the apache2 server, the default location for this in Ubuntu is: `/var/www/html/`
 
-Open your web-browser and access `localhost/index.php`
+Open your web-browser and access `localhost/login.php`
 - All other web pages will be accessible from this page
