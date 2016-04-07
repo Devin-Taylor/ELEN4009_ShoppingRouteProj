@@ -171,27 +171,26 @@
 		
 		\subsection{Assumptions and Dependencies}
 		
-		
 			The application is functionally depenedndant on Google Maps API. This API is integral to displaying the shopping route and directions to the user. One assumption is therefore that Google Maps is available on the website and shows the route from one shopping mall or shop to the next. Another functional dependency is that the application depends on the product database of each shop stored in the application's database. It is therefore assumed that each shop has a database of items that they stock as well as their respective prices. These product databases are continuously updated by each of the stores. The application must therefore contain the latest product database updates from each of the stores. The SRR database must therefore be automatically updated once a store has registered an update in its product database. This is an important functional dependency if the application is to be as accurate as possible in terms of product pricing. 
 	
 	\section{System Features}
 	
-		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system features in order to make future system extensions as easy as possible. 
+		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system feature in order to make future system extensions as simple as possible. 
 	
 		\subsection{System Feature 1 - Adding items to shopping cart}
 		\label{featureadd}
 		
 			\subsubsection{Description}
 			
-				The Shopping Route Recommender's primary feature is for the user to be able to continuously add shopping items to their cart. The user will be able to continuously log into the application and add items to the shopping cart on an add-hock basis. These items will remain in the basket until such time that the user wants to go shopping. 
+				The Shopping Route Recommender's primary feature is the user's ability to add shopping items to their cart. The user will be able to log into the application and add items to the shopping cart on an add-hock basis. These items will remain in the basket until such time that the user wants to go shopping. 
 			
 			\subsubsection{Stimulus/Response Sequences}
 			
 				The user will click in the "Add Items" field at which point a list will be displayed that will contain all previously added items listed one after the other (in the order in which they were added). Within this list the user will be able to complete one of the following actions:
 				
 				\begin{itemize}
-					\item Add new item - The user will be able to select the "Add new item" button in order to be allowed to enter a new item. 
-					\item Remove existing item - The user will be able to select the cross new to a specific item at which point the item will be removed from the shopping list.
+					\item Add a new item - The user will be able to select the "Add new item" button in order to be allowed to enter a new item. 
+					\item Remove existing item - The user will be able to select the cross next to a specific item which will result in the product being removed from the shopping list.
 					\item Edit existing item - The user will be able to make modifications to the description of an existing item.
 				\end{itemize}
 			
