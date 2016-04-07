@@ -24,7 +24,8 @@
             <a href="#" class="nav-toggle-btn"> Menu</a>
             
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="create_account.php">Create Account</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">History</a></li>
