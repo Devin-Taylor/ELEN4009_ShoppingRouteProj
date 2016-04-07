@@ -33,7 +33,7 @@
           </div>
           <div class="column5">
             <ul>
-              <li><a href="login.htm">Login</a></li>
+              <li><a href="login.php">Login</a></li>
             </ul>
           </div>
         </div>
