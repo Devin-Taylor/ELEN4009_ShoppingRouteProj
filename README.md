@@ -28,7 +28,7 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 		- images: all images required for front end
 		- temp: irrelevant directory
 		- test_suite: tests code for implemented code
-	Documentation:
+	- Documentation:
 		- Class Modules: description of important code implementation
 		- Final Report: documentation associated with final project report
 		- Installations: description of how to run the code - copy of what is explained here
