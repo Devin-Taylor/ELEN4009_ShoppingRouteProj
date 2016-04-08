@@ -47,7 +47,6 @@
 	
 	\maketitle
 	
-
 	\section{Introduction}
 	
 		 The purpose of the document is to present key modules implemented in the Shopping Route Recommender web application. The document details some of the implemented methods and details their functionality in order to provide a more useful understanding to the those interested in the functionality of the web application. \\
@@ -103,8 +102,38 @@
 		\subsection{Login Module}
 	
 	\section{Back-End Modules}
-		 
-
+		
+		These modules describe the method in which the User-Interface of the web page (i.e. the front-end) interacts with and accesses the database (i.e. the back-end).\\
+		
+		\subsection{Home Page Module}
+			
+			This module receives items to be added and/or removed from the users shopping list. All the new items are added to the users shopping list on the database. The items to be removed are compared with the users current shopping list. If these items are in the database they are removed.\\
+			
+			\textit{Load list:}
+			
+			This module then receives the users starting location. This location is stored in the database as the origin for the Route Generation Module.\\
+			
+			\textit{Preferred Optimisation:}
+			
+		\subsection{Database Permutations Module}
+			
+			The origin location and shopping list is received by this module. The module is then responsible for generating all the possible routes for the user. The file accesses the database to determine which shops sell the products on the users shopping list. The code then dynamically creates tables for each item on the list which contains a column corresponding to all the shops which sell the product as well as another column for all the prices of that item at the corresponding shops. \\
+						
+			Once all the tables have been created the code then performs a \texttt{CROSS JOIN} on all the tables which provides all the possible permutations of shops that contain the items on the shopping list. In the same line of code a sum of all the prices is taken. The resulting table consists of a new route on each row with each column corresponding to a waypoint on the route. The final column of the table contains the total cost of the items for that route. The above table is then ordered in descending order according to price. This is to make determining the cheapest route easier in further calculations.\\
+			
+		\subsection{Route Generation Module}
+				
+			This module is responsible for combining the route information into the correct format for the 'presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. \\
+					
+			While iterating the file dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is in a format that allows the front-end programs to interact with the data from the database.\\
+			
+		\subsection{Create Account Module}
+			
+			A new users full name, email address and password is received by this module. These credentials are then stored in a table within the database and used later, for user verification by the login in module.\\
+			
+		\subsection{Login Module}
+			 
+			This module receives an email address and password. These credentials are then compared with those stored in the database. If a match is made then that users specific shopping list is retrieved from the database and passed to the front-end to be displayed.\\
 
 \end{document}
 		
