@@ -82,7 +82,7 @@
 		
 		\subsection{Route Generation Module}
 		
-		
+		This module requires information sent from the back-end. This information will consist of the users current location as well as all of the stopovers on the route. This information is sent to the Google API which in turn will return the response. This response is thus displayed on a Google Map in a separate window with the written directions alongside.
 		
 		\subsection{Google Api Module}
 		
@@ -102,20 +102,9 @@
 		
 		\subsection{Login Module}
 	
-	\section{Back End Modules}
+	\section{Back-End Modules}
 		 
-			\subsection{Module 1 - \texttt{database\_permutations.php}}
-			
-				The database permutations file is responsible for generating all the possible routes for the user. The file accesses the database to determine which shops sell the products on the users shopping list. The code then dynamically creates tables for each item on the list which contains a column corresponding to all the shops which sell the product as well as another column for all the prices of that item at the corresponding shops. \\
-				
-				Once all the tables have been created the code then performs a \texttt{CROSS JOIN} on all the tables which provides all the possible permutations of shops that contain the items on the shopping list. In the same line of code a sum of all the prices is taken. The resulting table consists of a new route on each row with each column corresponding to a waypoint on the route. The final column of the table contains the total cost of the items for that route. The above table is then ordered in descending order according to price. This is to make determining the cheapest route easier in further calculations. 
-			
-			\subsection{Module 2 - \texttt{get\_route\_information.php}}
-			
-				The file is responsible for combining the route information into the correct format for the 'presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. \\
-				
-				While iterating the file dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is in a format that allows the front-end programs to interact with the data from the database. 
-	
+
 
 \end{document}
 		
