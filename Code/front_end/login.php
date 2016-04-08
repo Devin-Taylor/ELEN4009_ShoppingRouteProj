@@ -56,7 +56,7 @@
 		<h1 id="home"> Shopping Route Recommender</h1> <br><br>
 		<h1>Login or Create Account</h1> <br><br>
 
-		<form action="" method="POST">
+		<form action="./create_account.php" method="POST">
 
 			<div class="alert"></div>
 
@@ -72,21 +72,24 @@
 						<h2><li>Earn rewards</li></h2>
 					</ul><br><br style="line-height:28px;" />
 
-					<!-- <a href="create_account.php"><input type="submit" class="large-fld large-btn" name="createaccount" value="Create Account"></a> -->
-					<a href="create_account.php" class="large-fld large-btn">Create Account</a>
+					<input type="submit" class="large-fld large-btn" name="createaccount" value="Create Account">
+					<!-- <a href="create_account.php" class="large-fld large-btn">Create Account</a> -->
+		</form>
 
 				</div>
+
+		<form action="" method="POST">
 
 				<div class="column6">
 
 					<h1>Returning user</h1><br><br>
 
 					<h2>Email address</h2>
-					<input type="text" class="large-fld" name="email" value=""><br><br>
+					<input type="text" class="large-fld" name="email" value="" required><br><br>
 
 					<h2>Password</h2>
 					
-					<input type="password" class="large-fld" name="password" value="">
+					<input type="password" class="large-fld" name="password" value="" required>
 					<h4><a href="/forgot_password">(forgot your password?)</a><h4><br><br>
 
 					<!-- <a href="index.php"><input type="submit" class="large-fld large-btn" name="login" value="Login"></a> -->
@@ -111,11 +114,9 @@
 							}
 						}
 					?>
-
 				</div>
-
 			</div>
-
+		</form>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

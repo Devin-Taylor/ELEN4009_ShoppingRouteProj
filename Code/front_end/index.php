@@ -111,26 +111,21 @@
 
 				<div class="column6">
 
-					<h1> Current List</h1>
+					<h1>Current List</h1>
 					<div class="large-fld">
- 					<?php
-						// $host 			= "host = localhost";
-						// $port 			= "port = 5432";
-						// $dbname 		= "dbname = srrec";
-						// $credentials 	= "user=postgres password=srrec";
-						
-						// $conn = pg_connect("$host $port $dbname $credentials") or die ("Error : Unable to open database\n");
+						<p>
+		 					<?php
+								$current_list = pg_copy_to($conn, "LIST");
 
-						$current_list = pg_copy_to($conn, "LIST");
-
-						echo '<p>'.implode(', ', $current_list).'</p>';
-					?>
+								echo implode(', ', $current_list);
+							?>
+						</p>
 					</div>
-					<br><br>
+					<br>
 
 		</form>
 
-		<form action="" method="POST">
+		<form action="./map_gen.php" method="POST">
 
 					<h1> Add Location</h1>
 					<input type="text" class="large-fld" name="addlocation" 
@@ -146,10 +141,10 @@
 					</select>
 					<br><br>
 
-					<!-- <input type="submit" class="large-fld large-btn" 
-					name="genroute" value="Generate Route"> -->
-					<a href="map_gen.php" class="large-fld large-btn" 
-					name="genroute" value="Generate Route">Generate Route</a>
+					<input type="submit" class="large-fld large-btn" 
+					name="genroute" value="Generate Route">
+					<!-- <a href="map_gen.php" class="large-fld large-btn" 
+					name="genroute" value="Generate Route">Generate Route</a> -->
 
 					<!-- <input type="checkbox" name="distance" value=""> Least Total Distance<br>
 					<input type="checkbox" name="cost" value=""> Least Total Cost<br>
