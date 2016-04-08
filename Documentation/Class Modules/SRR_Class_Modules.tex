@@ -1,4 +1,4 @@
-\documentclass[10pt, a4paper, onecolumn]{scrartcl}
+\documentclass[10pt, a4paper, twocolumn]{scrartcl}
 \usepackage{cite}  
 \usepackage{times}
 \usepackage{amsmath}
@@ -51,6 +51,45 @@
 	\section{Introduction}
 	
 		 The purpose of the document is to present key modules implemented in the Shopping Route Recommender web application. The document details some of the implemented methods and details their functionality in order to provide a more useful understanding to the those interested in the functionality of the web application. \\
+		 
+	\section{Front-End Modules}
+	
+		\subsection{Style Modules (CSS)}
+		
+		\textit{1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html webpage based on pixels length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.\\
+		
+		\textit{maps.css:} This style is used to position the displays of the generated map and directions windows. Further class aspects are added in order to change the font size and positioning within the directions panel.\\
+		
+		\textit{sidenav.css:} This css module is used to customise the side navigation menu panel. It styles the background colour, and text font and colour. It also positions the menu correctly and adjusts its extension into the page.\\
+		
+		\textit{style.css:} The style css file is used to create the general style of the headers and buttons on all the webpages.
+		
+		\subsection{Side Navigation Module}
+		
+		The menu is displayed in a side navigation panel. This panel slides onto the webpage from the left when the 'Menu' botton is selected. This functionality was achieved by using a JavaScript function called at the end of each webpage so that it is always accessible. Furthermore this module uses jQuery, a JavaScript library designed to simplify client-side scripting of HTML.	
+		
+		\subsection{Home Page Module}
+		
+		This is the page the user interacts with to input their preferences. It is the homepage of the web application and will therefore be the first page that the user is displayed when accessing the application.\\
+		
+		The user will enter their item list which will then be sent to the back-end. A Current list will also be viewable from which the user may also remove items via a text-bar updating the back-end dynamically. If the user has already created account, in the future the ability to upload and select lists will be available. \\
+		
+		The users geo-location will be used as the origin of the shopping route, however for now the user will be required to enter their desired starting location.\\
+		
+		The last option the user must select is their preffered optimisation, either
+		
+		\subsection{Route Generation Module}
+		
+		
+		
+		\subsection{Google Api Module}
+				
+		
+		\subsection{}
+		
+		\subsection{Style Modules (CSS)}
+	
+	\section{Back End Modules}
 		 
 			\subsection{Module 1 - \texttt{database\_permutations.php}}
 			
