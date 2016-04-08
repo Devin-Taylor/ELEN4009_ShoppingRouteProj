@@ -47,23 +47,93 @@
 	
 	\maketitle
 	
-
 	\section{Introduction}
 	
 		 The purpose of the document is to present key modules implemented in the Shopping Route Recommender web application. The document details some of the implemented methods and details their functionality in order to provide a more useful understanding to the those interested in the functionality of the web application. \\
 		 
-			\subsection{Module 1 - \texttt{database\_permutations.php}}
-			
-				The database permutations file is responsible for generating all the possible routes for the user. The file accesses the database to determine which shops sell the products on the users shopping list. The code then dynamically creates tables for each item on the list which contains a column corresponding to all the shops which sell the product as well as another column for all the prices of that item at the corresponding shops. \\
-				
-				Once all the tables have been created the code then performs a \texttt{CROSS JOIN} on all the tables which provides all the possible permutations of shops that contain the items on the shopping list. In the same line of code a sum of all the prices is taken. The resulting table consists of a new route on each row with each column corresponding to a waypoint on the route. The final column of the table contains the total cost of the items for that route. The above table is then ordered in descending order according to price. This is to make determining the cheapest route easier in further calculations. 
-			
-			\subsection{Module 2 - \texttt{get\_route\_information.php}}
-			
-				The file is responsible for combining the route information into the correct format for the 'presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. \\
-				
-				While iterating the file dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is in a format that allows the front-end programs to interact with the data from the database. 
+	\section{Front-End Modules}
 	
+		\subsection{Style Modules (CSS)}
+		
+		\textit{1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html webpage based on pixels length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.\\
+		
+		\textit{maps.css:} This style is used to position the displays of the generated map and directions windows. Further class aspects are added in order to change the font size and positioning within the directions panel.\\
+		
+		\textit{sidenav.css:} This css module is used to customise the side navigation menu panel. It styles the background colour, and text font and colour. It also positions the menu correctly and adjusts its extension into the page.\\
+		
+		\textit{style.css:} The style css file is used to create the general style of the headers and buttons on all the webpages.
+		
+		\subsection{Side Navigation Module}
+		
+		The menu is displayed in a side navigation panel. This panel slides onto the webpage from the left when the 'Menu' botton is selected. This functionality was achieved by using a JavaScript function called at the end of each webpage so that it is always accessible. Furthermore this module uses jQuery, a JavaScript library designed to simplify client-side scripting of HTML.	
+		
+		\subsection{Home Page Module}
+		
+		This is the page the user interacts with to input their preferences. It is the homepage of the web application and will therefore be the first page that the user is displayed when accessing the application.\\
+		
+		The user will enter their item list which will then be sent to the back-end. A Current list will also be viewable from which the user may also remove items via a text-bar updating the back-end dynamically by selecting the 'Update List' button If the user has already created account, in the future the ability to upload and select lists will be available. \\
+		
+		The users geo-location will be used as the origin of the shopping route, however for now the user will be required to enter their desired starting location.\\
+		
+		The last option the user must select is their preferred optimisation, either to optimise the route generation by lowest cost, shortest distance or fastest overall trip time.\\
+		
+		Finally when the user is satisfied with their entered options, the 'Generate Route' button is selected and the information entered is sent to the back-end for processing.
+		
+		\subsection{Route Generation Module}
+		
+		This module requires information sent from the back-end. This information will consist of the users current location as well as all of the stopovers on the route. This information is sent to the Google API which in turn will return the response. This response is thus displayed on a Google Map in a separate window with the written directions alongside.
+		
+		\subsection{Google Api Module}
+		
+				\begin{itemize}
+					\item The Back-End of the program returns a 2D matrix, with each matrix slot containing X and Y co-ordinates, to the Front-End. The co-ordinates correspond to the location of each shopping route waypoint. 
+					\item The Front-End uses the co-ordinates of all the waypoints to insert them into a Google Maps API request message
+					\item The request message serves to connect to Google directions or directions matrix endpoints through 'https://maps.googleapis.com/maps/api'
+					\item Upon each request, the Google API and user require an API key for each project as well as specific endpoint activations
+					\item The JavaScript function \textit{initMap()} creates the \textit{DirectionsRenderer} and \textit{DirectionsServices} objects. It also maps the \textit{directionsDisplay} map and panel objects to the windows in the HTML doc.
+					\item The \textit{DirectionsServices} object initialises a call to the API containing the routes information.
+					\item The response and status are returned and displayed on the directions panel and map panel using the \textit{directionsDisplay} object.
+					\item The directions matrix endpoint is used to return distance and time information about the trips in order to select the optimal waypoints to send to the directions api
+				\end{itemize}
+				
+		
+		\subsection{Create Account Module}
+		
+		\subsection{Login Module}
+	
+	\section{Back-End Modules}
+		
+		These modules describe the method in which the User-Interface of the web page (i.e. the front-end) interacts with and accesses the database (i.e. the back-end).
+		
+		\subsection{Home Page Module}
+			
+			This module receives items to be added and/or removed from the users shopping list. All the new items are added to the users shopping list on the database. The items to be removed are compared with the users current shopping list. If these items are in the database they are removed.\\
+			
+			\textit{Load list:}\\
+			
+			This module then receives the users starting location. This location is stored in the database as the origin for the Route Generation Module.\\
+			
+			\textit{Preferred Optimisation:}
+			
+		\subsection{Database Permutations Module}
+			
+			The origin location and shopping list are received by this module. The module is then responsible for generating all the possible routes for the user. The module accesses the database to determine which shops sell the products on the users shopping list. The code then dynamically creates tables for each item on the list which contains a column corresponding to all the shops which sell the product as well as another column for all the prices of that item at the corresponding shops. \\
+						
+			Once all the tables have been created the code then performs a \texttt{CROSS JOIN} on all the tables which provides all the possible permutations of shops that contain the items on the shopping list. In the same line of code a sum of all the prices is taken. The resulting table consists of a new route on each row with each column corresponding to a waypoint on the route. The final column of the table contains the total cost of the items for that route. The above table is then ordered in descending order according to price. This is to make determining the cheapest route easier in further calculations.
+			
+		\subsection{Route Generation Module}
+				
+			This module is responsible for combining the route information into the correct format for the 'presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. \\
+					
+			While iterating the module dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is in a format that allows the front-end programs to interact with the data from the database.
+			
+		\subsection{Create Account Module}
+			
+			A new users full name, email address and password is received by this module. These credentials are then stored in a table within the database and used later for user verification by the login module.
+			
+		\subsection{Login Module}
+			 
+			This module receives an email address and password. These credentials are then compared with those stored in the database. If a match is made then that users specific shopping list is retrieved from the database and passed to the front-end to be displayed.
 
 \end{document}
 		
