@@ -189,8 +189,8 @@
 				The user will click in the "Add Items" field at which point a list will be displayed that will contain all previously added items listed one after the other (in the order in which they were added). Within this list the user will be able to complete one of the following actions:
 				
 				\begin{itemize}
-					\item Add a new item - The user will be able to select the "Add new item" button in order to be allowed to enter a new item. 
-					\item Remove existing item - The user will be able to select the cross next to a specific item which will result in the product being removed from the shopping list.
+					\item Add a new item - The user will be able to click the "Add new item" button in order to enter a new item. 
+					\item Remove existing item - The user will be able to click the cross next to a specific item which will result in the product being removed from the shopping list.
 					\item Edit existing item - The user will be able to make modifications to the description of an existing item.
 				\end{itemize}
 			
@@ -202,21 +202,21 @@
 					\item The user can only edit a single item at a time.
 				\end{itemize}
 			
-		\subsection{System Feature 2 - Upload Existing List}
-			
-			\subsubsection{Description}
-			
-				The developers acknowledge the fact that not all users will have continuous access to internet and thus the ability to access the above mentioned shopping list. The proposed solution was to allow the user to add items to a .csv file and upload this only when they actual want to go shopping. 
-				
-			\subsubsection{Stimulus/Response Sequences}
-			
-				On the home page there is a "Upload Shopping List" button. Once the user clicks on this button the user will be required to provide the path to the .csv document. Once the path has been provided the user will be required to click on the upload button and the .csv file will be imported. Upon completion the user will be able to access, and interact with, the shopping list as mentioned in Section~\ref{featureadd}.
+%		\subsection{System Feature 2 - Upload Existing List}
+%			
+%			\subsubsection{Description}
+%			
+%				The developers acknowledge the fact that not all users will have continuous access to internet and thus the ability to access the above mentioned shopping list. The proposed solution was to allow the user to add items to a .csv file and upload this only when they actual want to go shopping. 
+%				
+%			\subsubsection{Stimulus/Response Sequences}
+%			
+%				On the home page there is a "Upload Shopping List" button. Once the user clicks on this button the user will be required to provide the path to the .csv document. Once the path has been provided the user will be required to click on the upload button and the .csv file will be imported. Upon completion the user will be able to access, and interact with, the shopping list as mentioned in Section~\ref{featureadd}.
 		
-		\subsection{System Feature 3 - Add Location}
+		\subsection{System Feature 2 - Add Location}
 				
 			\subsubsection{Description}
 			
-				In order for the route to be provided it is required that the application know the user's location. 
+				In order for the route to be provided it is required that the user's location is available. The generated shopping route is entirely based on the users current location, and therefore his/her location relative the shops of interest. 
 				
 			\subsubsection{Stimulus/Response Sequences}
 			
@@ -227,25 +227,25 @@
 					\item Finding their location through the use of the Google Maps API.
 				\end{itemize}
 				
-				The primary motivation behind allowing the user to manually enter their location is that not all users will have access to GPS and thus will be able to find their location.\\
+				The primary motivation behind allowing the user to manually enter their location is that not all users will have access to GPS and thus will not be able to determine their location. \\
 				
 				The location entered at this point is the same location that will be used as the starting position for the route that is planned when the "Generate Route" option is selected.
 				
 			\subsubsection{Functional Requirements}
 			
 				\begin{itemize}
-					\item In order to use the "find my location" option the user is required to have GPS access.
+					\item In order to use the "find my location" option the user is required to have GPS access. Most modern day smartphones contain a location services setting that allows the location of the device to be accurately mapped. 
 				\end{itemize}
 				
-		\subsection{System Feature 4 - Preferred Optimisation}
+		\subsection{System Feature 3 - Preferred Optimisation}
 		
 			\subsubsection{Description}
 			
-				A decision was made in order to allow the user to have control of the nature of the route that they will follow. This was due to the fact that multiple customers will view different aspects as their primary concern. In other words, some users might value the cost of things over the distance required to travel, while for other the cost of things may not be of concern.
+				A decision was made in order to allow the user to have control of the nature of the route that they will follow. This was due to the fact that multiple customers will view different aspects as their primary concern. In other words, some users might value the cost of things over the distance required to travel, while for others the cost of shopping products may not be of any concern. 
 			
 			\subsubsection{Stimulus/Response Sequences}
 			
-				On the home page there is a "Preffered Optimisation" drop down menu. Once the user selects the "Preffered Optimisation" drop-down menu they will be provided with the following options:
+				On the home page there is a "Preffered Optimisation" drop down menu. Once the user selects the preferred Optimisation" drop-down menu they will be provided with the following options:
 				
 				\begin{itemize}
 					\item Fastest Route - The user will be allowed to select that they would like to take the fastest possible route in order to obtain all the items on their shopping list. The primary contributor to delays will be traffic.
@@ -258,7 +258,7 @@
 			\subsubsection{Functional Requirements}
 			
 				\begin{itemize}
-					\item The application is required to link to the Google Maps API.
+					\item The application is required to link to the Google Maps API. 
 					\item The user is required to have GPS activated on their mobile device if they wish to use navigation.
 				\end{itemize}
 		
@@ -266,7 +266,7 @@
 		
 			\subsubsection{Description}
 			
-				The generate route option incorporates all the above mentioned features and provides the user the with the preferred route. 
+				The generate route option incorporates all the above mentioned features and provides the user the with the preferred route. The generated route is displayed on a Google Maps view with a highlighted shopping route. 
 				
 			\subsubsection{Stimulus/Response Sequences}
 			
@@ -278,67 +278,83 @@
 					\item Access to Google Maps API is required.
 				\end{itemize}
 				
+		\subsection{System Feature 6 - Menu}
+		
+			\subsubsection{Description}
+			
+				The SRR web application has a menu that contains basic user desirable tabs. These tabs incorporate settings for the application, help features, information about the application and a history of generated shopping routes. 
+			
+			\subsubsection{Stimulus/Response Sequences}
+			
+				The menu tabs are user interactive and can be accessed by clicking on each tab once in the menu. Each tab contains specific web application information, as mentioned. 
+			
+			\subsubsection{Functional Requirements}
+			
+				The menu tab requires the GUI to be user interactive, whereby a user is able to click and select specific tabs. It is therefore strictly dependant on a functional GUI and interface.
+				
 	
 	\section{External Interface Requirements}
 	
 		\subsection{User Interfaces - GUI}
 		
-				The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route. . Furthermore the application is easily portable between devices of different screen sizes, in that the content on the pages automatically adjust to fit the appropriate screen.\\
+				The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route. . Furthermore, the application is easily portable between devices of different screen sizes, in that the content on the pages automatically adjust to fit the appropriate screen.\\
 				
-				The most common features of SSRec's GUI are:
+				The most common features of SRRec's GUI are:
 				
 				\begin{itemize}
 					\item The sidebar menu accessible from all the subsequent pages:
 					\begin{figure}[h!]
 						\centering
-						\includegraphics[scale = 0.495]{Images/menu.PNG}
+						\includegraphics[scale = 0.5]{Images/menu.PNG}
 						\label{menu}
 					\end{figure}
 					
-					\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route:
+					\newpage
+					\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route. Also, a view showing the accessible menu:
 					\begin{figure}[h!]
 						\centering
-						\includegraphics[scale = 0.5]{Images/index.PNG}
-						\label{menu}
+						\includegraphics[scale = 0.4]{Images/index_and_menu_page.jpg}
+						\label{home page}
 					\end{figure}
 					
 					\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation:
 					\begin{figure}[h!]
 						\centering
-						\includegraphics[scale = 0.5]{Images/routeGen.PNG}
-						\label{menu}
+						\includegraphics[scale = 0.4]{Images/routeGen.PNG}
+						\label{map page}
 					\end{figure}
 					
+					\newpage
 					\item The page where a user can either login or create a new account:
 					\begin{figure}[h!]
 						\centering
-						\includegraphics[scale = 0.5]{Images/login.PNG}
-						\label{menu}
+						\includegraphics[scale = 0.4]{Images/login_page.jpg}
+						\label{login page}
 					\end{figure}
 					
-					\vspace{-12mm}
+					
 					\item The page where a new user can create an account:
 					\begin{figure}[h!]
 						\centering
-						\includegraphics[scale = 0.5]{Images/createAccount.PNG}
-						\label{menu}
+						\includegraphics[scale = 0.4]{Images/create_account_page.jpg}
+						\label{create account page}
 					\end{figure}
 													
 				\end{itemize}
 		
 		\subsection{Hardware Interfaces}
 		
-			The SSRec application does not require nor support any hardware interfaces.
+			The SRRec application does not require nor support any hardware interfaces.
 		
 		\subsection{Software Interfaces}
 		
-			SSRec is a web application. Therefore it will be compatible with all operating systems including smartphone and tablet OS. It only needs to be compatible on a web browser which support html, css, javascript and php. It has been tested on Motzilla Firefox, Google Chrome and Microsoft Edge.\\
+			SRRec is a web application. Therefore it will be compatible with all operating systems including smartphone and tablet operating systems. It only needs to be compatible on web browsers which support HTML, CSS, JavaScript and PHP. It has been tested on Motzilla, Firefox, Google Chrome, Microsoft Edge and Safari web browsers. \\
 			
-			Furthermore the application makes use of the Google Maps API in order to generate the optimised route displayed on a map.
+			Furthermore, the application makes use of the Google Maps API in order to generate and display the map with the optimised shopping route. 
 		
 		\subsection{Communications Interfaces}
 		
-			Since SSRec is a web application, network communication are necessary. It runs off a cloud hosted server such that it is readily available with an internet connection so to communicate with the both the user and the Google Maps API. Another communication interface is through the users GPS (if available), where the application is able to locate the nearest shops.
+			Since SRRec is a web application, network communications are necessary. It runs off a cloud hosted server such that it is readily available with an internet connection so as to communicate with both the user and the Google Maps API. Another communication interface is through the users GPS (if available), which the application uses to locate the nearest shops.
 	
 	\section{Other Non-functional Requirements}
 	
@@ -362,9 +378,9 @@
 			
 			This application incorporates the use of user credentials to allow users to store and access their lists on a 	server without losing their list or having to keep the website active. The application has a simplistic graphical interface that is easy-to-use. The website is easily interpreted and a new user should be able to use the website without requiring any sort of tutorial or explanations.
 		
-		\subsection{Other Requirements}
-		
-			\textbf{NOT APPLICABLE TO US YET}
+%		\subsection{Other Requirements}
+%		
+%			\textbf{NOT APPLICABLE TO US YET}
 		
 	%----------------------------------------------------------------------------------------
 	%	REFERENCES
