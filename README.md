@@ -19,8 +19,23 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 	- `sudo apt-get install postgresql-9.3`
 	- `sudo apt-get install php5-pgsql`
 
-**Setup**
+**Folder Structure (from master branch)**
+- ROOT:
+	- Code
+		- back_end: all back end associated code
+		- css: all css files required for front end
+		- front_end: all front end associated code
+		- images: all images required for front end
+		- temp: irrelevant directory
+		- test_suite: tests code for implemented code
+	Documentation:
+		- Class Modules: description of important code implementation
+		- Final Report: documentation associated with final project report
+		- Installations: description of how to run the code - copy of what is explained here
+		- life_cycle_motivation: the reasoning behind selecting SCRUM
+		- SRS: SRS description of product
 
+**Setup**
 
 **NOTE:** If the user has already installed postgresql they may need to edit the .php files and change the password
 
@@ -37,26 +52,36 @@ The Shopping Route Recommender is a web application that aims to improve the gen
 	- `\password srrec`
 		- password: `srrec`
 
+**Recommendation**
+
+It is recommended that the user run the file `back_end.php` in `Code/test_suite` to check if the database is configured correctly
+
 **Running the back-end code**
 
-Copy the .txt files located in `Code/back_end/` into the root folder of postgresql, the default for this on Linux is `/var/lib/postgresql/9.3/main`
+Copy the .txt files located in `Code/back_end/` into the root folder of postgresql, the default for this on Ubuntu is `/var/lib/postgresql/9.3/main`
 > `sudo cp -f *.txt /var/lib/postgresql/9.3/main`
-
-**NOTE:** The following steps are temporary implementations until properly integrated with the front-end
 
 Create the database tables - from within the /Code/back_end/ folder run:
 > `php setup_database.php`
 
+**NOTE:** The following step is a temporary implementation until properly integrated with the front-end
+
 Create the possible permutations for the shopping list saved on the database, run:
 > `php database_permutations.php`
-
-Create 2D array containing all locations for different routes (each route is a row and each column in a row is a waypoint), run:
-> `php get_route_information.php`
 
 **Running the front-end code**
 
 Copy the contents of the /Code/front_end/ as well as the `/css/` and `/images/` folders into the root folder of the apache2 server, the default location for this in Ubuntu is: `/var/www/html/`
 - **NOTE:** The css and images must remain as folders in the `/var/www/html` folder
+> `cp -r css/. /var/www/html` and the same for images
 
-Open your web-browser and access `localhost/login.htm`
+Open your web-browser and access `localhost/login.php`
 - All other web pages will be accessible from this page
+- The default login details are:
+	- username: `admin@srrec.com`
+	- password: `admin123`
+- Alternatively the user may navigate to the Create Account page using the navigation menu of the left hand side and create their own login details
+- Clicking login will take you to the `index.php` page which allows the user to add and remove items from the shopping list stored on the database
+- Selecting generate route defaults to generating the cheapest route and you will be redirected to a map which displays this route and correponding directions
+
+**NOTE:** In order to see a meaningful output on the map it is recommended that the user leave the shopping list items as `SHIRT, TV, MILK`, this is due to the small databases created for prototying purposes.
