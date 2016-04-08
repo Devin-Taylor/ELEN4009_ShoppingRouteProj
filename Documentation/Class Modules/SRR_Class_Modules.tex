@@ -72,22 +72,35 @@
 		
 		This is the page the user interacts with to input their preferences. It is the homepage of the web application and will therefore be the first page that the user is displayed when accessing the application.\\
 		
-		The user will enter their item list which will then be sent to the back-end. A Current list will also be viewable from which the user may also remove items via a text-bar updating the back-end dynamically. If the user has already created account, in the future the ability to upload and select lists will be available. \\
+		The user will enter their item list which will then be sent to the back-end. A Current list will also be viewable from which the user may also remove items via a text-bar updating the back-end dynamically by selecting the 'Update List' button If the user has already created account, in the future the ability to upload and select lists will be available. \\
 		
 		The users geo-location will be used as the origin of the shopping route, however for now the user will be required to enter their desired starting location.\\
 		
-		The last option the user must select is their preffered optimisation, either
+		The last option the user must select is their preferred optimisation, either to optimise the route generation by lowest cost, shortest distance or fastest overall trip time.\\
+		
+		Finally when the user is satisfied with their entered options, the 'Generate Route' button is selected and the information entered is sent to the back-end for processing.
 		
 		\subsection{Route Generation Module}
 		
 		
 		
 		\subsection{Google Api Module}
+		
+				\begin{itemize}
+					\item The Back-End of the program returns a 2D matrix, with each matrix slot containing X and Y co-ordinates, to the Front-End. The co-ordinates correspond to the location of each shopping route waypoint. 
+					\item The Front-End uses the co-ordinates of all the waypoints to insert them into a Google Maps API request message
+					\item The request message serves to connect to Google directions or directions matrix endpoints through 'https://maps.googleapis.com/maps/api'
+					\item Upon each request, the Google API and user require an API key for each project as well as specific endpoint activations
+					\item The JavaScript function \textit{initMap()} creates the \textit{DirectionsRenderer} and \textit{DirectionsServices} objects. It also maps the \textit{directionsDisplay} map and panel objects to the windows in the HTML doc.
+					\item The \textit{DirectionsServices} object initialises a call to the API containing the routes information.
+					\item The response and status are returned and displayed on the directions panel and map panel using the \textit{directionsDisplay} object.
+					\item The directions matrix endpoint is used to return distance and time information about the trips in order to select the optimal waypoints to send to the directions api
+				\end{itemize}
 				
 		
-		\subsection{}
+		\subsection{Create Account Module}
 		
-		\subsection{Style Modules (CSS)}
+		\subsection{Login Module}
 	
 	\section{Back End Modules}
 		 
