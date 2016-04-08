@@ -64,16 +64,16 @@
 
 				<div class="column6">
 					<h2> Full Name</h2>
-					<input type="text" class="large-fld" name="fullname" value=""><br><br>
+					<input type="text" class="large-fld" name="fullname" value="" required><br><br>
 
 					<h2>Email</h2>
-					<input type="text" class="large-fld" name="email" value=""><br><br>
+					<input type="text" class="large-fld" name="email" value="" required><br><br>
 
 					<h2>Password</h2>
-					<input type="password" class="large-fld" name="password" value=""><br><br>
+					<input type="password" class="large-fld" name="password" value="" required><br><br>
 
 					<h2>Confirm password</h2>
-					<input type="password" class="large-fld" name="confirm_password" value=""><br><br>
+					<input type="password" class="large-fld" name="confirm_password" value="" required><br><br>
 
 				</div>
 
@@ -94,12 +94,11 @@
 								$query = "INSERT INTO accounts VALUES ('$_POST[fullname]','$_POST[password]', '$_POST[email]')";  
 								$result = pg_query($query);
 								header('Location: index.php');
-							} else {
-								echo "Error: incorrect password confirmation";
+							} 
+							else {
+								echo "Error: Passwords do not match!";
 							}
 							
-						}  else {
-							echo "Error: Empty fields.";
 						}
 					?> 
 
