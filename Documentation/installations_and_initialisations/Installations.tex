@@ -36,8 +36,39 @@
 \usepackage{pgfplots, pgfplotstable}
 \pgfplotsset{width=9cm,compat=1.9}
 
-
 \setlength\parindent{0pt} % remove all indentations in document
+
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+\ifxetex
+\usepackage{mathspec}
+\else
+\usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+	\usepackage{microtype}
+	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+	pdfborder={0 0 0},
+	breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 %	                                                                           BEGIN DOCUMENT
@@ -69,40 +100,19 @@
 	
 	The README file provided on the GitHub repository provides the same information as that below. The README file is maintained on a regular basis which this document is only updated periodically. It is therefore recommended that the user read the README file if possible.\\
 	
-	\textbf{Product Summary} \\
-	
-	The Shopping Route Recommender is a web application that aims to improve
-	the general publics day-to-day life. The product proposes to do this by
-	reducing the associated stresses of shopping. In specific that
-	application aims to:
+	\section{Prerequisites}
 	
 	\begin{itemize}
-		\item
-		Allow users to add items to a shopping list on an adhoc basis
-		\item
-		Generate a route that optimises based on either of the following user
-		inputs:
-		
-		\begin{itemize}
-			\item
-			Fastest possible route to obtaining all the products
-			\item
-			Shortest possible route to obtaining all the products
-			\item
-			Cheapest possible route to obtaining all the products
-		\end{itemize}
-	\end{itemize}
-	
-	\textbf{Prerequisits}
-	
-	\begin{itemize}[noitemsep]
+		\tightlist
 		\item
 		Install
-		http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/
+		\href{http://www.howtogeek.com/howto/ubuntu/installing-php5-and-apache-on-ubuntu/}{apache2
+			server and PHP5}
 		\item
-		Install and setup PostgreSQL
+		Install and setup postgresql
 		
-		\begin{itemize}[noitemsep]
+		\begin{itemize}
+			\tightlist
 			\item
 			\texttt{sudo\ apt-get\ install\ postgresql-9.3}
 			\item
@@ -110,22 +120,54 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\textbf{Setup} \\
+	\section{Folder Structure (from master branch)}
 	
-	\textbf{NOTE:} If the user has already installed PostgreSQL they may
+	\begin{itemize}
+		\item ROOT
+		\begin{itemize}
+			\item Code
+			\begin{itemize}
+				\item back\_end: all back end associated code
+				\item css: all css styles used in the front end
+				\item front\_end: all front end associated code
+				\item images: all images used in the front end
+				\item temp: temporary directory - not relevant to project
+				\item test\_suite: all test code for the design
+			\end{itemize}
+			\item Documentation
+			\begin{itemize}
+				\item class\_modules: description of different class modules
+				\item external\_software: description of external software modules utilised
+				\item final\_report: overall final report for system
+				\item images: all images used in the reports
+				\item installations\_and\_initialisations: instructions on how to install the required software
+				\item life\_cycle\_motivation: motivation for the selection of SCRUM and all SCRUM documentation
+				\item proposal: designed systems proposal
+				\item software\_design: software design documentation
+				\item srs: software requirement specification
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	
+	\section{Set-up}
+	
+	\textbf{NOTE:} If the user has already installed postgresql they may
 	need to edit the .php files and change the password
 	
-	\begin{itemize}[noitemsep]
+	\begin{itemize}
+		\tightlist
 		\item
 		Create a postgresql database called \texttt{srrec}
 		
-		\begin{itemize}[noitemsep]
+		\begin{itemize}
+			\tightlist
 			\item
 			\texttt{sudo\ -i\ -u\ postgres}
 			\item
 			\texttt{createuser\ -\/-interactive}
 			
-			\begin{itemize}[noitemsep]
+			\begin{itemize}
+				\tightlist
 				\item
 				username: \texttt{srrec}
 			\end{itemize}
@@ -134,7 +176,8 @@
 			\item
 			\texttt{\textbackslash{}password\ postgres}
 			
-			\begin{itemize}[noitemsep]
+			\begin{itemize}
+				\tightlist
 				\item
 				password: \texttt{srrec}
 			\end{itemize}
@@ -147,42 +190,60 @@
 			\item
 			\texttt{\textbackslash{}password\ srrec}
 			
-			\begin{itemize}[noitemsep]
+			\begin{itemize}
+				\tightlist
 				\item
 				password: \texttt{srrec}
 			\end{itemize}
 		\end{itemize}
 	\end{itemize}
 	
-	\textbf{Running the Back-End code} 
+	\section{Recommendation}
 	
-		\begin{itemize}[noitemsep]
-			\item 	Copy the .txt files located in \texttt{Code/back\_end/} into the root
-			folder of postgresql, the default for this on Linux is
-			\texttt{/var/lib/postgresql/9.3/main} \textgreater{}
-			\texttt{sudo\ cp\ -f\ *.txt\ /var/lib/postgresql/9.3/main}
-		\end{itemize}
+	It is recommended that the user run the file \texttt{back\_end.php} in
+	\texttt{Code/test\_suite} to check if the database is configured
+	correctly
 	
-	\textbf{NOTE:} The following steps are temporary implementations until
-	properly integrated with the Front-End 
+	\section{Running The Back-End Code}
 	
-		\begin{itemize}[noitemsep]
-			\item 	Create the database tables - from within the /Code/back\_end/ folder
-			run: \textgreater{} \texttt{php\ setup\_database.php}
-			\item 	Create the possible permutations for the shopping list saved on the
-			database, run: \textgreater{} \texttt{php\ database\_permutations.php}
-		\end{itemize}
+	Copy the .txt files located in \texttt{Code/back\_end/} into the root
+	folder of postgresql, the default for this on Ubuntu is
+	\texttt{/var/lib/postgresql/9.3/main}: \\
+	\texttt{sudo\ cp\ -f\ *.txt\ /var/lib/postgresql/9.3/main}\\
 	
-	\textbf{Running the Front-End code} 
+	Create the database tables - from within the /Code/back\_end/ folder
+	run:\\ \texttt{php\ setup\_database.php} \\
 	
+	\textbf{NOTE:} The following step is a temporary implementation until
+	properly integrated with the front-end
 	
-		\begin{itemize}[noitemsep]
-			\item 	Copy the contents of the /Code/front\_end/ into the root folder of the
-			apache2 server, the default location for this in Ubuntu is: \texttt{/var/www/html/}
-			\item 	Open your web-browser and access \texttt{localhost/login.php} - All
-			other web pages will be accessible from this page (\textbf{NOTE: By clicking login it will redirect you to the index.php page})
-		\end{itemize}
-		
+	Create the possible permutations for the shopping list saved on the
+	database, run: \\ \texttt{php\ database\_permutations.php}
+	
+	\section{Running The Front-End Code}
+	
+	Copy the contents of the /Code/front\_end/ as well as the \texttt{/css/}
+	and \texttt{/images/} folders into the root folder of the apache2
+	server, the default location for this in Ubuntu is:
+	\texttt{/var/www/html/}\\ \\ \textbf{NOTE:} The css and images must remain
+	as folders in the \texttt{/var/www/html} folder: \\
+	\texttt{cp\ -r\ css/.\ /var/www/html} and the same for images \\
+	
+	Open your web-browser and access \texttt{localhost/login.php} - All
+	other web pages will be accessible from this page - The default login
+	details are: \\ username: \texttt{admin@srrec.com} \\ password:
+	\texttt{admin123} \\ \\ Alternatively the user may navigate to the Create
+	Account page using the navigation menu of the left hand side and create
+	their own login details \\ \\ Clicking login will take you to the
+	\texttt{index.php} page which allows the user to add and remove items
+	from the shopping list stored on the database \\ \\ Selecting generate route
+	defaults to generating the cheapest route and you will be redirected to
+	a map which displays this route and corresponding directions.\\
+	
+	\textbf{NOTE:} In order to see a meaningful output on the map it is
+	recommended that the user leave the shopping list items as
+	\texttt{SHIRT,\ TV,\ MILK}, this is due to the small databases created
+	for prototying purposes.
 
 	
 
