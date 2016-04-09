@@ -21,6 +21,7 @@
 \fancyfoot[R]{\thepage} 
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,arrows}
+\usepackage[hidelinks]{hyperref}
 
 \usepackage{sectsty} % Allows customizing section commands
 \sectionfont{\centering\large\textbf}
@@ -47,11 +48,60 @@
 	
 	\maketitle
 	
-	\section{Software Development Life-Cycle Model}
-
-				
-			
-			
+	\section{Introduction}
+	
+		The purpose of this documentation is to provide a detailed understanding of the structure of the software application. The documentation is primarily aimed at the software development team. The document aims to provide the software development team with a sense of guidance, thus ensuring the deliverables are in line with what is expected. \\
+		
+		The scope of the project, from a technical aspect, is that the design is composed of a front-end (client interface) and a back-end (server interface). The front end will consist of an interactive web application while the back-end will be a relational database. The database that will be used is PostgreSQL, primarily due to its compatibility with the chosen scripting language, \texttt{PHP5}. The functionality offered to the customer includes:
+		
+		\begin{itemize}
+			\item Creating a user account
+			\item Logging in to the application with the above created credentials
+			\item Creating a shopping list
+			\item Adding to and removing from an existing shopping list
+			\item Creating multiple shopping lists with the above mentioned functionality
+			\item Selecting their preferred means of route optimisation: fastest, shortest or cheapest
+			\item Generating a route based on the shopping list and desired means of optimisation
+		\end{itemize}
+		
+		The product is targeted at the general public. The reason being that all members of society are assumed to shop in some capacity. As a result of this the User Interface (UI) is required to be as simplistic as possible as this will avoid excluding those members of society that are not necessary technologically advanced. The primary purpose of the application being introduced is to better the overall well-being and state of mind of the general member of society. \\
+		
+		In order to configure the workstation to be compatible with the designed system framework it is necessary to follow the installation instructions provided in the products README or Installation and Initialisation documentation.
+		
+	\section{Design Considerations}
+	
+		
+	
+	\section{Data Design}
+	
+		The software behind the Shopping Route Recommender is designed in a responsibility-driven structure \cite{responsibility}. The responsibility-driven structure is primarily centred around the client/server model and the roles that each entity plays in the communication of data objects. The main aspect of the structure is to abstract the details of how the server handles the clients request, from the client. Therefore, the design is structured in such a way that the client can only specify the intent of the requests and the back-end is configured in such a way to handle to specified request by encapsulating the means of how it responds to the clients request.\\
+		
+		The system was divided up into multiple structures, of which objects could be created, in order to achieve this level of abstraction. The objects that could be created are listen below:
+		
+		\begin{itemize}
+			\item User/Client objects
+			\item Shopping list objects
+		\end{itemize}
+		
+		The system is relatively simple in the sense that only two types of objects can be created. Different users can be created, all of them being encapsulated into the category of employee, and each user will be able to create multiple shopping list objects.\\
+		
+		The user is able to request that they be allowed to create one of the above mentioned objects, the server is then responsible for checking the credibility of the request and bringing about the appropriate response. If the request is successful the server will create and store the corresponding object on the database and notify the client of the success. if the request is unsuccessful then the server will not create the object and the client will be notified of such. \\
+		
+		The client objects are restricted from interacting with one another to ensure the confidentiality of information, these are classified as having private responsibilities \cite{responsibility}. The individual client objects have ownership over their respective shopping list objects, therefore forming an object neighbourhood \cite{responsibility}. The client objects have the ability to interface with the database to edit their shopping list objects. The abstraction is obtained by the client entering a list of additions/deletions while the server determines the integrity of the request and carries out the required request if it is possible. The client is notified of these changes when the shopping list displayed to them is altered. Therefore, in the described situation the client plays the role of a controller while the shopping list plays the role of an information holder \cite{responsibility}. The shopping list could be seen to display controller roles in the sense that the map objects are reliant on them, but it is still the responsibility of the client to control the generation of the route. \\
+		
+		A further factor that plays a role in the system is that of the map objects. The map objects are temporary in the sense that they have a limited life-time from the generation of the route to the completion of the route. The map objects are owned by the individual client objects and can also be viewed as having no responsibilities in the system but rather forming an information holder role.
+	
+	\section{Architecture Design}
+	
+		
+	
+	\section{Interface Design}
+	
+	\section{Procedural Design}		
+	
+	\begin{thebibliography}{1}
+		\bibitem{responsibility} Wirfs-Brock, R. \textit{A Brief Tour of Responsibility-Driven Design}. Wirfs-Brock Associates. Available: \url{http://www.wirfs-brock.com/PDFs/A_Brief-Tour-of-RDD.pdf}. Last Access: 9 April 2016.
+	\end{thebibliography}	
 	
 	
 \end{document}
