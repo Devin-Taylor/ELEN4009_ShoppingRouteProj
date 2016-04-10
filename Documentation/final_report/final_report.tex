@@ -26,8 +26,11 @@
 \addtolength{\textwidth}{0.6in}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{shapes,arrows,fit}
 \tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=2cm, text centered, draw=black, fill=green!20, node distance=3cm, text width = 2cm]
+\tikzstyle{longblock} = [rectangle, minimum width=0.8\columnwidth, minimum height=1cm, text centered, draw=black, fill=green!20, node distance=1.5cm, text width = 0.75\columnwidth]
+\tikzstyle{medblock} = [rectangle, minimum width=0.4\columnwidth, minimum height=1cm, text centered, draw=black, fill=green!20, node distance=1.5cm, text width = 0.4\columnwidth]
+\tikzstyle{shortblock} = [rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=green!20, node distance=1.5cm, text width = 1cm]
 \tikzstyle{line} = [draw, -latex']
 
 % PDF Info
@@ -505,24 +508,38 @@
 			\end{itemize}
 		\end{itemize}
 		
-%		A visual overview of the front end is provided below in Figure~\ref{front_end_overview}. This visual aims to provide a broader view into the interaction between the application objects as well as a brief description of the utilisation of different languages.
-%		
-%		\begin{figure}[h]
-%			\centering
-%			\begin{tikzpicture}[node distance = 2.1cm, auto]
-%			% Place nodes
-%			\node [process] (model) {Model \\ (PostgreSQL)};
-%			\node [process, below of=model] (cont) {Controller \\ (PHP5)};
-%			\node [process, below of=cont] (view) {View \\ (HTML, css)};
-%			% Draw edges
-%			\path [line] ([xshift=0.5cm]cont.north) -- node [anchor=west] {\scriptsize{PHP5}} ([xshift=0.5cm]model.south);
-%			\path [line] ([xshift=-0.5cm]model.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]cont.north);
-%			\path [line] ([xshift=0.5cm]view.north) -- node [anchor=west] {\scriptsize{PHP5, JavaScript}} ([xshift=0.5cm]cont.south);
-%			\path [line] ([xshift=-0.5cm]cont.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]view.north);
-%			\end{tikzpicture}
-%			\caption{Overview of that data objects implemented in the front-end}
-%			\label{front_end_overview}
-%		\end{figure}
+		A visual overview of the front end is provided below in Figure~\ref{front_end_overview}. This visual aims to provide a broader view into the interaction between the application objects as well as a brief description of the utilisation of different languages.
+		
+		\begin{figure}[h]
+			\centering
+			\begin{scriptsize}
+				\begin{tikzpicture}[node distance = 2.1cm, auto]
+				% Place nodes
+				\node [longblock] (user) {User Interface};
+				\node [shortblock, below = 1cm of user] (menu) {Menu};
+				\node [shortblock, left of=menu] (login) {Login};
+				\node [shortblock, left of=login] (create) {Create Account};
+				\node [shortblock, right of=menu] (home) {Home};
+				\node [shortblock, right of=home] (map) {Map View};
+				\node [shortblock, below = 1cm of menu] (css) {CSS};
+				\node [shortblock, right of=css] (php) {PHP5};
+				\node [shortblock, left of=css] (html) {HTML};
+				\node [shortblock, right of=php] (java) {Java Script};
+				\node [shortblock, below = 1cm of java] (maps) {Google Maps API};
+				\node [medblock, below = 1cm of css] (db) {Database interface};
+				\node [draw, fit = (menu) (login) (create) (home) (map)] (bound1) {};
+				\node [draw, fit = (html) (css) (php)] (bound2) {};
+				\node [draw, fit = (maps) (java)] (bound3) {};
+				\path [line] (bound1) -- (user);
+				\path [line] (bound2) -- (bound1);
+				\path [line] (db) -- (bound2);
+				\path [line] (maps) -- (java);
+				\path [line] (bound3) -- (map);
+				\end{tikzpicture}
+			\end{scriptsize}
+			\caption{Overview of that data objects implemented in the front-end}
+			\label{front_end_overview}
+		\end{figure}
 	
 	\subsection{Design Considerations}
 	
