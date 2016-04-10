@@ -25,6 +25,11 @@
 \addtolength{\evensidemargin}{-.3in}
 \addtolength{\textwidth}{0.6in}
 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=2cm, text centered, draw=black, fill=green!20, node distance=3cm, text width = 2cm]
+\tikzstyle{line} = [draw, -latex']
+
 % PDF Info
 \ifpdf
 \pdfinfo{
@@ -83,140 +88,147 @@
 
 	\subsection{Stakeholders}
 		
-		\textit{Users:} The proposed application is targeted at the general public. This is primarily due to the fact that nearly all member of the general public are required to shop in some capacity, be it for either items of need or items of desire. By targeting the general public it also expands the potential client base ensuring the greatest success of the product possible.\\
+		\subsubsection{Users} The proposed application is targeted at the general public. This is primarily due to the fact that nearly all member of the general public are required to shop in some capacity, be it for either items of need or items of desire. By targeting the general public it also expands the potential client base ensuring the greatest success of the product possible.\\
 		
-		\textit{Developers:} The developers consists of a well rounded group of engineers. Each member of the development group displays a strength in a particular field required for the successful design of the application. These skills are based primarily on experience and include the following: web development, user experience design, database configuration and database interfacing.\\ 
+		\subsubsection{Developers} The developers consists of a well rounded group of engineers. Each member of the development group displays a strength in a particular field required for the successful design of the application. These skills are based primarily on experience and include the following: web development, user experience design, database configuration and database interfacing.\\ 
 		
-		\textit{Project Manager:} The project manager for the project has no formal training in the field of project management. Despite this, this member is often indirectly placed in positions similar to that of a project manager, as a result they are confident in their abilities to conduct a team efficiently. \\
+		\subsubsection{Project Manager} The project manager for the project has no formal training in the field of project management. Despite this, this member is often indirectly placed in positions similar to that of a project manager, as a result they are confident in their abilities to conduct a team efficiently. \\
 
 \section{SOFTWARE REQUIREMENT SPECIFICATION}
 	
-		\subsection{Introduction}
+	\subsection{Introduction}
 		
 		\subsubsection{Purpose}
 		
-		This document details the Software Requirements Specification (SRS) for the Shopping Route Recommender (SRRec) web application. The document also follows the IEEE standard for SRS documents.\\
-		
-		Shopping can often prove to be tedious and frustrating when you find out that the shop you are at does not stock or is out of stock of certain products that are on your shopping list. One then needs to go to other shops in the hopes that those shops will have the items not yet ticked off ones shopping list. Even then, the next shop may not have the items and you have to keep going from shop to shop until you finally get all the items needed. There is clearly a need for a more efficient way of finding all the items on your shopping list in the shortest travel time, shortest route or most cost effective route.\\
-		
-		The purpose of this project is to provide a web application that allows a user to enter their shopping items into a shopping list and in turn provides the user with the ideal route to the nearest stores that will fulfil their needs.
+			This document details the Software Requirements Specification (SRS) for the Shopping Route Recommender (SRRec) web application. The document also follows the IEEE standard for SRS documents.\\
+			
+			Shopping can often prove to be tedious and frustrating when you find out that the shop you are at does not stock or is out of stock of certain products that are on your shopping list. One then needs to go to other shops in the hopes that those shops will have the items not yet ticked off ones shopping list. Even then, the next shop may not have the items and you have to keep going from shop to shop until you finally get all the items needed. There is clearly a need for a more efficient way of finding all the items on your shopping list in the shortest travel time, shortest route or most cost effective route.\\
+			
+			The purpose of this project is to provide a web application that allows a user to enter their shopping items into a shopping list and in turn provides the user with the ideal route to the nearest stores that will fulfil their needs.
 		
 		\subsubsection{Document Conventions}
 		
-		This document is intended to accompany the SRRec software and should be updated with each update to the web application. This will ensure that the document remains relevant and useful.
+			This document is intended to accompany the SRRec software and should be updated with each update to the web application. This will ensure that the document remains relevant and useful.
 		
 		\subsubsection{Intended Audience and Reading Suggestions}
 		
-		This SRS document is intended for:
-		\begin{itemize}
-			\item Programmers that want to understand the outlines of how the SRRec web application works and the way in which the software has been implemented.
-			\item Project testers to use in order to better their testing strategies since some bugs are easier to find by using an SRS document.
-			\item End users of this web application who would like to read about how the SRRec can help them or what it is capable of doing.
-		\end{itemize}
+			This SRS document is intended for:
+			\begin{itemize}
+				\item Programmers that want to understand the outlines of how the SRRec web application works and the way in which the software has been implemented.
+				\item Project testers to use in order to better their testing strategies since some bugs are easier to find by using an SRS document.
+				\item End users of this web application who would like to read about how the SRRec can help them or what it is capable of doing.
+			\end{itemize}
 		
 		\subsubsection{Project Scope}
+			
+			SRRec is a web application that is capable of providing a route to all the nearest shops so as to fulfil a users entire shopping list while either following the shortest route, the route with the shortest travel time or the route that will result in minimal total shopping expenses. The shopper can continuously add items to their list and these items are logged to their respective list. When the shopper finally runs the SRRec he/she will obtain their user-determined recommended route of shops to visit in a particular order according to items on their list. The application provides a Graphical User Interface (GUI) with embedded Google Mapsto illustrate this generated route. \\
+			
+			We assume the following:
+			\begin{itemize}
+				\item There is already a map of all shopping malls and shops that sell various items that a shopper could add to their list.
+				\item Each shop has a database of the items that they stock and their respective prices.
+				\item The price of each item is a simple Rand value or indicated by Rand/kilogram, etc.
+				\item The SRRec runs on a website with access to the databases of all the shops.
+				\item Google maps is available on the website and shows the route from one shopping mall or shop to the next.
+			\end{itemize}
+			
+			The shopper is able to select one of three types of recommendation:
+			\begin{itemize}
+				\item shortest route.
+				\item shortest route for minimal total shopping expenses.
+				\item route with shortest travel time.
+			\end{itemize}
+			
+			The shopper will also be able to change their selected recommendation after visiting some shops and eliminating some items from their list. The SRRec can also incorporate stop-overs for coffe, drinks, lunch, etc. At a later stage, the shopper may even be able to provide a price range that they are willing to pay for each item.
+			
+		\subsubsection{Definitions and Acronyms}
 		
-		SRRec is a web application that is capable of providing a route to all the nearest shops so as to fulfil a users entire shopping list while either following the shortest route, the route with the shortest travel time or the route that will result in minimal total shopping expenses. The shopper can continuously add items to their list and these items are logged to their respective list. When the shopper finally runs the SRRec he/she will obtain their user-determined recommended route of shops to visit in a particular order according to items on their list. The application provides a Graphical User Interface (GUI) with embedded Google Mapsto illustrate this generated route. \\
+			\begin{itemize}
+				\item RDMS - Relational Database Management System: Specific type of database which models the interaction between data objects
+				\item MVC - Model-View-Controller: A software development design pattern
+			\end{itemize}
 		
-		We assume the following:
-		\begin{itemize}
-			\item There is already a map of all shopping malls and shops that sell various items that a shopper could add to their list.
-			\item Each shop has a database of the items that they stock and their respective prices.
-			\item The price of each item is a simple Rand value or indicated by Rand/kilogram, etc.
-			\item The SRRec runs on a website with access to the databases of all the shops.
-			\item Google maps is available on the website and shows the route from one shopping mall or shop to the next.
-		\end{itemize}
-		
-		The shopper is able to select one of three types of recommendation:
-		\begin{itemize}
-			\item shortest route.
-			\item shortest route for minimal total shopping expenses.
-			\item route with shortest travel time.
-		\end{itemize}
-		
-		The shopper will also be able to change their selected recommendation after visiting some shops and eliminating some items from their list. The SRRec can also incorporate stop-overs for coffe, drinks, lunch, etc. At a later stage, the shopper may even be able to provide a price range that they are willing to pay for each item.
-		
-		\subsection{Overall Description}
+	\subsection{Overall Description}
 		
 		\subsubsection{Product Perspective}
 		
-		The Shopping Route Recommender is an application used by consumers to maximise their shopping experience in terms of three preferred optimisations: minimum cost, travel distance and travel time. The consumer is able to log onto a Website or Smartphone application and create a shopping list with a desired route being generated.  Enabling a user to optimise their shopping experience is a potential success from the start, as their daily routines can become more efficiently and effectively undertaken. The application's use is not only restricted to the general public, but can also be used by businesses and companies involved in the stock collection courier service industries. The application is aimed at being user friendly, simple, and interactive with maximum customisation being a priority aspect in order to maximise an individuals needs. 
+			The Shopping Route Recommender is an application used by consumers to maximise their shopping experience in terms of three preferred optimisations: minimum cost, travel distance and travel time. The consumer is able to log onto a Website or Smartphone application and create a shopping list with a desired route being generated.  Enabling a user to optimise their shopping experience is a potential success from the start, as their daily routines can become more efficiently and effectively undertaken. The application's use is not only restricted to the general public, but can also be used by businesses and companies involved in the stock collection courier service industries. The application is aimed at being user friendly, simple, and interactive with maximum customisation being a priority aspect in order to maximise an individuals needs. 
 		
 		\subsubsection{Product Features}
 		
-		The list of product features below aim to provide an easy-to-use, customizable application interface for all users. 
+			The list of product features below aim to provide an easy-to-use, customizable application interface for all users. 
 		
-		\begin{itemize}
-			\item Interactive shopping list menu.
 			\begin{itemize}
-				\item add or remove item
+				\item Interactive shopping list menu.
+				\begin{itemize}
+					\item add or remove item
+				\end{itemize}
+				\item Interactive optimisation selection options.
+				\begin{itemize}
+					\item minimise cost
+					\item minimise travel time
+					\item minimise travle distance
+				\end{itemize}
+				\item Interactive shopping area selection options.
+				\begin{itemize}
+					\item select from a number of suburbs or regions
+				\end{itemize}
+				\item Interactive route map displaying alternate routes for selection.
+				\begin{itemize}
+					\item rotate map
+					\item slide map
+					\item zoom in/out
+					\item satellite view
+				\end{itemize}
 			\end{itemize}
-			\item Interactive optimisation selection options.
-			\begin{itemize}
-				\item minimise cost
-				\item minimise travel time
-				\item minimise travle distance
-			\end{itemize}
-			\item Interactive shopping area selection options.
-			\begin{itemize}
-				\item select from a number of suburbs or regions
-			\end{itemize}
-			\item Interactive route map displaying alternate routes for selection.
-			\begin{itemize}
-				\item rotate map
-				\item slide map
-				\item zoom in/out
-				\item satellite view
-			\end{itemize}
-		\end{itemize}
 		
 		\subsubsection{User Classes and Characteristics}
 		
-		The application is aimed for the general public's use as well as certain business industries. 
+			The application is aimed for the general public's use as well as certain business industries. 
 		
-		\begin{itemize}
-			\item General Public
 			\begin{itemize}
-				\item General population wanting to buy their routine shopping list
-				\item General population looking for more specific products and their preferred optimised route
-				\item Foreign individuals looking for their ideal shopping locations or travel routes
+				\item General Public
+				\begin{itemize}
+					\item General population wanting to buy their routine shopping list
+					\item General population looking for more specific products and their preferred optimised route
+					\item Foreign individuals looking for their ideal shopping locations or travel routes
+				\end{itemize}
+				\item Business Industries
+				\begin{itemize}
+					\item Courier companies collecting stock or products from various distributors/stores
+				\end{itemize}
 			\end{itemize}
-			\item Business Industries
-			\begin{itemize}
-				\item Courier companies collecting stock or products from various distributors/stores
-			\end{itemize}
-		\end{itemize}
 		
 		\subsubsection{Operating Environment}
 		
-		Shopping Route Recommender is an application designed to run on the most Web Browsers as well on Google Android and Mac OS X Smartphones. 
-		
-		\begin{itemize}
-			\item Software Requirements
+			Shopping Route Recommender is an application designed to run on the most Web Browsers as well on Google Android and Mac OS X Smartphones. 
+			
 			\begin{itemize}
-				\item Internet connectivity
-				\item Entry level Smartphone
-				\item Mozilla Firefox, Microsoft Edge, Google Chrome, Microsoft Explorer, Safari
+				\item Software Requirements
+				\begin{itemize}
+					\item Internet connectivity
+					\item Entry level Smartphone
+					\item Mozilla Firefox, Microsoft Edge, Google Chrome, Microsoft Explorer, Safari
+				\end{itemize}
+				\item Hardware Requirements
+				\begin{itemize}
+					\item Entry level Smartphone with interactive touch screen
+				\end{itemize}
 			\end{itemize}
-			\item Hardware Requirements
-			\begin{itemize}
-				\item Entry level Smartphone with interactive touch screen
-			\end{itemize}
-		\end{itemize}
 		
 		\subsubsection{Design and Implementation Constraints} 
 		
-		Shopping Route Recommender is platform independent and is written using PostgreSQL, PHP, Javascript, HTML and CSS. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps API utilised. 
+			Shopping Route Recommender is platform independent and is written using PostgreSQL, PHP, Javascript, HTML and CSS. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps API utilised. 
 		
 		\subsubsection{User Documentation}
 		
-		An application menu will be provided within the application. The menu will house information about the application, the application settings, history tab that is used to store user recent shopping route and a help function that will function as the "user manual" of the application. 
+			An application menu will be provided within the application. The menu will house information about the application, the application settings, history tab that is used to store user recent shopping route and a help function that will function as the "user manual" of the application. 
 		
 		\subsubsection{Assumptions and Dependencies}
 		
-		The application is functionally depenedndant on Google Maps API. This API is integral to displaying the shopping route and directions to the user. One assumption is therefore that Google Maps is available on the website and shows the route from one shopping mall or shop to the next. Another functional dependency is that the application depends on the product database of each shop stored in the application's database. It is therefore assumed that each shop has a database of items that they stock as well as their respective prices. These product databases are continuously updated by each of the stores. The application must therefore contain the latest product database updates from each of the stores. The SRR database must therefore be automatically updated once a store has registered an update in its product database. This is an important functional dependency if the application is to be as accurate as possible in terms of product pricing. 
+			The application is functionally depenedndant on Google Maps API. This API is integral to displaying the shopping route and directions to the user. One assumption is therefore that Google Maps is available on the website and shows the route from one shopping mall or shop to the next. Another functional dependency is that the application depends on the product database of each shop stored in the application's database. It is therefore assumed that each shop has a database of items that they stock as well as their respective prices. These product databases are continuously updated by each of the stores. The application must therefore contain the latest product database updates from each of the stores. The SRR database must therefore be automatically updated once a store has registered an update in its product database. This is an important functional dependency if the application is to be as accurate as possible in terms of product pricing. 
 		
-		\subsection{System Features}
+	\subsection{System Features}
 		
 		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system feature in order to make future system extensions as simple as possible. 
 		
@@ -428,23 +440,110 @@
 
 \section{DESIGN DOCUMENT}
 
+	The purpose of this documentation is to provide a detailed understanding of the structure of the software application. The documentation is primarily aimed at the software development team. The document aims to provide the software development team with a sense of guidance, thus ensuring the deliverables are in line with what is expected.
+	
+	\subsection{Scope}
+	
+		The scope of the project, from a technical aspect, is that the design is composed of a front-end (client interface) and a back-end (server interface). The front end will consist of an interactive web application while the back-end will be a relational database. The two aspects will be required to interact in order to bring about the necessary response that the client desires. 
+
+	\subsection{Target Market}
+	
+		The product is targeted at the general public. The reason being that all members of society are assumed to shop in some capacity. As a result of this the User Interface (UI) is required to be as simplistic as possible as this will avoid excluding those members of society that are not necessary technologically advanced. The primary purpose of the application being introduced is to better the overall well-being and state of mind of the general member of society. 
+		
+	\subsection{Development Methods}
+	
+		The system is to be developed according to the SCRUM principles. This is ideally because an agile method of development is often preferred when designing an application. This is due to the frequent changes that the application is subject to. It is recommended that the reader familiarises themselves with the composed SCRUM selection document in order to understand the motivation behind the choices made.
+	
+	\subsection{System Architectural Strategies}
+	
+		The overall system was designed according to the Model-View-Controller (MVC) design pattern. The primary motivation for the implementation of this design pattern was due to the fact that the SCRUM design approach was implemented. Due to SCRUM, and the incremental development associated with it, the UI is subject to changes as a result of client feedback. The MVC pattern implemented is depicted below in Figure~\ref{mvc}. The different aspect of this design will be detailed in sections to follow.
+		
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}[node distance = 2.1cm, auto]
+			% Place nodes
+			\node [process] (model) {Model \\ (PostgreSQL)};
+			\node [process, below of=model] (cont) {Controller \\ (PHP5)};
+			\node [process, below of=cont] (view) {View \\ (HTML, css)};
+			% Draw edges
+			\path [line] ([xshift=0.5cm]cont.north) -- node [anchor=west] {\scriptsize{PHP5}} ([xshift=0.5cm]model.south);
+			\path [line] ([xshift=-0.5cm]model.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]cont.north);
+			\path [line] ([xshift=0.5cm]view.north) -- node [anchor=west] {\scriptsize{PHP5, JavaScript}} ([xshift=0.5cm]cont.south);
+			\path [line] ([xshift=-0.5cm]cont.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]view.north);
+			\end{tikzpicture}
+			\caption{MVC Design Pattern}
+			\label{mvc}
+		\end{figure}
+	
 \begin{center}
 	\sc{I: FRONT-END}
 \end{center}
 
-
-
+	\subsection{Overview}
+	
+		The front-end's primary objective is to provide the user with a means of interacting with a complex database in a simplistic manner. The front-end is organised into four main pages. Each page is interlinked by either a direct button to that page or through the slide-out side-bar menu available on each page. The pages, with their corresponding functionality offered to the user, are listed below:
+		
+		\begin{itemize}
+			\item Create account page:
+			\begin{itemize}
+				\item Creating a user account
+			\end{itemize}
+			\item Login page:
+			\begin{itemize}
+				\item Logging in to the application with the above created credentials
+				\item A direct link to the create account page if the user does not yet have login details
+			\end{itemize}
+			\item Index page:
+			\begin{itemize}
+				\item Creating a shopping list
+				\item Adding to and removing from an existing shopping list
+				\item Creating multiple shopping lists with the above mentioned functionality
+				\item Selecting their preferred means of route optimisation: fastest, shortest or cheapest
+				\item Generating a route based on the shopping list and desired means of optimisation
+			\end{itemize}
+			\item Map generation page:
+			\begin{itemize}
+				\item View the generated map
+				\item View the generated directions
+			\end{itemize}
+		\end{itemize}
+	
+	\subsection{Design Considerations}
+	
+		\subsubsection{Assumptions and Dependencies}
+		
+			The primary assumption is that the maps API that the general public is most familiar with is Google Maps. Hence, the Google Maps API was selected as the mapping utility to be used. Another assumption is that the most commonly spoken language amongst all users is English, as a result the application is designed primarily for English. \\
+			
+			In order for a user to interact with the application the user is required to have access to an electronic device as well an internet connection. 
+			
+		\subsubsection{Success Criteria}
+		
+			In order for the front-end of the application to be deemed a success a clean and simplistic User Interface (UI) is required. 
+			
+	\subsection{Architectural Strategies}
+	
+		Certain architectural strategies were implemented in order to obtain a prototype in the shortest possible time. The primary motivation for implementing these strategies is that developing an effective user interface from the ground-up can be unnecessarily time consuming. The strategies implemented are made mention of below:
+		
+		\begin{itemize}
+			\item JavaScript: The use of JavaScript to interface with the Google Maps API was primarily due to the fact that this code had previously been written and thus could simply be reused. Developing wrapper functions in \texttt{PHP5} to interface with the API would have consumed time and was deemed unnecessary to implement for a prototype. This was acknowledged as a future aspect to be ported to \texttt{PHP5}.
+			\item CSS: Majority of the \texttt{css} files implemented are due to previous experience with the open source packages. Due to the familiarity of how to interact with the packages it reduced the time required to obtain the desired appearance and behaviour of the UI.
+		\end{itemize}
+		
+	\subsection{Use Cases}
+	
+		
+		
 	\subsection{Relevant Modules}
 		
 		\subsubsection{Style Modules (CSS)}
 		
-		\textit{1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html web page based on pixels length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.\\
+		\subsubsection*{title1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html web page based on pixels length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.
 		
-		\textit{maps.css:} This style is used to position the displays of the generated map and directions windows. Further class aspects are added in order to change the font size and positioning within the directions panel.\\
+		\subsubsection*{maps.css:} This style is used to position the displays of the generated map and directions windows. Further class aspects are added in order to change the font size and positioning within the directions panel.
 		
-		\textit{sidenav.css:} This css module is used to customise the side navigation menu panel. It styles the background colour, and text font and colour. It also positions the menu correctly and adjusts its extension into the page when the menu button is pressed.\\
+		\subsubsection*{idenav.css:} This css module is used to customise the side navigation menu panel. It styles the background colour, and text font and colour. It also positions the menu correctly and adjusts its extension into the page when the menu button is pressed.
 		
-		\textit{style.css:} The style css file is used to create the general style of the headers and buttons on all the web pages. This was encompassed in a single css as it would ensure consistency of all visual aspects of the web application across all web pages.  
+		\subsubsection*{style.css:} The style css file is used to create the general style of the headers and buttons on all the web pages. This was encompassed in a single css as it would ensure consistency of all visual aspects of the web application across all web pages.  
 		
 		\subsubsection{Side Navigation Module}
 		
@@ -493,6 +592,55 @@
 	\sc{II: BACK-END}
 \end{center}
 
+	\subsection{Overview}
+	
+	The back-end is composed of the Relational Database Management System (RDMS) PostgreSQL. The database provides as the means of storing the relevant data obtained from different shops, storing information pertaining to the different users and manipulating the data during the optimisation calculations. The following sections will provide an description of how to back-end aspects of the application are composed.
+		
+	\subsection{Design Considerations}
+	
+		\subsubsection{Assumptions and Dependencies}
+		
+			The application is designed to run through an Apache2 server, this is primarily due to the server being easy to configure. The Apache2 server is also known to integrate well with database management systems, which is essential for the functionality of the application. As previously mentioned the database management system that was chosen is PostgreSQL and the database interfacing language is \texttt{PHP5}.
+			
+		\subsubsection{General Constraints}
+			
+			The system is largely constrained by the quality of data provided by the shops as well as the frequency with which this data is supplied. The application is heavily reliant on the continuous update of data as well as the data being presented to the company in a clean format. If the data is messy, i.e. contains spelling errors, incorrect formatting, etc., it will reduce the rate at which the system can be updated.
+			
+		\subsubsection{Success Criteria}
+	
+			In order for the back-end system to be deemed a success it is required that the database provide an efficient means of handling the data and reducing the time required to display the information to the user. It would also be necessary for the database to provide a secure solution to handling the data as certain information will be deemed confidential to clients.
+	
+	\subsection{Architectural Strategies}
+	
+		Error handling is a fundamental aspect of the architectural design. The error handling was made the responsibility of the back-end. This was primarily to achieve and maintain the level of abstraction present in the design. The back-end is responsible for determining the required response to the user request (in error) and inform the front-end of the appropriate information to display. Certain errors that were accounted for are listed below:
+		
+		\begin{itemize}
+			\item Incorrect credentials entered when creating an account
+			\item Incorrect credentials entered when logging in to an existing account
+			\item Item not found on the database when adding to the shopping list
+			\item Item not found in the existing list when attempting to remove an item
+			\item Unable to connect to the Google Maps API
+		\end{itemize}
+		
+	\subsection{System Architecture and Data Design}
+	
+		The software behind the Shopping Route Recommender is designed in a responsibility-driven structure \cite{responsibility}. The responsibility-driven structure is primarily centred around the client/server model and the roles that each entity plays in the communication of data objects. The main aspect of the structure is to abstract the details of how the server handles the clients request, from the client. Therefore, the design is structured in such a way that the client can only specify the intent of the requests and the back-end is configured in such a way to handle to specified request by encapsulating the means of how it responds to the clients request.\\
+		
+		The system was divided up into multiple structures, of which objects could be created, in order to achieve this level of abstraction. The objects that could be created are listen below:
+		
+		\begin{itemize}
+			\item User/Client objects
+			\item Shopping list objects
+		\end{itemize}
+		
+		The system is relatively simple in the sense that only two types of objects can be created. Different users can be created, all of them being encapsulated into the category of employee, and each user will be able to create multiple shopping list objects.\\
+		
+		The user is able to request that they be allowed to create one of the above mentioned objects, the server is then responsible for checking the credibility of the request and bringing about the appropriate response. If the request is successful the server will create and store the corresponding object on the database and notify the client of the success. if the request is unsuccessful then the server will not create the object and the client will be notified of such. \\
+		
+		The client objects are restricted from interacting with one another to ensure the confidentiality of information, these are classified as having private responsibilities \cite{responsibility}. The individual client objects have ownership over their respective shopping list objects, therefore forming an object neighbourhood \cite{responsibility}. The client objects have the ability to interface with the database to edit their shopping list objects. The abstraction is obtained by the client entering a list of additions/deletions while the server determines the integrity of the request and carries out the required request if it is possible. The client is notified of these changes when the shopping list displayed to them is altered. Therefore, in the described situation the client plays the role of a controller while the shopping list plays the role of an information holder \cite{responsibility}. The shopping list could be seen to display controller roles in the sense that the map objects are reliant on them, but it is still the responsibility of the client to control the generation of the route. \\
+		
+		A further factor that plays a role in the system is that of the map objects. The map objects are temporary in the sense that they have a limited life-time from the generation of the route to the completion of the route. The map objects are owned by the individual client objects and can also be viewed as having no responsibilities in the system but rather forming an information holder role.
+		
 	
 	\subsection{Relevant Modules}
 	
@@ -500,11 +648,11 @@
 		
 		This module receives items to be added and/or removed from the users shopping list. All the new items are added to the users shopping list on the database. The items to be removed are compared with the users current shopping list. If these items are in the database they will be permanently removed.\\
 		
-		\textit{Load list:} In future iterations of this project a load list will be implemented. This will allow the user to have multiple lists linked to their profile on the database. The back-end will receive which list to select. The correct list will then be found on the database and returned to the front-end for the user to interact with. \\
+		\subsubsection*{Load list:} In future iterations of this project a load list will be implemented. This will allow the user to have multiple lists linked to their profile on the database. The back-end will receive which list to select. The correct list will then be found on the database and returned to the front-end for the user to interact with. \\
 		
 		This module also receives the users starting location. This location is stored in the database as the origin for the Route Generation Module.\\
 		
-		\textit{Preferred Optimisation:} In future iterations of this project the ability to select a preferred route optimisation will be allowed. The back-end which receive which type of optimisation to perform, namely shortest total distance, lowest total cost or shortest total time. The back-end will then use this optimisation when selecting which stores to visit and/or which route to travel.
+		\subsubsection*{Preferred Optimisation:} In future iterations of this project the ability to select a preferred route optimisation will be allowed. The back-end which receive which type of optimisation to perform, namely shortest total distance, lowest total cost or shortest total time. The back-end will then use this optimisation when selecting which stores to visit and/or which route to travel.
 		
 		\subsubsection{Database Permutations Module}
 		
@@ -624,11 +772,8 @@
 \newpage
 
 \begin{thebibliography}{1}
-	
-	\bibitem{rfc7230} Fielding R, Reschke J. `Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing.' IETF, RFC June 2014. [online] Available: \url{https://tools.ietf.org/html/rfc7230} Last Accessed: 3 April 2016
-	
-	
-\end{thebibliography}
+	\bibitem{responsibility} Wirfs-Brock, R. \textit{A Brief Tour of Responsibility-Driven Design}. Wirfs-Brock Associates. Available: http://www.wirfs-brock.com/PDFs/A\_Brief-Tour-of-RDD.pdf. Last Access: 9 April 2016.
+\end{thebibliography}	
 
 
 \end{document}
