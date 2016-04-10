@@ -1,0 +1,64 @@
+\documentclass[10pt, a4paper, twocolumn]{scrartcl}
+\usepackage{cite}  
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumitem} % used for list - no spaces between items
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage[top=2.5cm, bottom=3.2cm, left=2cm, right=2cm, columnsep=0.6cm]{geometry}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
+
+\usepackage{sectsty} % Allows customizing section commands
+\sectionfont{\centering\large\textbf}
+\subsectionfont{\flushleft\normalsize\normalfont\textbf}
+\subsubsectionfont{\flushleft\normalsize\normalfont\textit}
+%\allsectionsfont{\centering} % Make all sections centered
+
+\usepackage[toc,page]{appendix}
+
+
+\setlength\parindent{0pt} % remove all indentations in document
+
+\begin{document} 
+
+\onecolumn
+\thispagestyle{empty}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+	\title{\normalfont \normalsize
+		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
+		\horrule{0.5pt} \\ [10pt]
+		\huge ELEN4009 Software Engineering \\ Shopping Route Recommender \\
+		\horrule{2pt} \\ }
+	\date {\normalsize \today}
+	
+	\maketitle
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale = 1.5]{../images/logo.png}
+	\end{figure}
+
+\vspace{60pt}
+\textbf{Front-End Pair:} Ronen Freeman (386910) and Luka Cakic (671913) \\
+
+\textbf{Back-End Pair:} Devin Taylor (603956) and Matthew Marsden (609293)
+
+\end{document}
