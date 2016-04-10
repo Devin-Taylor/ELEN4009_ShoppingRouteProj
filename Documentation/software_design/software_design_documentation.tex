@@ -37,7 +37,7 @@ text width=5em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
 \tikzstyle{cloud} = [draw, circle, fill=red!20, node distance=1.5cm,
 minimum height=2em]
-\tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=2.5cm, text centered, draw=black, fill=green!20, node distance=6cm, text width = 2cm]
+\tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=2cm, text centered, draw=black, fill=green!20, node distance=3cm, text width = 2cm]
 \setlength\parindent{0pt} % remove all indentations in document
 
 %----------------------------------------------------------------------------------------
@@ -81,13 +81,13 @@ minimum height=2em]
 	
 		\subsection{Assumptions and Dependencies}
 		
-			The success of the design relies heavily on the integration of the system with the Google Maps API. The API was selected as it is the most commercially trusted maps platform and it provides easy wrapper and integration functions for developers. Due to time constraints JavaScript wrapper functions were used as they were easier to implement, ideally these should be written in \texttt{PHP5} in order to ensure system wide integrity and compatibility. \\
+			The success of the design relies heavily on the integration of the system with the Google Maps API. The API was selected as it is the most commercially trusted maps platform and it provides easy wrapper and integration functions for developers. Due to time constraints JavaScript wrapper functions were used as they were easier to implement due to prior development experience. \\
 			
 			The application is designed to run through an Apache2 server, this is primarily due to the server being easy to configure. The Apache2 server is also known to integrate well with database management systems, which is essential for the functionality of the application. As previously mentioned the database management system that was chosen is PostgreSQL and the database interfacing language is \texttt{PHP5}. \\
 			
-			As the application back-end is designed upon Apache, the application hosting is platform independent. Due to it being a web application, and the front-end primarily being written is base HTML, the user interface is also browser independent. \\
+			As the application back-end is designed upon Apache, the application hosting is platform independent. Due to it being a web application, and the front-end primarily being written is base HTML, the user interface is also browser independent. In addition to this, due to the implemented \texttt{css} files the application is capable of resizing to any screen size; making it available to both desktop and mobile browsers. \\
 			
-			Due to the documented design being a simple prototype the design is subject to numerous changes. Firstly, as mentioned above, all interfacing languages should all be transported to \texttt{PHP5}. Secondly, it would be desired to be able to export the route to a mobile Google Maps application thus allowing the user to navigate the route without having to print it in advance. Thirdly, as the system currently calculates all possible permutations of routes and checks each one to determine the characteristics of the route, ultimately designing a `smart' system would be more ideal. The system will be capable of inferring which routes will most likely be the fastest thus reducing the number of routes that need to be checked. As a result the system will be able to provide a route in a much shorter time, as this aspect is currently the bottle-neck of the design. 
+			Due to the documented design being a simple prototype the design is subject to numerous changes. Firstly, as mentioned above, all interfacing languages should all be transported to \texttt{PHP5}. Secondly, it would be desired to be able to export the route to a mobile Google Maps application thus allowing the user to navigate the route without having to print it in advance. Thirdly, as the system currently calculates all possible permutations of routes and checks each one to determine the characteristics of the route, ultimately designing a `smart' system would be more ideal. The system will be capable of inferring which routes will most likely be the fastest thus reducing the number of routes that need to be checked. As a result the system will be able to provide a route in a much shorter time, as this aspect is currently the bottle-neck of the design. This will be achieved through the use of a machine learning algorithm. 
 			
 		\subsection{General Constraints}
 		
@@ -110,13 +110,13 @@ minimum height=2em]
 				\begin{tikzpicture}[node distance = 2.1cm, auto]
 				% Place nodes
 				\node [process] (model) {Model \\ (PostgreSQL)};
-				\node [process, right of=model] (cont) {Controller \\ (PHP5)};
-				\node [process, right of=cont] (view) {View \\ (HTML, css)};
+				\node [process, below of=model] (cont) {Controller \\ (PHP5)};
+				\node [process, below of=cont] (view) {View \\ (HTML, css)};
 				% Draw edges
-				\path [line] ([yshift=0.5cm]cont.west) -- node [anchor=south] {\scriptsize{PHP5}} ([yshift=0.5cm]model.east);
-				\path [line] ([yshift=-0.5cm]model.east) -- node [anchor=north] {\scriptsize{PHP5}} ([yshift=-0.5cm]cont.west);
-				\path [line] ([yshift=0.5cm]view.west) -- node [anchor=south] {\scriptsize{PHP5, JavaScript}} ([yshift=0.5cm]cont.east);
-				\path [line] ([yshift=-0.5cm]cont.east) -- node [anchor=north] {\scriptsize{PHP5}} ([yshift=-0.5cm]view.west);
+				\path [line] ([xshift=0.5cm]cont.north) -- node [anchor=west] {\scriptsize{PHP5}} ([xshift=0.5cm]model.south);
+				\path [line] ([xshift=-0.5cm]model.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]cont.north);
+				\path [line] ([xshift=0.5cm]view.north) -- node [anchor=west] {\scriptsize{PHP5, JavaScript}} ([xshift=0.5cm]cont.south);
+				\path [line] ([xshift=-0.5cm]cont.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]view.north);
 				\end{tikzpicture}
 				\caption{MVC Design Pattern}
 				\label{mvc}
