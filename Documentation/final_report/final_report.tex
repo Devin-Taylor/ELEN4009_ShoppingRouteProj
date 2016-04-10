@@ -42,17 +42,14 @@
 \begin{document}
 	
 	\includepdf{../images/cover_page.pdf}
+	
+	\clearpage
+	\setcounter{page}{1}
 
-\title{SHOPPING ROUTE RECOMMENDER PROTOTYPE REPORT}
-
-\author{Devin Taylor, Matthew Marsden, Luka Cakic, Ronen Freeman}
-\thanks{School of Electrical \& Information Engineering, University of the
-	Witwatersrand, Private Bag 3, 2050, Johannesburg, South Africa}
-
-
+\title{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\abstract{}
+\abstract{The design, implementation and testing of a prototype Shopping Route Recommender web-based application is presented. The document covers all aspects of design that the development team were faced with, these include: the software requirement specification and the design document. The design aspect followed the principles of the SCRUM agile method. The final prototype is separated according to the model-view-controller design pattern, where the model consists of the relational database management system PostgreSQL and the view conists of a web interface. The prototype presented consists of the following functionality: the ability to add user accounts, the ability to login under the specific user accounts, the ability to add and remove items from a shopping list and the ability to generate a map, depicting the cheapest route, in conjunction with the corresponding directions. Despite the functionality present in the prototype, there are still features that are required to be added to the application. Such an example would be to allow the user to select the preferred means of route optimisation as opposed to defaulting to the cheapest route.}
 
 \keywords{}
 
@@ -507,6 +504,25 @@
 				\item View the generated directions
 			\end{itemize}
 		\end{itemize}
+		
+%		A visual overview of the front end is provided below in Figure~\ref{front_end_overview}. This visual aims to provide a broader view into the interaction between the application objects as well as a brief description of the utilisation of different languages.
+%		
+%		\begin{figure}[h]
+%			\centering
+%			\begin{tikzpicture}[node distance = 2.1cm, auto]
+%			% Place nodes
+%			\node [process] (model) {Model \\ (PostgreSQL)};
+%			\node [process, below of=model] (cont) {Controller \\ (PHP5)};
+%			\node [process, below of=cont] (view) {View \\ (HTML, css)};
+%			% Draw edges
+%			\path [line] ([xshift=0.5cm]cont.north) -- node [anchor=west] {\scriptsize{PHP5}} ([xshift=0.5cm]model.south);
+%			\path [line] ([xshift=-0.5cm]model.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]cont.north);
+%			\path [line] ([xshift=0.5cm]view.north) -- node [anchor=west] {\scriptsize{PHP5, JavaScript}} ([xshift=0.5cm]cont.south);
+%			\path [line] ([xshift=-0.5cm]cont.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]view.north);
+%			\end{tikzpicture}
+%			\caption{Overview of that data objects implemented in the front-end}
+%			\label{front_end_overview}
+%		\end{figure}
 	
 	\subsection{Design Considerations}
 	
