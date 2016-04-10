@@ -26,8 +26,11 @@
 \addtolength{\textwidth}{0.6in}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{shapes,arrows,fit}
 \tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=2cm, text centered, draw=black, fill=green!20, node distance=3cm, text width = 2cm]
+\tikzstyle{longblock} = [rectangle, minimum width=0.8\columnwidth, minimum height=1cm, text centered, draw=black, fill=green!20, node distance=1.5cm, text width = 0.75\columnwidth]
+\tikzstyle{medblock} = [rectangle, minimum width=0.4\columnwidth, minimum height=1cm, text centered, draw=black, fill=green!20, node distance=1.5cm, text width = 0.4\columnwidth]
+\tikzstyle{shortblock} = [rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=green!20, node distance=1.5cm, text width = 1cm]
 \tikzstyle{line} = [draw, -latex']
 
 % PDF Info
@@ -101,7 +104,7 @@
 			
 			Shopping can often prove to be tedious and frustrating when you find out that the shop you are at does not stock or is out of stock of certain products that are on your shopping list. One then needs to go to other shops in the hopes that those shops will have the items not yet ticked off ones shopping list. Even then, the next shop may not have the items and you have to keep going from shop to shop until you finally get all the items needed. There is clearly a need for a more efficient way of finding all the items on your shopping list in the shortest travel time, via shortest route or via the most cost effective route.\\
 			
-			The purpose of this project is to provide a web application that allows a user to enter their shopping items into a shopping list and in turn provides the user with the ideal route to the nearest stores that will fulfil their needs.
+			The purpose of this project is to provide a customer with a user interactive web application that allows a customer to create a shopping list of items and in return generates the ideal route the customer should travel to the stores of interest. 
 		
 		\subsubsection{Document Conventions}
 		
@@ -141,8 +144,16 @@
 		\subsubsection{Definitions and Acronyms}
 		
 			\begin{itemize}
-				\item RDMS - Relational Database Management System: Specific type of database which models the interaction between data objects
+				\item Apache: A web server
+				\item CSS - Cascading Style Sheets: A means of defining the appearance of a web-page
+				\item Git: A program for software version control
+				\item HTML - Hyper Text Markup Language: A markup language for creating web-pages
+				\item HTTP - Hyper Text Transfer Protocol: The protocol responsible for handling the behaviour of HTML over a network
 				\item MVC - Model-View-Controller: A software development design pattern
+				\item RDMS - Relational Database Management System: Specific type of database which models the interaction between data objects
+				\item UI - User Interface: The part of an application that a user interacts with
+				\item UX - User Experience: Describes the attitude of the user with regards to interacting with the UI
+				
 			\end{itemize}
 		
 	\subsection{Overall Description}
@@ -215,11 +226,11 @@
 		
 		\subsubsection{Design and Implementation Constraints} 
 		
-			Shopping Route Recommender is platform independent and is written using PostgreSQL, PHP, Javascript, HTML and CSS. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps API utilised. 
+			Shopping Route Recommender is platform independent and is written using PostgreSQL, PHP, JavaScript, HTML and CSS. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps API utilised. 
 		
 		\subsubsection{User Documentation}
 		
-			An application menu will be provided within the application. The menu will house information about the application, the application settings, history tab that is used to store user recent shopping route and a help function that will function as the "user manual" of the application. 
+			An application menu will be provided within the application. The menu will house information about the application, the application settings, history tab that is used to store user recent shopping routes and a help function that will function as the "user manual" of the application. 
 		
 		\subsubsection{Assumptions and Dependencies}
 		
@@ -354,16 +365,16 @@
 		The most common features of SRRec's GUI are:
 		
 		\begin{itemize}
-			\item The sidebar menu accessible from all the subsequent pages:
-			\begin{figure}[h!]
+			\item The sidebar menu accessible from all the subsequent pages can be seen in Figure~\ref{menu}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[scale = 0.3]{../images/menu.jpg}
 				\caption{Menu bar of application}
 				\label{menu}
 			\end{figure}
 			
-			\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route. Also, a view showing the accessible menu:
-			\begin{figure}[h!]
+			\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route can be seen in Figure~\ref{home page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width = \columnwidth]{../images/index_new.png}
 				\caption{Home page of application}
@@ -377,25 +388,24 @@
 				\label{home page_menu}
 			\end{figure}
 			
-			\newpage
-			\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation:
-			\begin{figure}[h!]
+			\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation can be seen in Figure~\ref{map page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width =\columnwidth]{../images/map_gen_new.png}
 				\caption{Page displaying route and directions}
 				\label{map page}
 			\end{figure}
 			
-			\item The page where a user can either login or create a new account:
-			\begin{figure}[h!]
+			\item The page where a user can either login or create a new account can be seen in Figure~\ref{login page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width = \columnwidth]{../images/login_new.png}
 				\caption{Page for entering user login details}
 				\label{login page}
 			\end{figure}
-			
-			\item The page where a new user can create an account:
-			\begin{figure}[h!]
+				
+			\item The page where a new user can create an account can be seen in Figure~\ref{create account page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width = \columnwidth]{../images/create_account_new.png}
 				\caption{Page for creating a user account}
@@ -460,7 +470,7 @@
 	
 		The overall system was designed according to the Model-View-Controller (MVC) design pattern. The primary motivation for the implementation of this design pattern was due to the fact that the SCRUM design approach was implemented. Due to SCRUM, and the incremental development associated with it, the UI is subject to changes as a result of client feedback. The MVC pattern implemented is depicted below in Figure~\ref{mvc}. The different aspect of this design will be detailed in sections to follow.
 		
-		\begin{figure}[h]
+		\begin{figure}[htbp]
 			\centering
 			\begin{tikzpicture}[node distance = 2.1cm, auto]
 			% Place nodes
@@ -510,24 +520,38 @@
 			\end{itemize}
 		\end{itemize}
 		
-%		A visual overview of the front end is provided below in Figure~\ref{front_end_overview}. This visual aims to provide a broader view into the interaction between the application objects as well as a brief description of the utilisation of different languages.
-%		
-%		\begin{figure}[h]
-%			\centering
-%			\begin{tikzpicture}[node distance = 2.1cm, auto]
-%			% Place nodes
-%			\node [process] (model) {Model \\ (PostgreSQL)};
-%			\node [process, below of=model] (cont) {Controller \\ (PHP5)};
-%			\node [process, below of=cont] (view) {View \\ (HTML, css)};
-%			% Draw edges
-%			\path [line] ([xshift=0.5cm]cont.north) -- node [anchor=west] {\scriptsize{PHP5}} ([xshift=0.5cm]model.south);
-%			\path [line] ([xshift=-0.5cm]model.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]cont.north);
-%			\path [line] ([xshift=0.5cm]view.north) -- node [anchor=west] {\scriptsize{PHP5, JavaScript}} ([xshift=0.5cm]cont.south);
-%			\path [line] ([xshift=-0.5cm]cont.south) -- node [anchor=east] {\scriptsize{PHP5}} ([xshift=-0.5cm]view.north);
-%			\end{tikzpicture}
-%			\caption{Overview of that data objects implemented in the front-end}
-%			\label{front_end_overview}
-%		\end{figure}
+		A visual overview of the front end is provided below in Figure~\ref{front_end_overview}. This visual aims to provide a broader view into the interaction between the application objects as well as a brief description of the utilisation of different languages.
+		
+		\begin{figure}[htbp]
+			\centering
+			\begin{scriptsize}
+				\begin{tikzpicture}[node distance = 2.1cm, auto]
+				% Place nodes
+				\node [longblock] (user) {User Interface};
+				\node [shortblock, below = 1cm of user] (menu) {Menu};
+				\node [shortblock, left of=menu] (login) {Login};
+				\node [shortblock, left of=login] (create) {Create Account};
+				\node [shortblock, right of=menu] (home) {Home};
+				\node [shortblock, right of=home] (map) {Map View};
+				\node [shortblock, below = 1cm of menu] (css) {CSS};
+				\node [shortblock, right of=css] (php) {PHP5};
+				\node [shortblock, left of=css] (html) {HTML};
+				\node [shortblock, right of=php] (java) {Java Script};
+				\node [shortblock, below = 1cm of java] (maps) {Google Maps API};
+				\node [medblock, below = 1cm of css] (db) {Database interface};
+				\node [draw, fit = (menu) (login) (create) (home) (map)] (bound1) {};
+				\node [draw, fit = (html) (css) (php)] (bound2) {};
+				\node [draw, fit = (maps) (java)] (bound3) {};
+				\path [line] (bound1) -- (user);
+				\path [line] (bound2) -- (bound1);
+				\path [line] (db) -- (bound2);
+				\path [line] (maps) -- (java);
+				\path [line] (bound3) -- (map);
+				\end{tikzpicture}
+			\end{scriptsize}
+			\caption{Overview of that data objects implemented in the front-end}
+			\label{front_end_overview}
+		\end{figure}
 	
 	\subsection{Design Considerations}
 	
@@ -552,7 +576,9 @@
 		
 	\subsection{Use Cases}
 	
-		\begin{table}[h]
+		An overview of the different use cases observed is presented below. Is use case is presented in a full detailed description, this is to avoid any misunderstanding of concepts.
+	
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for creating an account}
 			\label{uc:create_account}
@@ -580,7 +606,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for logging into the user account}
 			\label{uc:login}
@@ -607,7 +633,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for adding items to the shopping list}
 			\label{uc:add_item}
@@ -641,7 +667,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for removing items from the shopping list}
 			\label{uc:remove_item}
@@ -676,7 +702,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for generating the map with directions}
 			\label{uc:map}
