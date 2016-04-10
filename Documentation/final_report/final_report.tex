@@ -375,7 +375,7 @@
 				\label{menu}
 			\end{figure}
 			
-			\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route can be seen in Figure~\ref{home page}:
+			\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route can be seen in Figure~\ref{home page} and in Figure~\ref{home page_menu} with the accessible menu expanded:
 			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width = \columnwidth]{../images/index_new.png}
@@ -422,7 +422,7 @@
 		
 		\subsubsection{Software Interfaces}
 		
-		SRRec is a web application. Therefore it will be compatible with all operating systems including smartphone and tablet operating systems. It only needs to be compatible on web browsers which support HTML, CSS, JavaScript and PHP. It has been tested on Motzilla, Firefox, Google Chrome, Microsoft Edge and Safari web browsers. \\
+		SRRec is a web application. Therefore it will be compatible with all operating systems including smartphone and tablet operating systems. It only needs to be compatible on web browsers which support HTML, CSS, JavaScript and PHP. It has been tested on Mozilla Firefox, Google Chrome, Microsoft Edge and Safari web browsers. \\
 		
 		Furthermore, the application makes use of the Google Maps API in order to generate and display the map with the optimised shopping route. 
 		
@@ -438,7 +438,7 @@
 		
 		Since the SRRec is a website application, any changes or updates made will be automatically available to the user the next time the website is loaded. Thus SRRec will always be up-to-date.\\
 		
-		The application should have a maximum range for the shops selected so as not to recommend an infeasible route. It should also be able to still provide a route even if certain items are not available nearby.
+		The application should have a maximum range for the shops selected so as not to recommend an impractical route. It should also be able to still provide a route even if certain items are not available nearby.
 		
 		\subsubsection{Safety Requirements}
 		
@@ -551,7 +551,7 @@
 				\path [line] (bound3) -- (map);
 				\end{tikzpicture}
 			\end{scriptsize}
-			\caption{Overview of that data objects implemented in the front-end}
+			\caption{Overview of the data objects implemented in the front-end}
 			\label{front_end_overview}
 		\end{figure}
 	
@@ -561,7 +561,7 @@
 		
 			The primary assumption is that the maps API that the general public is most familiar with is Google Maps. Hence, the Google Maps API was selected as the mapping utility to be used. Another assumption is that the most commonly spoken language amongst all users is English, as a result the application is designed primarily for English. \\
 			
-			In order for a user to interact with the application the user is required to have access to an electronic device as well an internet connection. 
+			In order for a user to interact with the application the user is required to have access to an electronic device as well as an internet connection. 
 			
 		\subsubsection{Success Criteria}
 		
@@ -569,16 +569,16 @@
 			
 	\subsection{Architectural Strategies}
 	
-		Certain architectural strategies were implemented in order to obtain a prototype in the shortest possible time. The primary motivation for implementing these strategies is that developing an effective user interface from the ground-up can be unnecessarily time consuming. The strategies implemented are made mention of below:
+		Certain architectural strategies were implemented in order to obtain a prototype in the shortest possible time. The primary motivation for implementing these strategies is that developing an effective user interface from the ground-up can be unnecessarily time consuming. The strategies implemented are mentioned below:
 		
 		\begin{itemize}
 			\item JavaScript: The use of JavaScript to interface with the Google Maps API was primarily due to the fact that this code had previously been written and thus could simply be reused. Developing wrapper functions in \texttt{PHP5} to interface with the API would have consumed time and was deemed unnecessary to implement for a prototype. This was acknowledged as a future aspect to be ported to \texttt{PHP5}.
-			\item CSS: Majority of the \texttt{css} files implemented are due to previous experience with the open source packages. Due to the familiarity of how to interact with the packages it reduced the time required to obtain the desired appearance and behaviour of the UI.
+			\item CSS: Majority of the \texttt{css} files were implemented due to previous experience with the open source packages. Due to the familiarity of how to interact with the packages it reduced the time required to obtain the desired appearance and behaviour of the UI.
 		\end{itemize}
 		
 	\subsection{Use Cases}
 	
-		An overview of the different use cases observed is presented below. Is use case is presented in a full detailed description, this is to avoid any misunderstanding of concepts.
+		An overview of the different use cases observed is presented below. These use cases are presented in a full detailed description, in order to avoid any misunderstanding of concepts.
 	
 		\begin{table}[htbp]
 			\centering
@@ -588,7 +588,7 @@
 				\hline
 				\textbf{Use Case} & \textbf{Description} \\ \hline
 				Name &  Creating an account \\ \hline
-				Description & The user of the application wishes to utilise, thus is required to first create an account \\ \hline
+				Description & A new user wishing to utilise the application is required to first create an account \\ \hline
 				Primary Actor & User of application \\ \hline
 				Use Case Type & Client \\ \hline
 				Interested Stakeholders & Shops that supply data to the application \\ \hline
@@ -598,7 +598,7 @@
 				Typical Flow of Events & 
 				\begin{itemize}
 					\item The user accesses the create account page
-					\item The user enters the following informations correctly: full name, email address, password and password confirmation
+					\item The user enters the following information correctly: full name, email address, password and password confirmation
 					\item The user clicks the `Create Account' button
 					\item The user is redirected to the home/index page
 				\end{itemize}
@@ -621,7 +621,7 @@
 				Use Case Type & Client \\ \hline
 				Interested Stakeholders & Designers of the application \\ \hline
 				Goal & The user is able to successfully log into their account and view their corresponding information \\ \hline
-				Precondition & The user has entered their details in correctly \\ \hline
+				Precondition & The user has entered their details correctly \\ \hline
 				Trigger & The user clicks the `Login' button \\ \hline
 				Typical Flow of Events & 
 				\begin{itemize}
@@ -677,7 +677,7 @@
 				\hline
 				\textbf{Use Case} & \textbf{Description} \\ \hline
 				Name & Remove item \\ \hline
-				Description & The user wished to remove an item from the shopping list \\ \hline
+				Description & The user wished to remove an item from their shopping list \\ \hline
 				Primary Actor & User of application \\ \hline
 				Use Case Type & Client \\ \hline
 				Interested Stakeholders & Shops that supply data to the application \\ \hline
@@ -699,8 +699,12 @@
 					\item The updated list is displayed on the screen for the user to view
 				\end{itemize}
 				\\ \hline
-				Assumptions & The user has previously added the item they wish to remove to their list \\
-				\hline
+				Assumptions & 
+				\begin{itemize}
+					\item The user has correctly spelt the item/s they wish to remove
+					\item The items that the user wishes to remove are currently in their list
+				\end{itemize}
+				\\ \hline
 			\end{tabular}
 		\end{table}
 		
@@ -717,7 +721,7 @@
 				Use Case Type & Client \\ \hline
 				Interested Stakeholders & Shops that supply data to the application \\ \hline
 				Goal & The user is able to successfully generate a map with the associated directions \\ \hline
-				Precondition & The user has create and edited their shopping list \\ \hline
+				Precondition & The user has create and is satisfied with their shopping list \\ \hline
 				Trigger & The user clicks the `Generate Map' button \\ \hline
 				Typical Flow of Events & 
 				\begin{itemize}
@@ -738,9 +742,9 @@
 		
 		\subsubsection{Style Modules (CSS)}
 		
-		\subsubsection*{title1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html web page based on pixels length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.
+		\subsubsection*{title1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html web page based on pixel length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.
 		
-		\subsubsection*{maps.css:} This style is used to position the displays of the generated map and directions windows. Further class aspects are added in order to change the font size and positioning within the directions panel.
+		\subsubsection*{maps.css:} This style is used to specify the positions of the generated map and directions windows. Further class aspects are added in order to change the font size and positioning within the directions panel.
 		
 		\subsubsection*{idenav.css:} This css module is used to customise the side navigation menu panel. It styles the background colour, and text font and colour. It also positions the menu correctly and adjusts its extension into the page when the menu button is pressed.
 		
@@ -752,7 +756,7 @@
 		
 		\subsubsection{Create Account Module}
 		
-		The create account script is simply involved in allowing different users to create an account. The module primarily interfaces with the database in order to store the users details allowing them to access the web application and some point in the future. The script performs simple checks such as password confirmation and whether or not the information entered is of the correct form, this is all achieved through \texttt{PHP5} code embedded within the HTML code. Once the information entered satisfies all the required criteria, the page then interfaces with the database and adds the user, following this the user is redirected to the applications home page. The redirection is achieved through the use of the \texttt{PHP5} command \texttt{header(Location: `page.php')}. 
+		The create account script is simply involved in allowing different users to create an account. The module primarily interfaces with the database in order to store the users details allowing them to access the web application at some point in the future. The script performs simple checks such as password confirmation and whether or not the information entered is of the correct form, this is all achieved through \texttt{PHP5} code embedded within the HTML code. Once the information entered satisfies all the required criteria, the page then interfaces with the database and adds the user, following this the user is redirected to the applications home page. The redirection is achieved through the use of the \texttt{PHP5} command \texttt{header(Location: `page.php')}. 
 		
 		\subsubsection{Login Module}
 		
@@ -762,7 +766,7 @@
 		
 		\subsubsection{Home Page Module}
 		
-		This is the page the user interacts with to input their preferences. It is the homepage of the web application and will therefore be the first page that the user is displayed once they have logged in.\\
+		This is the page the user interacts with to input their preferences. It is the homepage of the web application and will therefore be the first page that the user interacts with once they have logged in.\\
 		
 		The page's main feature is the dynamically updating shopping list. The user is provided with the ability to alter the shopping list by either adding items to, or removing items from, the list. All changes made are relayed to the database, thus allowing the user to add and remove items from the shopping list on an ad hoc basis. Thus any changes made by the user will be permanently stored until such time that the user request that the route be generated. A future implementation is to allow the user to store multiple commonly used lists. \\
 		
@@ -770,23 +774,23 @@
 		
 		The last requirement from the user is for them to select their desired means of optimisation. The user is presented with the option to optimise the route by one of the following means: cheapest total cost, shortest possible route or quickest possible route. The default implementation for the prototype is the cheapest possible route as this encompasses all the basic functionality of the system. \\
 		
-		Once the user has added all of their desired items to the shopping list they are required to select the `Generate Route' button. This will generate a route, with directions, based on the items and chosen optimisation. All optimisation is performed by the back-end and relayed to the front-end in the for of a set of co-ordinates.
+		Once the user has added all of their desired items to the shopping list they are required to select the `Generate Route' button. This will generate a route, with directions, based on the items and chosen optimisation. All optimisation is performed by the back-end and relayed to the front-end in the form of a set of co-ordinates.
 		
 		\subsubsection{Route Generation Module}
 		
-		This module requires information sent from the back-end. This information will consist of the users current location as well as all of the stopovers on the route. This information is sent to the Google API which in turn will return the response. This response is thus displayed on a Google Map in a separate window with the written directions alongside.
+		This module requires information sent from the back-end. This information will consist of the users current location as well as all of the stopovers on the route. This information is sent to the Google Maps API which in turn will return the response. This response is then displayed on a Google Map in a separate window with the written directions alongside.
 		
-		\subsubsection{Google Api Module}
+		\subsubsection{Google Maps API Module}
 		
 		\begin{itemize}
-			\item The Back-End of the program returns a 2D matrix, with each matrix slot containing an X and Y co-ordinates, to the Front-End. The co-ordinates correspond to the location of each shopping route waypoint. 
-			\item The Front-End uses the co-ordinates of all the waypoints to insert them into a Google Maps API request message.
-			\item The request message serves to connect to Google directions or directions matrix endpoints through 'https://maps.\\googleapis.com/maps/api'.
-			\item Upon each request, the Google API and user require an API key for each project as well as specific endpoint activations.
+			\item The back-end of the program returns a 2D matrix, with each matrix slot containing an X and Y co-ordinate, to the front-end. The co-ordinates correspond to the location of each shopping route waypoint. 
+			\item The front-end uses the co-ordinates of all the waypoints to insert them into a Google Maps API request message.
+			\item The request message serves to connect to Google directions or directions matrix endpoints through 'https://maps.googleapis.com/maps/api'.
+			\item Upon each request, the Google Maps API and front-end require an API key for each project as well as specific endpoint activations.
 			\item The JavaScript function \textit{initMap()} creates the \textit{DirectionsRenderer} and \textit{DirectionsServices} objects. It also maps the \textit{directionsDisplay} map and panel objects to the windows in the HTML document.
-			\item The \textit{DirectionsServices} object initialises a call to the API containing the routes information.
+			\item The \textit{DirectionsServices} object initialises a call to the API containing the route information.
 			\item The response and status are returned and displayed on the directions panel and map panel using the \textit{directionsDisplay} object.
-			\item The directions matrix endpoint is used to return distance and time information about the trips in order to select the optimal waypoints to send to the directions api.
+			\item The directions matrix endpoint is used to return distance and time information about the trips in order to select the optimal waypoints to send to the directions API.
 		\end{itemize}
 		
 \begin{center}
@@ -795,7 +799,7 @@
 
 	\subsection{Overview}
 	
-	The back-end is composed of the Relational Database Management System (RDMS) PostgreSQL. The database provides as the means of storing the relevant data obtained from different shops, storing information pertaining to the different users and manipulating the data during the optimisation calculations. The following sections will provide an description of how to back-end aspects of the application are composed.
+	The back-end is composed of the Relational Database Management System (RDMS) PostgreSQL. The database provides a means of storing the relevant data obtained from different shops, storing information pertaining to the different users and manipulating the data during the optimisation calculations. The following sections will provide a description of how the back-end aspects of the application are composed.
 		
 	\subsection{Design Considerations}
 	
