@@ -1,0 +1,126 @@
+\documentclass[10pt,twocolumn]{witseiepaper}
+
+% All KJN's macros and goodies (some shameless borrowing from SPL)
+
+\usepackage{KJN}
+
+
+\usepackage{verbatim} % for writing code in the text
+\usepackage{tikz} % for drawing stuff
+\usetikzlibrary{positioning} % for relative coordinates
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{pdfpages}
+
+\usepackage{listings} %for including code
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{color}
+
+\pagestyle{plain}
+
+\addtolength{\topmargin}{-.3in}
+\addtolength{\textheight}{0.3in}
+\addtolength{\oddsidemargin}{-.3in}
+\addtolength{\evensidemargin}{-.3in}
+\addtolength{\textwidth}{0.6in}
+
+% PDF Info
+\ifpdf
+\pdfinfo{
+/Title  (ELEN4009 Project Report)
+/Author (Devin Taylor, Matthew Marsden, Luka Cakic, Ronen Freeman)
+}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	
+	\includepdf{../images/cover_page.pdf}
+
+\title{SHOPPING ROUTE RECOMMENDER PROTOTYPE REPORT}
+
+\author{Devin Taylor, Matthew Marsden, Luka Cakic, Ronen Freeman}
+\thanks{School of Electrical \& Information Engineering, University of the
+	Witwatersrand, Private Bag 3, 2050, Johannesburg, South Africa}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abstract{}
+
+\keywords{}
+
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{INTRODUCTION}
+
+	\subsection{Problem Statement} 
+	
+		Shopping can often prove to be tedious and frustrating when a customer arrives at a shopping destination to find that the store is out of stock or does not stock the particular items of interest. As a result of this the customer is now forced to seek out alternative stores, which adds complication and frustration to an already stressful lifestyle. Even then, the alternative stores may pose the same problem. These issues are further enhanced when the customer has made a shopping list with multiple products. There is clearly a need for a more efficient way of purchasing a list of shopping desirables. \\
+		
+		The solution is to provide a user with a web application that structures a customers shopping experience based on user desired optimisations. The application maps out an optimised route based on reducing the travel time between stores, creating a shortest route between destinations and suggesting the stores with the cheapest product prices. Either optimisation will greatly assist a shopper with planning their weekly activities. \\
+		
+		The purpose of this project is to therefore provide a web application that allows a user to enter their shopping list and returns to the user a map with the ideal route to the nearest stores that will fulfil their needs. 
+
+	\subsection{Project Objectives}
+
+		The project objectives are listed in detail below:
+
+		\begin{itemize}
+			\item Design a web application that allows a user to base their daily shopping on an optimised route, the optimisations being:
+			\begin{itemize}
+				\item shortest travel time to meet all purchases of shopping list items 
+				\item shortest route for minimum total expenses
+				\item shortest route to satisfy all purchases on the shopping list 
+			\end{itemize}
+			\item Generate a Google maps route that reveals the user's optimised shopping route
+			\item Implement a structurally well designed back-end data base that contains data related to various shops/stores, their locations, various products and their prices.
+			\item Ensure the web application is user friendly and has an exceptional user experience
+		\end{itemize}
+
+	\subsection{Stakeholders}
+		
+		\textit{Users:} The proposed application is targeted at the general public. This is primarily due to the fact that nearly all member of the general public are required to shop in some capacity, be it for either items of need or items of desire. By targeting the general public it also expands the potential client base ensuring the greatest success of the product possible.\\
+		
+		\textit{Developers:} The developers consists of a well rounded group of engineers. Each member of the development group displays a strength in a particular field required for the successful design of the application. These skills are based primarily on experience and include the following: web development, user experience design, database configuration and database interfacing.\\ 
+		
+		\textit{Project Manager:} The project manager for the project has no formal training in the field of project management. Despite this, this member is often indirectly placed in positions similar to that of a project manager, as a result they are confident in their abilities to conduct a team efficiently. \\
+
+\section{SOFTWARE REQUIREMENT SPECIFICATION}
+
+
+\section{DESIGN DOCUMENT}
+
+\textbf{I: FRONT-END}
+
+
+	\subsection{Relevant Modules}
+
+
+\textbf{II: BACK-END}
+
+	
+	\subsection{Relevant Modules}
+
+\section{SPRINT PLANNING}
+
+
+
+\section{SPRINT RETROSPECTIVE}
+
+
+
+\newpage
+
+\begin{thebibliography}{1}
+	
+	\bibitem{rfc7230} Fielding R, Reschke J. `Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing.' IETF, RFC June 2014. [online] Available: \url{https://tools.ietf.org/html/rfc7230} Last Accessed: 3 April 2016
+	
+	
+\end{thebibliography}
+
+
+\end{document}
