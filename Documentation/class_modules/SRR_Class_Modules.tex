@@ -53,7 +53,7 @@
 		 
 	\section{Front-End Modules}
 	
-		\subsection{Style Modules (CSS)}
+		\subsubsection{Style Modules (CSS)}
 		
 		\textit{1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html web page based on pixels length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.\\
 		
@@ -63,21 +63,21 @@
 		
 		\textit{style.css:} The style css file is used to create the general style of the headers and buttons on all the web pages. This was encompassed in a single css as it would ensure consistency of all visual aspects of the web application across all web pages.  
 		
-		\subsection{Side Navigation Module}
+		\subsubsection{Side Navigation Module}
 		
 		The menu is displayed in a side navigation panel. This panel slides onto the web page from the left when the `Menu' button is selected. This functionality was achieved by using a JavaScript function called at the end of each web page so that it is always accessible. Furthermore, this module uses jQuery, a JavaScript library, designed to simplify client-side scripting of HTML.	
 		
-		\subsection{Create Account Module}
+		\subsubsection{Create Account Module}
 		
 			The create account script is simply involved in allowing different users to create an account. The module primarily interfaces with the database in order to store the users details allowing them to access the web application and some point in the future. The script performs simple checks such as password confirmation and whether or not the information entered is of the correct form, this is all achieved through \texttt{PHP5} code embedded within the HTML code. Once the information entered satisfies all the required criteria, the page then interfaces with the database and adds the user, following this the user is redirected to the applications home page. The redirection is achieved through the use of the \texttt{PHP5} command \texttt{header(Location: `page.php')}. 
 		
-		\subsection{Login Module}
+		\subsubsection{Login Module}
 			
 			The login script is similar in nature to that of the create account module in the sense that it consists of a basic HTML form that interfaces with the database. Despite this, the login module is required to read and write from the database. \\
 			
 			Once the user enters their credentials, the database is invoked via a POST request to obtain the password corresponding to the entered email. The embedded \texttt{PHP5} code is then responsible for comparing the password from the database to that entered by the user and bringing about the correct response. If the credentials are correct the user is redirected to the home page, otherwise the user will be required to re-enter their credentials.
 		
-		\subsection{Home Page Module}
+		\subsubsection{Home Page Module}
 		
 		This is the page the user interacts with to input their preferences. It is the homepage of the web application and will therefore be the first page that the user is displayed once they have logged in.\\
 		
@@ -89,11 +89,11 @@
 		
 		Once the user has added all of their desired items to the shopping list they are required to select the `Generate Route' button. This will generate a route, with directions, based on the items and chosen optimisation. All optimisation is performed by the back-end and relayed to the front-end in the for of a set of co-ordinates.
 		
-		\subsection{Route Generation Module}
+		\subsubsection{Route Generation Module}
 		
 		This module requires information sent from the back-end. This information will consist of the users current location as well as all of the stopovers on the route. This information is sent to the Google API which in turn will return the response. This response is thus displayed on a Google Map in a separate window with the written directions alongside.
 		
-		\subsection{Google Api Module}
+		\subsubsection{Google Api Module}
 		
 				\begin{itemize}
 					\item The Back-End of the program returns a 2D matrix, with each matrix slot containing an X and Y co-ordinates, to the Front-End. The co-ordinates correspond to the location of each shopping route waypoint. 
@@ -110,7 +110,7 @@
 		
 		These modules describe the method in which the User-Interface of the web page (i.e. the front-end) interacts with and accesses the database (i.e. the back-end).
 		
-		\subsection{Home Page Module}
+		\subsubsection{Home Page Module}
 			
 			This module receives items to be added and/or removed from the users shopping list. All the new items are added to the users shopping list on the database. The items to be removed are compared with the users current shopping list. If these items are in the database they will be permanently removed.\\
 			
@@ -120,13 +120,13 @@
 			
 			\textit{Preferred Optimisation:} In future iterations of this project the ability to select a preferred route optimisation will be allowed. The back-end which receive which type of optimisation to perform, namely shortest total distance, lowest total cost or shortest total time. The back-end will then use this optimisation when selecting which stores to visit and/or which route to travel.
 			
-		\subsection{Database Permutations Module}
+		\subsubsection{Database Permutations Module}
 			
 			The origin location and shopping list are received by this module. The module is then responsible for generating all the possible routes for the user. The module accesses the database to determine which shops sell the products on the users shopping list. The code then dynamically creates tables for each item on the list which contains a column corresponding to all the shops which sell the product as well as another column for all the prices of that item at the corresponding shops. \\
 						
 			Once all the tables have been created the code then performs a \texttt{CROSS JOIN} on all the tables which provides all the possible permutations of shops that contain the items on the shopping list. In the same line of code a sum of all the prices is taken. The resulting table consists of a new route on each row with each column corresponding to a waypoint on the route. The final column of the table contains the total cost of the items for that route. The above table is then ordered in descending order according to price. This is to make determining the cheapest route easier in further calculations.
 			
-		\subsection{Route Generation Module}
+		\subsubsection{Route Generation Module}
 				
 			This module is responsible for combining the route information into the correct format for the `presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. The code is triggered, in conjunction with the permutations module, when the user selects the `Generate Route' button on the home page. \\
 					
@@ -134,11 +134,11 @@
 			
 			As the cheapest route means on optimisation is the only option available in the prototype, the other means of optimisation will be achieved in the following manner. The information for the shortest route and fastest route can only be obtained from the Google Maps API. In order to differentiate between the routes, the database will present the front-end with an individual route at a time. The front-end will then interface with the API to obtain the distance and time and forward the information to the database. This concept will be repeated for all routes, at which point the back-end will have the required information to be able to determine the cheapest, fastest and shortest routes. Therefore, irrespective of the optimisation chosen the database will be able to provide the front-end with the corresponding route.
 			
-		\subsection{Create Account Module}
+		\subsubsection{Create Account Module}
 			
 			A new users full name, email address and password is received by this module. These credentials are then stored in a table within the database and used later for user verification by the login module.
 			
-		\subsection{Login Module}
+		\subsubsection{Login Module}
 			 
 			This module receives an email address and password. These credentials are then compared with those stored in the database. If a match is made then that users specific shopping list is retrieved from the database and passed to the front-end to be displayed.
 
