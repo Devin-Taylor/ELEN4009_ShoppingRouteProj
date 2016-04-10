@@ -144,8 +144,16 @@
 		\subsubsection{Definitions and Acronyms}
 		
 			\begin{itemize}
-				\item RDMS - Relational Database Management System: Specific type of database which models the interaction between data objects
+				\item Apache: A web server
+				\item CSS - Cascading Style Sheets: A means of defining the appearance of a web-page
+				\item Git: A program for software version control
+				\item HTML - Hyper Text Markup Language: A markup language for creating web-pages
+				\item HTTP - Hyper Text Transfer Protocol: The protocol responsible for handling the behaviour of HTML over a network
 				\item MVC - Model-View-Controller: A software development design pattern
+				\item RDMS - Relational Database Management System: Specific type of database which models the interaction between data objects
+				\item UI - User Interface: The part of an application that a user interacts with
+				\item UX - User Experience: Describes the attitude of the user with regards to interacting with the UI
+				
 			\end{itemize}
 		
 	\subsection{Overall Description}
@@ -357,34 +365,32 @@
 		The most common features of SRRec's GUI are:
 		
 		\begin{itemize}
-			\item The sidebar menu accessible from all the subsequent pages:
-			\begin{figure}[h!]
+			\item The sidebar menu accessible from all the subsequent pages can be seen in Figure~\ref{menu}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[scale = 0.3]{../images/menu.PNG}
 				\caption{Menu bar of application}
 				\label{menu}
 			\end{figure}
 			
-			\newpage
-			\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route:
-			\begin{figure}[h!]
+			\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route can be seen in Figure~\ref{home page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width = \columnwidth]{../images/index_new.png}
 				\caption{Home page of application}
 				\label{home page}
 			\end{figure}
 			
-			\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation:
-			\begin{figure}[h!]
+			\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation can be seen in Figure~\ref{map page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width =\columnwidth]{../images/map_gen_new.png}
 				\caption{Page displaying route and directions}
 				\label{map page}
 			\end{figure}
 			
-			\newpage
-			\item The page where a user can either login or create a new account:
-			\begin{figure}[h!]
+			\item The page where a user can either login or create a new account can be seen in Figure~\ref{login page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width = \columnwidth]{../images/login_new.png}
 				\caption{Page for entering user login details}
@@ -392,8 +398,8 @@
 			\end{figure}
 			
 			
-			\item The page where a new user can create an account:
-			\begin{figure}[h!]
+			\item The page where a new user can create an account can be seen in Figure~\ref{create account page}:
+			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width = \columnwidth]{../images/create_account_new.png}
 				\caption{Page for creating a user account}
@@ -458,7 +464,7 @@
 	
 		The overall system was designed according to the Model-View-Controller (MVC) design pattern. The primary motivation for the implementation of this design pattern was due to the fact that the SCRUM design approach was implemented. Due to SCRUM, and the incremental development associated with it, the UI is subject to changes as a result of client feedback. The MVC pattern implemented is depicted below in Figure~\ref{mvc}. The different aspect of this design will be detailed in sections to follow.
 		
-		\begin{figure}[h]
+		\begin{figure}[htbp]
 			\centering
 			\begin{tikzpicture}[node distance = 2.1cm, auto]
 			% Place nodes
@@ -510,7 +516,7 @@
 		
 		A visual overview of the front end is provided below in Figure~\ref{front_end_overview}. This visual aims to provide a broader view into the interaction between the application objects as well as a brief description of the utilisation of different languages.
 		
-		\begin{figure}[h]
+		\begin{figure}[htbp]
 			\centering
 			\begin{scriptsize}
 				\begin{tikzpicture}[node distance = 2.1cm, auto]
@@ -564,7 +570,9 @@
 		
 	\subsection{Use Cases}
 	
-		\begin{table}[h]
+		An overview of the different use cases observed is presented below. Is use case is presented in a full detailed description, this is to avoid any misunderstanding of concepts.
+	
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for creating an account}
 			\label{uc:create_account}
@@ -592,7 +600,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for logging into the user account}
 			\label{uc:login}
@@ -619,7 +627,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for adding items to the shopping list}
 			\label{uc:add_item}
@@ -653,7 +661,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for removing items from the shopping list}
 			\label{uc:remove_item}
@@ -688,7 +696,7 @@
 			\end{tabular}
 		\end{table}
 		
-		\begin{table}[h]
+		\begin{table}[htbp]
 			\centering
 			\caption{Use case for generating the map with directions}
 			\label{uc:map}
