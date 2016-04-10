@@ -64,7 +64,7 @@
 
 	\subsection{Problem Statement} 
 	
-		Shopping can often prove to be tedious and frustrating when a customer arrives at a shopping destination to find that the store is out of stock or does not stock the particular items of interest. As a result of this the customer is now forced to seek out alternative stores, which adds complication and frustration to an already stressful lifestyle. Even then, the alternative stores may pose the same problem. These issues are further enhanced when the customer has made a shopping list with multiple products. There is clearly a need for a more efficient way of purchasing a list of shopping desirables. \\
+		Shopping can often prove to be tedious and frustrating when a customer arrives at a shopping destination to find that the store is out of stock or does not stock the particular items of interest. As a result of this the customer is now forced to seek out alternative stores, which adds complication and frustration to an already stressful lifestyle \cite{stress}. Even then, the alternative stores may pose the same problem. These issues are further enhanced when the customer has made a shopping list with multiple products. There is clearly a need for a more efficient way of purchasing a list of shopping desirables. \\
 		
 		The solution is to provide a user with a web application that structures a customers shopping experience based on user desired optimisations. The application maps out an optimised route based on reducing the travel time between stores, creating a shortest route between destinations and suggesting the stores with the cheapest product prices. Either optimisation will greatly assist a shopper with planning their weekly activities. \\
 		
@@ -81,7 +81,7 @@
 				\item shortest route for minimum total expenses
 				\item shortest route to satisfy all purchases on the shopping list 
 			\end{itemize}
-			\item Generate a Google maps route that reveals the user's optimised shopping route
+			\item Generate a Google maps route that reveals the user's optimised shopping route~\cite{maps}
 			\item Implement a structurally well designed back-end data base that contains data related to various shops/stores, their locations, various products and their prices.
 			\item Ensure the web application is user friendly and has an exceptional user experience
 		\end{itemize}
@@ -100,7 +100,7 @@
 		
 		\subsubsection{Purpose}
 		
-			This document details the Software Requirements Specification (SRS) for the Shopping Route Recommender (SRRec) web application. The document also follows the IEEE standard for SRS documents.\\
+			This document details the Software Requirements Specification (SRS) for the Shopping Route Recommender (SRRec) web application. The document also follows the IEEE standard for SRS documents \cite{ieee}.\\
 			
 			Shopping can often prove to be tedious and frustrating when you find out that the shop you are at does not stock or is out of stock of certain products that are on your shopping list. One then needs to go to other shops in the hopes that those shops will have the items not yet ticked off ones shopping list. Even then, the next shop may not have the items and you have to keep going from shop to shop until you finally get all the items needed. There is clearly a need for a more efficient way of finding all the items on your shopping list in the shortest travel time, via shortest route or via the most cost effective route.\\
 			
@@ -144,13 +144,15 @@
 		\subsubsection{Definitions and Acronyms}
 		
 			\begin{itemize}
-				\item Apache: A web server
+				\item Apache: A web server 
 				\item CSS - Cascading Style Sheets: A means of defining the appearance of a web-page
 				\item Git: A program for software version control
 				\item HTML - Hyper Text Markup Language: A markup language for creating web-pages
 				\item HTTP - Hyper Text Transfer Protocol: The protocol responsible for handling the behaviour of HTML over a network
 				\item MVC - Model-View-Controller: A software development design pattern
+				\item PHP5: A scripting language commonly associated with web development
 				\item RDMS - Relational Database Management System: Specific type of database which models the interaction between data objects
+				\item PostgreSQL: A type of RDMS
 				\item UI - User Interface: The part of an application that a user interacts with
 				\item UX - User Experience: Describes the attitude of the user with regards to interacting with the UI
 				
@@ -234,7 +236,7 @@
 		
 		\subsubsection{Assumptions and Dependencies}
 		
-			The application is functionally depenedndant on Google Maps API. This API is integral to displaying the shopping route and directions to the user. One assumption is therefore that Google Maps is available on the website and shows the route from one shopping mall or shop to the next. Another functional dependency is that the application depends on the product database of each shop stored in the application's database. It is therefore assumed that each shop has a database of items that they stock as well as their respective prices. These product databases are continuously updated by each of the stores. The application must therefore contain the latest product database updates from each of the stores. The SRRec database must therefore be automatically updated once a store has registered an update in its product database. This is an important functional dependency if the application is to be as accurate as possible in terms of product pricing. 
+			The application is functionally dependant on Google Maps API. This API is integral to displaying the shopping route and directions to the user. One assumption is therefore that Google Maps is available on the website and shows the route from one shopping mall or shop to the next. Another functional dependency is that the application depends on the product database of each shop stored in the application's database. It is therefore assumed that each shop has a database of items that they stock as well as their respective prices. These product databases are continuously updated by each of the stores. The application must therefore contain the latest product database updates from each of the stores. The SRRec database must therefore be automatically updated once a store has registered an update in its product database. This is an important functional dependency if the application is to be as accurate as possible in terms of product pricing. 
 		
 	\subsection{System Features}
 		
@@ -464,11 +466,11 @@
 		
 	\subsection{Development Methods}
 	
-		The system is to be developed according to the SCRUM principles. This is ideally because an agile method of development is often preferred when designing an application. This is due to the frequent changes that the application is subject to. It is recommended that the reader familiarises themselves with the composed SCRUM selection document in order to understand the motivation behind the choices made.
+		The system is to be developed according to the SCRUM principles~\cite{scrum}. This is ideally because an agile method of development is often preferred when designing an application. This is due to the frequent changes that the application is subject to. It is recommended that the reader familiarises themselves with the composed SCRUM selection document in order to understand the motivation behind the choices made.
 	
 	\subsection{System Architectural Strategies}
 	
-		The overall system was designed according to the Model-View-Controller (MVC) design pattern. The primary motivation for the implementation of this design pattern was due to the fact that the SCRUM design approach was implemented. Due to SCRUM, and the incremental development associated with it, the UI is subject to changes as a result of client feedback. The MVC pattern implemented is depicted below in Figure~\ref{mvc}. The different aspect of this design will be detailed in sections to follow.
+		The overall system was designed according to the Model-View-Controller (MVC) design pattern~\cite{mvc}. The primary motivation for the implementation of this design pattern was due to the fact that the SCRUM design approach was implemented. Due to SCRUM, and the incremental development associated with it, the UI is subject to changes as a result of client feedback. The MVC pattern implemented is depicted below in Figure~\ref{mvc}. The different aspect of this design will be detailed in sections to follow.
 		
 		\begin{figure}[htbp]
 			\centering
@@ -799,7 +801,7 @@
 	
 		\subsubsection{Assumptions and Dependencies}
 		
-			The application is designed to run through an Apache2 server, this is primarily due to the server being easy to configure. The Apache2 server is also known to integrate well with database management systems, which is essential for the functionality of the application. As previously mentioned the database management system that was chosen is PostgreSQL and the database interfacing language is \texttt{PHP5}.
+			The application is designed to run through an Apache2 server, this is primarily due to the server being easy to configure~\cite{apache}. The Apache2 server is also known to integrate well with database management systems, which is essential for the functionality of the application. As previously mentioned the database management system that was chosen is PostgreSQL and the database interfacing language is \texttt{PHP5}~\cite{php}.
 			
 		\subsubsection{General Constraints}
 			
@@ -878,7 +880,7 @@
 
 \section{SPRINT PLANNING}
 
-	One of the ways in which the group plans on both implementing and monitoring the SCRUM method is through an application called Trello. Trello forms an important backbone to the structure of the SCRUM method planning, by providing a carded system. Each card forms part of a specific sprint, the cards can be taken by individual group members and upon completion of the tasks on the card (in the allocated time frame), the member updates the progress of the task. In doing so, the other group members are informed of all the individual member's project progress. A screen shot of the board currently being used can be seen below. 
+	One of the ways in which the group plans on both implementing and monitoring the SCRUM method is through an application called Trello~\cite{trello}. Trello forms an important backbone to the structure of the SCRUM method planning, by providing a carded system. Each card forms part of a specific sprint, the cards can be taken by individual group members and upon completion of the tasks on the card (in the allocated time frame), the member updates the progress of the task. In doing so, the other group members are informed of all the individual member's project progress. A screen shot of the board currently being used can be seen below. 
 	
 	\begin{figure}[h!]
 		\centering
@@ -991,7 +993,15 @@
 \newpage
 
 \begin{thebibliography}{1}
-	\bibitem{responsibility} Wirfs-Brock, R. \textit{A Brief Tour of Responsibility-Driven Design}. Wirfs-Brock Associates. Available: http://www.wirfs-brock.com/PDFs/A\_Brief-Tour-of-RDD.pdf. Last Access: 9 April 2016.
+	\bibitem{stress} Psychologist World. \textit{10 Causes of Stress}. Psychologist World. Available: https://www.psychologistworld.com/stress/ten-causes-of-stress-how-to-avoid-them.php\#references. Last Accessed: 1 April 2016. 
+	\bibitem{apache} Apache. \textit{The Apache Software Foundation}. Apache. Available: http://www.apache.org/. Last accessed: 3 April 2016.
+	\bibitem{php} PHP. \textit{PostgreSQL}. PHP. Available: http://php.net/manual/en/book.pgsql.php. Last accessed: 8 April 2016.
+	\bibitem{maps} Google. \textit{Google Maps APIs}. Google. Available: https://developers.google.com/maps/. Last accessed: 6 April 2016.
+	\bibitem{scrum} Mountain Goat Software. \textit{SCRUM}. Mountain Goat Software. Available: https://www.mountaingoatsoftware.com/agile/scrum. Last accessed: 2 April 2016.
+	\bibitem{ieee} IEEE. \textit{IEEE Recommended Practice for Software Requirements Specifications}. IEEE Std 830-1998 (Revision of IEEE Std 830-1993).
+	\bibitem{mvc} Microsoft. \textit{ASP.NET MVC Overview}. Microsoft. Available: https://msdn.microsoft.com/en-us/library/dd381412\%28v=vs.108\%29.aspx. Last accessed: 1 April 2016.
+	\bibitem{responsibility} Wirfs-Brock, R. \textit{A Brief Tour of Responsibility-Driven Design}. Wirfs-Brock Associates. Available: http://www.wirfs-brock.com/PDFs/A\_Brief-Tour-of-RDD.pdf. Last Accessed: 9 April 2016.
+	\bibitem{trello} Trello. \textit{About Trello}. Trello. Available: https://trello.com/about. Last accessed: 10 April 2016.
 \end{thebibliography}	
 
 
