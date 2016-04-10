@@ -531,8 +531,160 @@
 		
 	\subsection{Use Cases}
 	
+		\begin{table}[h]
+			\centering
+			\caption{Use case for creating an account}
+			\label{uc:create_account}
+			\begin{tabular}{|p{0.2\columnwidth}|p{0.7\columnwidth}|}
+				\hline
+				\textbf{Use Case} & \textbf{Description} \\ \hline
+				Name &  Creating an account \\ \hline
+				Description & The user of the application wishes to utilise, thus is required to first create an account \\ \hline
+				Primary Actor & User of application \\ \hline
+				Use Case Type & Client \\ \hline
+				Interested Stakeholders & Shops that supply data to the application \\ \hline
+				Goal & The successful creation of a new user account \\ \hline
+				Precondition & The user has entered credible details \\ \hline
+				Trigger & The user has entered all the required information and clicks the `Create Account' button \\ \hline
+				Typical Flow of Events & 
+				\begin{itemize}
+					\item The user accesses the create account page
+					\item The user enters the following informations correctly: full name, email address, password and password confirmation
+					\item The user clicks the `Create Account' button
+					\item The user is redirected to the home/index page
+				\end{itemize}
+				 \\ \hline
+				Assumptions & The user has an email address to use as a username \\
+				\hline
+			\end{tabular}
+		\end{table}
 		
+		\begin{table}[h]
+			\centering
+			\caption{Use case for logging into the user account}
+			\label{uc:login}
+			\begin{tabular}{|p{0.2\columnwidth}|p{0.7\columnwidth}|}
+				\hline
+				\textbf{Use Case} & \textbf{Description} \\ \hline
+				Name & Login \\ \hline
+				Description & The user wishes to login to their existing user account \\ \hline
+				Primary Actor & User of application \\ \hline
+				Use Case Type & Client \\ \hline
+				Interested Stakeholders & Designers of the application \\ \hline
+				Goal & The user is able to successfully log into their account and view their corresponding information \\ \hline
+				Precondition & The user has entered their details in correctly \\ \hline
+				Trigger & The user clicks the `Login' button \\ \hline
+				Typical Flow of Events & 
+				\begin{itemize}
+					\item The user navigates to the login page
+					\item The user inputs their details
+					\item The user is redirected to the home/index page
+				\end{itemize}
+				\\ \hline
+				Assumptions & The user has previously created an account \\
+				\hline
+			\end{tabular}
+		\end{table}
 		
+		\begin{table}[h]
+			\centering
+			\caption{Use case for adding items to the shopping list}
+			\label{uc:add_item}
+			\begin{tabular}{|p{0.2\columnwidth}|p{0.7\columnwidth}|}
+				\hline
+				\textbf{Use Case} & \textbf{Description} \\ \hline
+				Name & Add items to shopping list \\ \hline
+				Description & The user wishes to add items to their shopping list \\ \hline
+				Primary Actor & User of application \\ \hline
+				Use Case Type & Client \\ \hline
+				Interested Stakeholders & Client \\ \hline
+				Goal & To successfully add the required item/s to the shopping list \\ \hline
+				Precondition & The user has created an account and successfully logged in \\ \hline
+				Trigger & The user selects the `Update List' button \\ \hline
+				Typical Flow of Events & 
+				\begin{itemize}
+					\item The user logs in
+					\item The user is redirected to the home/index page
+					\item The user enters the items that they would like to add to the shopping list
+					\item The user selects the `Update List' button
+					\item The updated list is displayed on the screen for the user to view
+				\end{itemize}
+				\\ \hline
+				Assumptions &
+					\begin{itemize}
+						\item The user has correctly spelt the item/s they wish to add
+						\item The item the user is requesting exists on the database
+						\item The user has not already added the item to the shopping list
+					\end{itemize}
+					\\ \hline
+			\end{tabular}
+		\end{table}
+		
+		\begin{table}[h]
+			\centering
+			\caption{Use case for removing items from the shopping list}
+			\label{uc:remove_item}
+			\begin{tabular}{|p{0.2\columnwidth}|p{0.7\columnwidth}|}
+				\hline
+				\textbf{Use Case} & \textbf{Description} \\ \hline
+				Name & Remove item \\ \hline
+				Description & The user wished to remove an item from the shopping list \\ \hline
+				Primary Actor & User of application \\ \hline
+				Use Case Type & Client \\ \hline
+				Interested Stakeholders & Shops that supply data to the application \\ \hline
+				Goal & The user is able to successfully remove an item from their shopping list \\ \hline
+				Precondition &
+				\begin{itemize}
+					\item The user has created a shopping list
+					\item The user has added item/s to their shopping list
+					\item The user has entered the list of item/s they would like to remove
+				\end{itemize}
+				\\ \hline
+				Trigger & The user clicks the `Update List' button \\ \hline
+				Typical Flow of Events & 
+				\begin{itemize}
+					\item The user logs in
+					\item The user is redirected to the home/index page
+					\item The user enters the item/s they wish to remove
+					\item The user clicks the `Update List' button
+					\item The updated list is displayed on the screen for the user to view
+				\end{itemize}
+				\\ \hline
+				Assumptions & The user has previously added the item they wish to remove to their list \\
+				\hline
+			\end{tabular}
+		\end{table}
+		
+		\begin{table}[h]
+			\centering
+			\caption{Use case for generating the map with directions}
+			\label{uc:map}
+			\begin{tabular}{|p{0.2\columnwidth}|p{0.7\columnwidth}|}
+				\hline
+				\textbf{Use Case} & \textbf{Description} \\ \hline
+				Name & Generate Map \\ \hline
+				Description & The user wishes to view the recommended shopping route \\ \hline
+				Primary Actor & User of application \\ \hline
+				Use Case Type & Client \\ \hline
+				Interested Stakeholders & Shops that supply data to the application \\ \hline
+				Goal & The user is able to successfully generate a map with the associated directions \\ \hline
+				Precondition & The user has create and edited their shopping list \\ \hline
+				Trigger & The user clicks the `Generate Map' button \\ \hline
+				Typical Flow of Events & 
+				\begin{itemize}
+					\item The user logs in
+					\item The user is redirected to the home/index page
+					\item The user adds and/or removes items from their shopping list
+					\item The user selects a preferred means of optimisation
+					\item The user clicks the `Generate Route' button
+					\item The user is redirected to the page which displays the map and corresponding directions
+				\end{itemize}
+				\\ \hline
+				Assumptions & The user has items on their shopping list \\
+				\hline
+			\end{tabular}
+		\end{table}
+	\clearpage
 	\subsection{Relevant Modules}
 		
 		\subsubsection{Style Modules (CSS)}
