@@ -43,25 +43,37 @@
 \begin{document} 
 
 \onecolumn
-\thispagestyle{empty}
 
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
 	\title{\normalfont \normalsize
 		\textsc{University of Witwatersrand, Department of Electrical Engineering} \\ [10pt]
 		\horrule{0.5pt} \\ [10pt]
-		\huge Additional Tests Conducted \\
+		\huge Test Report \\
 		\horrule{2pt} \\ [10pt]}
 	\author{\textbf{\normalsize{Luka Cakic (671913), Ronen Freeman (386910), Devin Taylor (603956) and Matthew Marsden (609293)}} \\ [10pt]}
 	\date {\normalsize \today}
 	
 	\maketitle
 
-\onecolumn
 
 \section{Introduction}
 
-	Additional tests were conducted to ensure that the application was functioning as anticipated. One set of tests is to determine whether or not the web application is functioning correctly in terms of HTTP response and request messages, and the second set of tests it to determine whether or not the forms are functioning as expected.
+	Tests were conducted to ensure that the application was functioning as anticipated. One set of tests is to determine whether or not the web application is functioning correctly in terms of HTTP response and request messages, and the second set of tests include determining the specific interaction between objects within the software application.
+	
+\section{Unit Tests}
+
+	\subsection{Front-End}
+	
+		Determining whether or not the front-end is fully function revolves primarily around testing the integrity of the HTML files produced. Simple tests were conducted which checked the status codes returned when making HTTP requests as well as interlinking of pages. These tests can be found in the \texttt{Code/test\_suite/front\_end/} folder. \\
+		
+		The tests were written as HTML interactive tests, therefore simply opening the tests in the browser will determine the status of the tests.
+		
+	\subsection{Back-End}
+	
+		The back-end related tests revolved primarily around testing the integrity of the interfacing of the front-end with the database. These included testing the establishment of a connection with the database and interacting with the database. The tests written can be found in the \texttt{Code/test\_suite/back\_end/} folder.\\
+		
+		In order to execute the tests run the file from command line with the prefix \texttt{php}, i.e. \texttt{php filename.php}.
 	
 	
 \section{HTTP Request and Response Messages}
