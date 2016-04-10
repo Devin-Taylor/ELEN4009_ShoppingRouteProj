@@ -90,24 +90,532 @@
 		\textit{Project Manager:} The project manager for the project has no formal training in the field of project management. Despite this, this member is often indirectly placed in positions similar to that of a project manager, as a result they are confident in their abilities to conduct a team efficiently. \\
 
 \section{SOFTWARE REQUIREMENT SPECIFICATION}
-
+	
+		\subsection{Introduction}
+		
+		\subsubsection{Purpose}
+		
+		This document details the Software Requirements Specification (SRS) for the Shopping Route Recommender (SRRec) web application. The document also follows the IEEE standard for SRS documents.\\
+		
+		Shopping can often prove to be tedious and frustrating when you find out that the shop you are at does not stock or is out of stock of certain products that are on your shopping list. One then needs to go to other shops in the hopes that those shops will have the items not yet ticked off ones shopping list. Even then, the next shop may not have the items and you have to keep going from shop to shop until you finally get all the items needed. There is clearly a need for a more efficient way of finding all the items on your shopping list in the shortest travel time, shortest route or most cost effective route.\\
+		
+		The purpose of this project is to provide a web application that allows a user to enter their shopping items into a shopping list and in turn provides the user with the ideal route to the nearest stores that will fulfil their needs.
+		
+		\subsubsection{Document Conventions}
+		
+		This document is intended to accompany the SRRec software and should be updated with each update to the web application. This will ensure that the document remains relevant and useful.
+		
+		\subsubsection{Intended Audience and Reading Suggestions}
+		
+		This SRS document is intended for:
+		\begin{itemize}
+			\item Programmers that want to understand the outlines of how the SRRec web application works and the way in which the software has been implemented.
+			\item Project testers to use in order to better their testing strategies since some bugs are easier to find by using an SRS document.
+			\item End users of this web application who would like to read about how the SRRec can help them or what it is capable of doing.
+		\end{itemize}
+		
+		\subsubsection{Project Scope}
+		
+		SRRec is a web application that is capable of providing a route to all the nearest shops so as to fulfil a users entire shopping list while either following the shortest route, the route with the shortest travel time or the route that will result in minimal total shopping expenses. The shopper can continuously add items to their list and these items are logged to their respective list. When the shopper finally runs the SRRec he/she will obtain their user-determined recommended route of shops to visit in a particular order according to items on their list. The application provides a Graphical User Interface (GUI) with embedded Google Mapsto illustrate this generated route. \\
+		
+		We assume the following:
+		\begin{itemize}
+			\item There is already a map of all shopping malls and shops that sell various items that a shopper could add to their list.
+			\item Each shop has a database of the items that they stock and their respective prices.
+			\item The price of each item is a simple Rand value or indicated by Rand/kilogram, etc.
+			\item The SRRec runs on a website with access to the databases of all the shops.
+			\item Google maps is available on the website and shows the route from one shopping mall or shop to the next.
+		\end{itemize}
+		
+		The shopper is able to select one of three types of recommendation:
+		\begin{itemize}
+			\item shortest route.
+			\item shortest route for minimal total shopping expenses.
+			\item route with shortest travel time.
+		\end{itemize}
+		
+		The shopper will also be able to change their selected recommendation after visiting some shops and eliminating some items from their list. The SRRec can also incorporate stop-overs for coffe, drinks, lunch, etc. At a later stage, the shopper may even be able to provide a price range that they are willing to pay for each item.
+		
+		\subsection{Overall Description}
+		
+		\subsubsection{Product Perspective}
+		
+		The Shopping Route Recommender is an application used by consumers to maximise their shopping experience in terms of three preferred optimisations: minimum cost, travel distance and travel time. The consumer is able to log onto a Website or Smartphone application and create a shopping list with a desired route being generated.  Enabling a user to optimise their shopping experience is a potential success from the start, as their daily routines can become more efficiently and effectively undertaken. The application's use is not only restricted to the general public, but can also be used by businesses and companies involved in the stock collection courier service industries. The application is aimed at being user friendly, simple, and interactive with maximum customisation being a priority aspect in order to maximise an individuals needs. 
+		
+		\subsubsection{Product Features}
+		
+		The list of product features below aim to provide an easy-to-use, customizable application interface for all users. 
+		
+		\begin{itemize}
+			\item Interactive shopping list menu.
+			\begin{itemize}
+				\item add or remove item
+			\end{itemize}
+			\item Interactive optimisation selection options.
+			\begin{itemize}
+				\item minimise cost
+				\item minimise travel time
+				\item minimise travle distance
+			\end{itemize}
+			\item Interactive shopping area selection options.
+			\begin{itemize}
+				\item select from a number of suburbs or regions
+			\end{itemize}
+			\item Interactive route map displaying alternate routes for selection.
+			\begin{itemize}
+				\item rotate map
+				\item slide map
+				\item zoom in/out
+				\item satellite view
+			\end{itemize}
+		\end{itemize}
+		
+		\subsubsection{User Classes and Characteristics}
+		
+		The application is aimed for the general public's use as well as certain business industries. 
+		
+		\begin{itemize}
+			\item General Public
+			\begin{itemize}
+				\item General population wanting to buy their routine shopping list
+				\item General population looking for more specific products and their preferred optimised route
+				\item Foreign individuals looking for their ideal shopping locations or travel routes
+			\end{itemize}
+			\item Business Industries
+			\begin{itemize}
+				\item Courier companies collecting stock or products from various distributors/stores
+			\end{itemize}
+		\end{itemize}
+		
+		\subsubsection{Operating Environment}
+		
+		Shopping Route Recommender is an application designed to run on the most Web Browsers as well on Google Android and Mac OS X Smartphones. 
+		
+		\begin{itemize}
+			\item Software Requirements
+			\begin{itemize}
+				\item Internet connectivity
+				\item Entry level Smartphone
+				\item Mozilla Firefox, Microsoft Edge, Google Chrome, Microsoft Explorer, Safari
+			\end{itemize}
+			\item Hardware Requirements
+			\begin{itemize}
+				\item Entry level Smartphone with interactive touch screen
+			\end{itemize}
+		\end{itemize}
+		
+		\subsubsection{Design and Implementation Constraints} 
+		
+		Shopping Route Recommender is platform independent and is written using PostgreSQL, PHP, Javascript, HTML and CSS. In addition, Google Maps API is implemented for generating the desired optimised shopping route. The accuracy of the generated route and optimisation algorithms is therefore dependent on the accuracy of the Google Maps API utilised. 
+		
+		\subsubsection{User Documentation}
+		
+		An application menu will be provided within the application. The menu will house information about the application, the application settings, history tab that is used to store user recent shopping route and a help function that will function as the "user manual" of the application. 
+		
+		\subsubsection{Assumptions and Dependencies}
+		
+		The application is functionally depenedndant on Google Maps API. This API is integral to displaying the shopping route and directions to the user. One assumption is therefore that Google Maps is available on the website and shows the route from one shopping mall or shop to the next. Another functional dependency is that the application depends on the product database of each shop stored in the application's database. It is therefore assumed that each shop has a database of items that they stock as well as their respective prices. These product databases are continuously updated by each of the stores. The application must therefore contain the latest product database updates from each of the stores. The SRR database must therefore be automatically updated once a store has registered an update in its product database. This is an important functional dependency if the application is to be as accurate as possible in terms of product pricing. 
+		
+		\subsection{System Features}
+		
+		Shopping Route Recommender was designed with user experience as its primary concern. As a result of this the product features are simplistic in nature in order to provide the customer with only the essentials.	This section provides a detailed description of each system feature in order to make future system extensions as simple as possible. 
+		
+		\subsubsection{System Feature 1 - Adding items to shopping cart}
+		\label{featureadd}
+		
+		\subsubsection*{Description:}
+		
+		The Shopping Route Recommender's primary feature is the user's ability to add shopping items to their cart. The user will be able to log into the application and add items to the shopping cart on an add-hock basis. These items will remain in the basket until such time that the user wants to go shopping. 
+		
+		\subsubsection*{Stimulus/Response Sequences:}
+		
+		The user will click in the "Add Items" field at which point a list will be displayed that will contain all previously added items listed one after the other (in the order in which they were added). Within this list the user will be able to complete one of the following actions:
+		
+		\begin{itemize}
+			\item Add a new item - The user will be able to click the "Add new item" button in order to enter a new item. 
+			\item Remove existing item - The user will be able to click the cross next to a specific item which will result in the product being removed from the shopping list.
+			\item Edit existing item - The user will be able to make modifications to the description of an existing item.
+		\end{itemize}
+		
+		\subsubsection*{Functional Requirements:}
+		
+		\begin{itemize}
+			\item The user can only add a single item at a time.
+			\item The user can only remove a single item at a time.
+			\item The user can only edit a single item at a time.
+		\end{itemize}
+		
+		%		\subsubsection{System Feature 2 - Upload Existing List}
+		%			
+		%			\subsubsection*{Description}
+		%			
+		%				The developers acknowledge the fact that not all users will have continuous access to internet and thus the ability to access the above mentioned shopping list. The proposed solution was to allow the user to add items to a .csv file and upload this only when they actual want to go shopping. 
+		%				
+		%			\subsubsection*{Stimulus/Response Sequences}
+		%			
+		%				On the home page there is a "Upload Shopping List" button. Once the user clicks on this button the user will be required to provide the path to the .csv document. Once the path has been provided the user will be required to click on the upload button and the .csv file will be imported. Upon completion the user will be able to access, and interact with, the shopping list as mentioned in Section~\ref{featureadd}.
+		
+		\subsubsection{System Feature 2 - Add Location}
+		
+		\subsubsection*{Description:}
+		
+		In order for the route to be provided it is required that the user's location is available. The generated shopping route is entirely based on the users current location, and therefore his/her location relative the shops of interest. 
+		
+		\subsubsection*{Stimulus/Response Sequences:}
+		
+		The user is presented with a "Add Location" option on the home screen. Upon selecting this option the user has the ability to make their location known in two different ways:
+		
+		\begin{itemize}
+			\item Entering their location manually.
+			\item Finding their location through the use of the Google Maps API.
+		\end{itemize}
+		
+		The primary motivation behind allowing the user to manually enter their location is that not all users will have access to GPS and thus will not be able to determine their location. \\
+		
+		The location entered at this point is the same location that will be used as the starting position for the route that is planned when the "Generate Route" option is selected.
+		
+		\subsubsection*{Functional Requirements:}
+		
+		\begin{itemize}
+			\item In order to use the "find my location" option the user is required to have GPS access. Most modern day smartphones contain a location services setting that allows the location of the device to be accurately mapped. 
+		\end{itemize}
+		
+		\subsubsection{System Feature 3 - Preferred Optimisation}
+		
+		\subsubsection*{Description:}
+		
+		A decision was made in order to allow the user to have control of the nature of the route that they will follow. This was due to the fact that multiple customers will view different aspects as their primary concern. In other words, some users might value the cost of things over the distance required to travel, while for others the cost of shopping products may not be of any concern. 
+		
+		\subsubsection*{Stimulus/Response Sequences:}
+		
+		On the home page there is a "Preffered Optimisation" drop down menu. Once the user selects the preferred Optimisation" drop-down menu they will be provided with the following options:
+		
+		\begin{itemize}
+			\item Fastest Route - The user will be allowed to select that they would like to take the fastest possible route in order to obtain all the items on their shopping list. The primary contributor to delays will be traffic.
+			\item Shortest Route - The user will be allowed to select that they would like to travel the shortest possible distance in order to obtain all the items on their shopping list. This selection will not incorporate traffic information.
+			\item Cheapest Total Cost - The optimisation will primarily consider the cost of items at the expense of the distance required to be travelled in order to obtain these items. 
+		\end{itemize}
+		
+		The user will also be provided with all alternative routes and they time expense that would be incurred if they select to take the alternate routes. The route distance optimisation will primarily be achieved through the use of the Google Maps API.
+		
+		\subsubsection*{Functional Requirements:}
+		
+		\begin{itemize}
+			\item The application is required to link to the Google Maps API. 
+			\item The user is required to have GPS activated on their mobile device if they wish to use navigation.
+		\end{itemize}
+		
+		\subsubsection{System Feature 5 - Generate Route}
+		
+		\subsubsection*{Description:}
+		
+		The generate route option incorporates all the above mentioned features and provides the user the with the preferred route. The generated route is displayed on a Google Maps view with a highlighted shopping route. 
+		
+		\subsubsection*{Stimulus/Response Sequences:}
+		
+		Upon selection of the "Generate Route" option the user will be directed to a page that contains the Google Map with the route drawn onto it as well as a set of directions in order to allow for off-line use. If the user would prefer to navigate using a mobile device they will be able to do so through the use of Google Maps.
+		
+		\subsubsection*{Functional Requirements:}
+		
+		\begin{itemize}
+			\item Access to Google Maps API is required.
+		\end{itemize}
+		
+		\subsubsection{System Feature 6 - Menu}
+		
+		\subsubsection*{Description:}
+		
+		The SRR web application has a menu that contains basic user desirable tabs. These tabs incorporate settings for the application, help features, information about the application and a history of generated shopping routes. 
+		
+		\subsubsection*{Stimulus/Response Sequences:}
+		
+		The menu tabs are user interactive and can be accessed by clicking on each tab once in the menu. Each tab contains specific web application information, as mentioned. 
+		
+		\subsubsection*{Functional Requirements:}
+		
+		The menu tab requires the GUI to be user interactive, whereby a user is able to click and select specific tabs. It is therefore strictly dependant on a functional GUI and interface.
+		
+		
+		\subsection{External Interface Requirements}
+		
+		\subsubsection{User Interfaces - GUI}
+		
+		The Shopping Route Recommender (SRRec) GUI is simple to use and designed such that the user is able to access all the main features easily. The interface communicates with the data layer which then incorporates Googles' API to deliver the most accurate and optimised shopping route. . Furthermore, the application is easily portable between devices of different screen sizes, in that the content on the pages automatically adjust to fit the appropriate screen.\\
+		
+		The most common features of SRRec's GUI are:
+		
+		\begin{itemize}
+			\item The sidebar menu accessible from all the subsequent pages:
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[scale = 0.3]{../images/menu.PNG}
+				\caption{Menu bar of application}
+				\label{menu}
+			\end{figure}
+			
+			\newpage
+			\item The landing page and main application window where a user inputs their shopping list, location and preferred optimisation from which the application generates an optimised route. Also, a view showing the accessible menu:
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width = \columnwidth]{../images/index_new.png}
+				\caption{Home page of application}
+				\label{home page}
+			\end{figure}
+			
+			\item Route and Directions page generated after a user has input their shopping list, location and preferred optimisation:
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width =\columnwidth]{../images/map_gen_new.png}
+				\caption{Page displaying route and directions}
+				\label{map page}
+			\end{figure}
+			
+			\newpage
+			\item The page where a user can either login or create a new account:
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width = \columnwidth]{../images/login_new.png}
+				\caption{Page for entering user login details}
+				\label{login page}
+			\end{figure}
+			
+			
+			\item The page where a new user can create an account:
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width = \columnwidth]{../images/create_account_new.png}
+				\caption{Page for creating a user account}
+				\label{create account page}
+			\end{figure}
+			
+		\end{itemize}
+		
+		\subsubsection{Hardware Interfaces}
+		
+		The SRRec application does not require nor support any hardware interfaces.
+		
+		\subsubsection{Software Interfaces}
+		
+		SRRec is a web application. Therefore it will be compatible with all operating systems including smartphone and tablet operating systems. It only needs to be compatible on web browsers which support HTML, CSS, JavaScript and PHP. It has been tested on Motzilla, Firefox, Google Chrome, Microsoft Edge and Safari web browsers. \\
+		
+		Furthermore, the application makes use of the Google Maps API in order to generate and display the map with the optimised shopping route. 
+		
+		\subsubsection{Communications Interfaces}
+		
+		Since SRRec is a web application, network communications are necessary. It runs off a cloud hosted server such that it is readily available with an internet connection so as to communicate with both the user and the Google Maps API. Another communication interface is through the users GPS (if available), which the application uses to locate the nearest shops.
+		
+		\subsection{Other Non-functional Requirements}
+		
+		\subsubsection{Performance Requirements}
+		
+		The SRRec is dependent on retrieving only relevant information from multiple large databases. This is to be done in an optimised fashion in order to allow fast data retrieval without unnecessary delays. The application should respond in real-time as the user inputs information.\\
+		
+		Since the SRRec is a website application, any changes or updates made will be automatically available to the user the next time the website is loaded. Thus SRRec will always be up-to-date.\\
+		
+		The application should have a maximum range for the shops selected so as not to recommend an infeasible route. It should also be able to still provide a route even if certain items are not available nearby.
+		
+		\subsubsection{Safety Requirements}
+		
+		The application should avoid taking users to the wrong locations, especially if those locations are in dangerous areas. The SRRec should only provide routes along known roads.
+		
+		\subsubsection{Security Requirements}
+		
+		The databases used by SRRec should be protected from random access. User credentials are to be taken in by the application for users to sign into their profiles. Thus there needs to be a secure authentication system. The credentials also need to be safely stored on a secure server to protect them.
+		
+		\subsubsection{Software Quality Attributes}
+		
+		This application incorporates the use of user credentials to allow users to store and access their lists on a 	server without losing their list or having to keep the website active. The application has a simplistic graphical interface that is easy-to-use. The website is easily interpreted and a new user should be able to use the website without requiring any sort of tutorial or explanations.
 
 \section{DESIGN DOCUMENT}
 
-\textbf{I: FRONT-END}
+\begin{center}
+	\sc{I: FRONT-END}
+\end{center}
+
 
 
 	\subsection{Relevant Modules}
-
-
-\textbf{II: BACK-END}
+		
+		\subsubsection{Style Modules (CSS)}
+		
+		\textit{1140.css:}  1140px is an open source css style. It is used to handle the grid and layout of the overall view of the web application. The css classes control the columns and rows of the html web page based on pixels length. Furthermore this style is responsible for page adjustment based on the screen size of the target device. The specific font format 'Source Sans Pro' and font weight are also included in the module.\\
+		
+		\textit{maps.css:} This style is used to position the displays of the generated map and directions windows. Further class aspects are added in order to change the font size and positioning within the directions panel.\\
+		
+		\textit{sidenav.css:} This css module is used to customise the side navigation menu panel. It styles the background colour, and text font and colour. It also positions the menu correctly and adjusts its extension into the page when the menu button is pressed.\\
+		
+		\textit{style.css:} The style css file is used to create the general style of the headers and buttons on all the web pages. This was encompassed in a single css as it would ensure consistency of all visual aspects of the web application across all web pages.  
+		
+		\subsubsection{Side Navigation Module}
+		
+		The menu is displayed in a side navigation panel. This panel slides onto the web page from the left when the `Menu' button is selected. This functionality was achieved by using a JavaScript function called at the end of each web page so that it is always accessible. Furthermore, this module uses jQuery, a JavaScript library, designed to simplify client-side scripting of HTML.	
+		
+		\subsubsection{Create Account Module}
+		
+		The create account script is simply involved in allowing different users to create an account. The module primarily interfaces with the database in order to store the users details allowing them to access the web application and some point in the future. The script performs simple checks such as password confirmation and whether or not the information entered is of the correct form, this is all achieved through \texttt{PHP5} code embedded within the HTML code. Once the information entered satisfies all the required criteria, the page then interfaces with the database and adds the user, following this the user is redirected to the applications home page. The redirection is achieved through the use of the \texttt{PHP5} command \texttt{header(Location: `page.php')}. 
+		
+		\subsubsection{Login Module}
+		
+		The login script is similar in nature to that of the create account module in the sense that it consists of a basic HTML form that interfaces with the database. Despite this, the login module is required to read and write from the database. \\
+		
+		Once the user enters their credentials, the database is invoked via a POST request to obtain the password corresponding to the entered email. The embedded \texttt{PHP5} code is then responsible for comparing the password from the database to that entered by the user and bringing about the correct response. If the credentials are correct the user is redirected to the home page, otherwise the user will be required to re-enter their credentials.
+		
+		\subsubsection{Home Page Module}
+		
+		This is the page the user interacts with to input their preferences. It is the homepage of the web application and will therefore be the first page that the user is displayed once they have logged in.\\
+		
+		The page's main feature is the dynamically updating shopping list. The user is provided with the ability to alter the shopping list by either adding items to, or removing items from, the list. All changes made are relayed to the database, thus allowing the user to add and remove items from the shopping list on an ad hoc basis. Thus any changes made by the user will be permanently stored until such time that the user request that the route be generated. A future implementation is to allow the user to store multiple commonly used lists. \\
+		
+		In an ideal situation the users geo-location will be used as the origin of the shopping route however, as this is not always available, the user is required to enter their desired starting location.\\
+		
+		The last requirement from the user is for them to select their desired means of optimisation. The user is presented with the option to optimise the route by one of the following means: cheapest total cost, shortest possible route or quickest possible route. The default implementation for the prototype is the cheapest possible route as this encompasses all the basic functionality of the system. \\
+		
+		Once the user has added all of their desired items to the shopping list they are required to select the `Generate Route' button. This will generate a route, with directions, based on the items and chosen optimisation. All optimisation is performed by the back-end and relayed to the front-end in the for of a set of co-ordinates.
+		
+		\subsubsection{Route Generation Module}
+		
+		This module requires information sent from the back-end. This information will consist of the users current location as well as all of the stopovers on the route. This information is sent to the Google API which in turn will return the response. This response is thus displayed on a Google Map in a separate window with the written directions alongside.
+		
+		\subsubsection{Google Api Module}
+		
+		\begin{itemize}
+			\item The Back-End of the program returns a 2D matrix, with each matrix slot containing an X and Y co-ordinates, to the Front-End. The co-ordinates correspond to the location of each shopping route waypoint. 
+			\item The Front-End uses the co-ordinates of all the waypoints to insert them into a Google Maps API request message.
+			\item The request message serves to connect to Google directions or directions matrix endpoints through 'https://maps.\\googleapis.com/maps/api'.
+			\item Upon each request, the Google API and user require an API key for each project as well as specific endpoint activations.
+			\item The JavaScript function \textit{initMap()} creates the \textit{DirectionsRenderer} and \textit{DirectionsServices} objects. It also maps the \textit{directionsDisplay} map and panel objects to the windows in the HTML document.
+			\item The \textit{DirectionsServices} object initialises a call to the API containing the routes information.
+			\item The response and status are returned and displayed on the directions panel and map panel using the \textit{directionsDisplay} object.
+			\item The directions matrix endpoint is used to return distance and time information about the trips in order to select the optimal waypoints to send to the directions api.
+		\end{itemize}
+		
+\begin{center}
+	\sc{II: BACK-END}
+\end{center}
 
 	
 	\subsection{Relevant Modules}
+	
+		\subsubsection{Home Page Module}
+		
+		This module receives items to be added and/or removed from the users shopping list. All the new items are added to the users shopping list on the database. The items to be removed are compared with the users current shopping list. If these items are in the database they will be permanently removed.\\
+		
+		\textit{Load list:} In future iterations of this project a load list will be implemented. This will allow the user to have multiple lists linked to their profile on the database. The back-end will receive which list to select. The correct list will then be found on the database and returned to the front-end for the user to interact with. \\
+		
+		This module also receives the users starting location. This location is stored in the database as the origin for the Route Generation Module.\\
+		
+		\textit{Preferred Optimisation:} In future iterations of this project the ability to select a preferred route optimisation will be allowed. The back-end which receive which type of optimisation to perform, namely shortest total distance, lowest total cost or shortest total time. The back-end will then use this optimisation when selecting which stores to visit and/or which route to travel.
+		
+		\subsubsection{Database Permutations Module}
+		
+		The origin location and shopping list are received by this module. The module is then responsible for generating all the possible routes for the user. The module accesses the database to determine which shops sell the products on the users shopping list. The code then dynamically creates tables for each item on the list which contains a column corresponding to all the shops which sell the product as well as another column for all the prices of that item at the corresponding shops. \\
+		
+		Once all the tables have been created the code then performs a \texttt{CROSS JOIN} on all the tables which provides all the possible permutations of shops that contain the items on the shopping list. In the same line of code a sum of all the prices is taken. The resulting table consists of a new route on each row with each column corresponding to a waypoint on the route. The final column of the table contains the total cost of the items for that route. The above table is then ordered in descending order according to price. This is to make determining the cheapest route easier in further calculations.
+		
+		\subsubsection{Route Generation Module}
+		
+		This module is responsible for combining the route information into the correct format for the `presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. The code is triggered, in conjunction with the permutations module, when the user selects the `Generate Route' button on the home page. \\
+		
+		While iterating over each entry of shop name the module dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is what is presented to the front-end, through the use of \texttt{PHP5}, in a format that allows the front-end in able to interpret. The front-end then interacts with the Google Maps API in order to present the desired route on a map.\\
+		
+		As the cheapest route means on optimisation is the only option available in the prototype, the other means of optimisation will be achieved in the following manner. The information for the shortest route and fastest route can only be obtained from the Google Maps API. In order to differentiate between the routes, the database will present the front-end with an individual route at a time. The front-end will then interface with the API to obtain the distance and time and forward the information to the database. This concept will be repeated for all routes, at which point the back-end will have the required information to be able to determine the cheapest, fastest and shortest routes. Therefore, irrespective of the optimisation chosen the database will be able to provide the front-end with the corresponding route.
+		
+		\subsubsection{Create Account Module}
+		
+		A new users full name, email address and password is received by this module. These credentials are then stored in a table within the database and used later for user verification by the login module.
+		
+		\subsubsection{Login Module}
+		
+		This module receives an email address and password. These credentials are then compared with those stored in the database. If a match is made then that users specific shopping list is retrieved from the database and passed to the front-end to be displayed.
+		
 
 \section{SPRINT PLANNING}
 
-
+	One of the ways in which the group plans on both implementing and monitoring the SCRUM method is through an application called Trello. Trello forms an important backbone to the structure of the SCRUM method planning, by providing a carded system. Each card forms part of a specific sprint, the cards can be taken by individual group members and upon completion of the tasks on the card (in the allocated time frame), the member updates the progress of the task. In doing so, the other group members are informed of all the individual member's project progress. A screen shot of the board currently being used can be seen below. 
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width = \columnwidth]{../images/Trello.JPG}
+		\caption{Trello board used for project development}
+		\label{trello}
+	\end{figure}
+	
+	\subsection{Project Predecessor Tasks: 18 February}
+	
+	\begin{itemize}
+		\item Create the project backlog for the SCRUM procedure. This involves identifying the customer requirements, the developer team abilities and the list of project priorities that the team need to address during the project sprints. 
+		\item The backlog must thereafter be prioritised. 
+		\item Set up a sprint planning meeting
+		\begin{itemize}
+			\item negotiate the duration of the sprints 
+			\item select the target backlog for the sprint
+			\item clarify sprint requirements
+			\item break the sprint requirements into project tasks
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection{Sprint 1: 18 February - 26 February}
+	
+	\begin{itemize}
+		\item The first portion of this sprint is to familiarise the group with Git and the GitHub platform. This involves configuring Git with each group members personal computers 
+		\item The next task is to create a project on GitHub
+		\item The group is then expected to choose a project topic that will be focused on for the duration of this project
+		\item An expanded description of the selected project, distinctly describing the front- and back-ends is to to be provided
+		\item The description must also detail the expected inputs and outputs of the system
+		\item The responsibilities of each paired group of students must also be detailed in this submission
+		\item The documentation of this sprint must be uploaded onto GitHub such that it can be expanded upon at later stages in the development of the project
+	\end{itemize}
+	
+	\subsection{Sprint 2: 3 March - 10 March}
+	
+	\begin{itemize}
+		\item Set up a sprint planning meeting
+		\begin{itemize}
+			\item identify the duration of this sprint
+			\item select the item targets from the backlog for this sprint
+			\item break the sprint requirements into project tasks
+		\end{itemize}
+		\item The initial stage of this sprint is to firstly select a software development life-cycle (SDLC). The choice must be based on Agile SDLC
+		\item The second stage is for the group members to choose a system architecture
+		\item The development team must also focus on choosing an appropriate Front End interface method
+		\item In order for the system to be fully functional an appropriate Back End must be designed. This involves selecting an HTTP server and an appropriate Database Management System (DBMS)
+		\item Supporting API's are also brought forward, discussed and the choices are made clear with regard to the requirements of the system
+		\item With all the aforementioned decisions being made, the main purpose of this sprint is to produce the first draft of a detailed Software Requirement Specification				
+	\end{itemize}
+	
+	\subsection{Sprint 3: 24 March - 4 April}
+	
+	\begin{itemize}
+		\item Set up a sprint planning meeting
+		\begin{itemize}
+			\item identify the duration of this sprint
+			\item select the item targets from the backlog for this sprint
+			\item break the sprint requirements into project tasks, identify the components that revolve primarily around the system prototype
+		\end{itemize}
+		\item Finalise the structure of the back-end and front-end of the prototype. This includes decisions revolving around the frameworks, languages as well as overall appearance of the project
+		\item Configure the HTTP server
+		\item Configure the database to conform with the structure of the HTTP server
+		\item Decide what \texttt{css} styles are applicable to the project
+		\item Configure the database to interact with the front-end through the use of an interfacing language
+		\item Integrate front-end with back-end
+		\item Finalise system prototype
+		\item Write test-code to ensure the prototype functions as expected
+		
+		\subsection{Sprint 4: 5 April - 11 April}
+		\item Set up a sprint planning meeting
+		\begin{itemize}
+			\item identify the duration of this sprint
+			\item select the item targets from the backlog for this sprint
+			\item break the sprint requirements into project tasks, identify the required documentation for the system
+		\end{itemize}
+		\item Finalise the project's software requirement specification documentation
+		\item Construct the project's software design documentation
+		\item A document describing how the final system is invoked must be created
+		\item The Front End detailing must be updated and described fully, including describing the respective views accessible by all the web application users
+		\item The Back End must also be detailed fully and the techniques describing its configuration and implementation must be finalised
+		\item The writing and documentation of some important class modules must be produced, these must identify and illustrate the key aspects of the implemented web application solutions
+		\item Reflect on the performance of the SCRUM method for the project
+	\end{itemize}	
 
 \section{SPRINT RETROSPECTIVE}
 
