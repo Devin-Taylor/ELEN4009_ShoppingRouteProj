@@ -829,7 +829,7 @@
 		
 	\subsection{System Architecture and Data Design}
 	
-		The software behind the Shopping Route Recommender is designed in a responsibility-driven structure \cite{responsibility}. The responsibility-driven structure is primarily centred around the client/server model and the roles that each entity plays in the communication of data objects. The main aspect of the structure is to abstract the details of how the server handles the clients request, from the client. Therefore, the design is structured in such a way that the client can only specify the intent of the requests and the back-end is configured in such a way to handle to specified request by encapsulating the means of how it responds to the clients request.\\
+		The software behind the Shopping Route Recommender is designed in a responsibility-driven structure \cite{responsibility}. The responsibility-driven structure is primarily centred around the client/server model and the roles that each entity plays in the communication of data objects. The main aspect of the structure is to abstract the details of how the server handles the clients request, from the client. Therefore, the design is structured in such a way that the client can only specify the intent of the requests and the back-end is configured in such a way to handle the specified request by encapsulating the means of how it responds to the clients request.\\
 		
 		The system was divided up into multiple structures, of which objects could be created, in order to achieve this level of abstraction. The objects that could be created are listen below:
 		
@@ -851,13 +851,13 @@
 	
 		\subsubsection{Home Page Module}
 		
-		This module receives items to be added and/or removed from the users shopping list. All the new items are added to the users shopping list on the database. The items to be removed are compared with the users current shopping list. If these items are in the database they will be permanently removed.\\
+		This module receives items to be added and/or removed from the users shopping list. All the new items are added to the users shopping list on the database. The items to be removed are compared with the users current shopping list. If these items are in the database they will be permanently removed.
 		
-		\subsubsection*{Load list:} In future iterations of this project a load list will be implemented. This will allow the user to have multiple lists linked to their profile on the database. The back-end will receive which list to select. The correct list will then be found on the database and returned to the front-end for the user to interact with. \\
+		\subsubsection*{Load list:} In future iterations of this project a load list will be implemented. This will allow the user to have multiple lists linked to their profile on the database. The back-end will receive which list to select. The correct list will then be found on the database and returned to the front-end for the user to interact with.
 		
-		This module also receives the users starting location. This location is stored in the database as the origin for the Route Generation Module.\\
+		This module also receives the users starting location. This location is stored in the database as the origin for the Route Generation Module.
 		
-		\subsubsection*{Preferred Optimisation:} In future iterations of this project the ability to select a preferred route optimisation will be allowed. The back-end which receive which type of optimisation to perform, namely shortest total distance, lowest total cost or shortest total time. The back-end will then use this optimisation when selecting which stores to visit and/or which route to travel.
+		\subsubsection*{Preferred Optimisation:} In future iterations of this project the ability to select a preferred route optimisation will be allowed. The back-end will receive which type of optimisation to perform, namely shortest total distance, lowest total cost or shortest total time. The back-end will then use this optimisation when selecting which stores to visit and/or which route to travel.
 		
 		\subsubsection{Database Permutations Module}
 		
@@ -867,11 +867,11 @@
 		
 		\subsubsection{Route Generation Module}
 		
-		This module is responsible for combining the route information into the correct format for the `presentation' layer to interact with. The file takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. The code is triggered, in conjunction with the permutations module, when the user selects the `Generate Route' button on the home page. \\
+		This module is responsible for combining the route information into the correct format for the front-end to interact with. This module takes the above mentioned table and replaces the shops with their corresponding coordinates obtained from the database. This is achieved by reading in the above mentioned table from the database and indexing over each location in the table of routes vs waypoint as mentioned above. The code is triggered, in conjunction with the permutations module, when the user selects the `Generate Route' button on the home page. \\
 		
-		While iterating over each entry of shop name the module dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is what is presented to the front-end, through the use of \texttt{PHP5}, in a format that allows the front-end in able to interpret. The front-end then interacts with the Google Maps API in order to present the desired route on a map.\\
+		While iterating over each entry of shop name the module dynamically adds the corresponding shops coordinates to a 2D array. This 2D array is what is presented to the front-end, through the use of \texttt{PHP5}, in a format that the front-end is able interpret. The front-end then interacts with the Google Maps API in order to present the desired route on a map.\\
 		
-		As the cheapest route means on optimisation is the only option available in the prototype, the other means of optimisation will be achieved in the following manner. The information for the shortest route and fastest route can only be obtained from the Google Maps API. In order to differentiate between the routes, the database will present the front-end with an individual route at a time. The front-end will then interface with the API to obtain the distance and time and forward the information to the database. This concept will be repeated for all routes, at which point the back-end will have the required information to be able to determine the cheapest, fastest and shortest routes. Therefore, irrespective of the optimisation chosen the database will be able to provide the front-end with the corresponding route.
+		Since the cheapest route optimisation is the only option available in the prototype, the other means of optimisation will be achieved in the following manner. The information for the shortest route and fastest route can only be obtained from the Google Maps API. In order to differentiate between the routes, the database will present the front-end with an individual route at a time. The front-end will then interface with the API to obtain the distance and time and forward the information to the database. This concept will be repeated for all routes, at which point the back-end will have the required information to be able to determine the cheapest, fastest and shortest routes. Therefore, irrespective of the optimisation chosen the database will be able to provide the front-end with the corresponding route.
 		
 		\subsubsection{Create Account Module}
 		
@@ -930,8 +930,8 @@
 		\end{itemize}
 		\item The initial stage of this sprint is to firstly select a software development life-cycle (SDLC). The choice must be based on Agile SDLC
 		\item The second stage is for the group members to choose a system architecture
-		\item The development team must also focus on choosing an appropriate Front End interface method
-		\item In order for the system to be fully functional an appropriate Back End must be designed. This involves selecting an HTTP server and an appropriate Database Management System (DBMS)
+		\item The development team must also focus on choosing an appropriate front-end interface method
+		\item In order for the system to be fully functional an appropriate back-end must be designed. This involves selecting an HTTP server and an appropriate Database Management System (DBMS)
 		\item Supporting API's are also brought forward, discussed and the choices are made clear with regard to the requirements of the system
 		\item With all the aforementioned decisions being made, the main purpose of this sprint is to produce the first draft of a detailed Software Requirement Specification				
 	\end{itemize}
@@ -964,15 +964,15 @@
 		\item Finalise the project's software requirement specification documentation
 		\item Construct the project's software design documentation
 		\item A document describing how the final system is invoked must be created
-		\item The Front End detailing must be updated and described fully, including describing the respective views accessible by all the web application users
-		\item The Back End must also be detailed fully and the techniques describing its configuration and implementation must be finalised
+		\item The front-end detailing must be updated and described fully, including describing the respective views accessible by all the web application users
+		\item The back-end must also be detailed fully and the techniques describing its configuration and implementation must be finalised
 		\item The writing and documentation of some important class modules must be produced, these must identify and illustrate the key aspects of the implemented web application solutions
 		\item Reflect on the performance of the SCRUM method for the project
 	\end{itemize}	
 
 \section{SPRINT RETROSPECTIVE}
 
-		This section details the groups retrospective views on each of the project sprints. Each of the sprints is analysed and future improvements regarding sprint planning and execution of project tasks are presented. In addition, the positive outcomes of some of the sprint planning is discussed. Each sprint involved setting up a sprint planning meeting. These meetings would allow the group to structure each sprint and their respective tasks. This allowed the tasks to be designated to group members and ensured the group maintained the project scope and objectives.
+		This section details the groups retrospective views on each of the project sprints. Each sprint is analysed and future improvements regarding sprint planning and execution of project tasks are presented. In addition, the positive outcomes of some of the sprint planning is discussed. Each sprint involved setting up a sprint planning meeting. These meetings would allow the group to structure each sprint and their respective tasks. This allowed the tasks to be designated to group members and ensured the group maintained the project scope and objectives.
 		
 		\subsection{Predecessor Tasks} 
 		
@@ -984,11 +984,11 @@
 		
 		\subsection{Sprint 2}
 		
-		This sprint mainly focused on producing a Software Requirement Specification document. This document was to be produced following in depth research regarding the front end and back end implementations. The document was well designed as each group member was assigned a portion of the document. This allowed the members to focus their attention on specific topics, thus providing more in depth detail. The document was produced using LaTex thus each member could simultaneously edit the PDF source code using Git. This maximised group efficiency as members were able to see changes as they occurred.  
+		This sprint mainly focused on producing a Software Requirement Specification document. This document was to be produced following in depth research regarding the front-end and back-end implementations. The document was well designed as each group member was assigned a portion of the document. This allowed the members to focus their attention on specific topics, thus providing more in depth detail. The document was produced using LaTex thus each member could simultaneously edit the PDF source code using Git. This maximised group efficiency as members were able to see changes as they occurred.  
 		
 		\subsection{Sprint 3}
 		
-		The first step for this sprint was setting up the sprint planning meeting. The meeting allowed the members to designate the workload for producing the front and back end prototypes. In addition, the team was able to discuss the requirements of the web application prototype in detail, with presented options for the application's components being discussed. The prototype that was created illustrated the basic functionality of the web application. A route would be generated based upon an input shopping list and preferred optimisation.  The prototype used the Google Maps API to accurately display a shopping route. Based on the project objectives, the objectives regarding the prototype were met. In hindsight, with a more structured time management plan, the back end database could have been expanded to include more shops and products. In addition, a price range option could have been implemented. Nevertheless, the prototype created performs its core function; it provides a user with a preferred optimised shopping route. A future improvement might be to create a more thorough test code. This code could test all aspects of the application and would thus highlight any bugs or flaws in the system. 
+		The first step for this sprint was setting up the sprint planning meeting. The meeting allowed the members to designate the workload for producing the front and back end prototypes. In addition, the team was able to discuss the requirements of the web application prototype in detail, with presented options for the application's components being discussed. The prototype that was created illustrated the basic functionality of the web application. A route would be generated based upon an input shopping list and preferred optimisation.  The prototype used the Google Maps API to accurately display a shopping route. Based on the project objectives, the objectives regarding the prototype were met. In hindsight, with a more structured time management plan, the back-end database could have been expanded to include more shops and products. In addition, a price range option could have been implemented. Nevertheless, the prototype created performs its core function; it provides a user with a preferred optimised shopping route. A future improvement might be to create a more thorough test code. This code could test all aspects of the application and would thus highlight any bugs or flaws in the system. 
 		
 		\subsection{Sprint 4}	
 		
